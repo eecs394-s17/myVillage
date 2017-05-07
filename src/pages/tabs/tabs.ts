@@ -3,6 +3,7 @@ import { NavController, AlertController, NavParams } from 'ionic-angular';
 
 import { HomePage } from '../home/home';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import {WishListPage} from '../wish-list/wish-list'
 
 /*
   Generated class for the Tabs page.
@@ -16,6 +17,7 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 })
 export class TabsPage {
   tab1Root = HomePage;
+  tab2Root = WishListPage
 
   tasks: FirebaseListObservable<any>;
 	angFireDB: any;
