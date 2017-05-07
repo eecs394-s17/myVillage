@@ -8,6 +8,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { WishListPage } from '../pages/wish-list/wish-list';
 
+import { LandingPagePage } from '../pages/landing-page/landing-page';
 
 @Component({
   templateUrl: 'app.html'
@@ -15,16 +16,17 @@ import { WishListPage } from '../pages/wish-list/wish-list';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage:any = TabsPage;
+  rootPage:any = LandingPagePage;
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public menu: MenuController, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     this.pages = [
-      { title: 'Hello Ionic', component: HomePage },
+      { title: 'Home Page', component: HomePage },
       { title: 'Tabs Page', component: TabsPage },
-      { title: 'Wishlist Page', component: WishListPage}
+      { title: 'Wishlist Page', component: WishListPage},
+      { title: 'Landing Page', component: LandingPagePage }
     ];
   }
 
