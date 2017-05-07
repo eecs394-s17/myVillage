@@ -9,15 +9,15 @@ import { TabsPage } from '../tabs/tabs';
   Ionic pages and navigation.
 */
 @Component({
-  selector: 'page-landing-page',
-  templateUrl: 'landing-page.html'
+  selector: 'page-landing',
+  templateUrl: 'landing.html'
 })
-export class LandingPagePage {
+export class LandingPage {
 
   constructor(public nav: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LandingPagePage');
+    console.log('ionViewDidLoad LandingPage');
   }
 
   changeMomPage(){

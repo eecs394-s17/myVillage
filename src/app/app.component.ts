@@ -8,7 +8,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { WishListPage } from '../pages/wish-list/wish-list';
 
-import { LandingPagePage } from '../pages/landing-page/landing-page';
+import { LandingPage } from '../pages/landing/landing';
 
 @Component({
   templateUrl: 'app.html'
@@ -16,7 +16,7 @@ import { LandingPagePage } from '../pages/landing-page/landing-page';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage:any = LandingPagePage;
+  rootPage:any = LandingPage;
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public menu: MenuController, public statusBar: StatusBar, public splashScreen: SplashScreen) {
@@ -26,7 +26,7 @@ export class MyApp {
       { title: 'Home Page', component: HomePage },
       { title: 'Tabs Page', component: TabsPage },
       { title: 'Wishlist Page', component: WishListPage},
-      { title: 'Landing Page', component: LandingPagePage }
+      { title: 'Landing Page', component: LandingPage }
     ];
   }
 

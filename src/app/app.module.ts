@@ -5,7 +5,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { WishListPage } from '../pages/wish-list/wish-list';
-import { LandingPagePage } from '../pages/landing-page/landing-page';
+import { LandingPage } from '../pages/landing/landing';
 
 import { AngularFireModule } from 'angularfire2';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -26,7 +26,7 @@ export const firebaseConfig = {
     HomePage,
     TabsPage,
     WishListPage,
-    LandingPagePage,
+    LandingPage,
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -38,7 +38,7 @@ export const firebaseConfig = {
     HomePage,
     TabsPage,
     WishListPage,
-    LandingPagePage
+    LandingPage
   ],
   providers: [
     StatusBar,
