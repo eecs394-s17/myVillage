@@ -9,25 +9,24 @@
   <ion-navbar>
     <ion-title>Wish List</ion-title>
   </ion-navbar>
-
+  <ion-title class="open-task" (click)="addToWishlist()">Add to wishlist </ion-title>
 </ion-header>
 
-<ion-card *ngFor="let wish of wishlist | async">
-  <ion-item>
-  <ion-label>{{wish.p_name}}</ion-label>
-  <ion-checkbox color="dark" checked="true"></ion-checkbox>
-    <p></p>
-  </ion-item>
-  <ion-card-content>
-    <p><b>Description:</b> {{wish.p_description}} </p>
-  </ion-card-content>
-  <label class="item item-input">
-    <span class="input-label">Name</span>
-    <input type="email">
-  </label>
-</ion-card>
-
-
 <ion-content padding>
+
+  <ion-card *ngFor="let wish of wishList | async">
+    <ion-item>
+    <ion-label>{{wish.p_name}}</ion-label>
+    <ion-checkbox color="dark" checked="true"></ion-checkbox>
+      <p></p>
+    </ion-item>
+    <ion-card-content>
+      <p><b>Description:</b> {{wish.p_description}} </p>
+    </ion-card-content>
+    <label class="item item-input">
+      <span class="input-label">Name</span>
+      <input type="email">
+    </label>
+  </ion-card>
 
 </ion-content>
