@@ -18,7 +18,7 @@ export class HomePage {
 
   constructor(private nav: NavController, public navParams: NavParams, public alertCtrl: AlertController, angFire: AngularFire) {
     this.angFireDB = angFire;
-    this.tasks = angFire.database.list('/');
+    this.tasks = angFire.database.list('/tasks');
   }
 
   scrollToTop() {

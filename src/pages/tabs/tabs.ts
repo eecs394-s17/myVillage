@@ -21,7 +21,7 @@ export class TabsPage {
 	angFireDB: any;
 
   constructor(public alertCtrl: AlertController, public nav: NavController, public navParams: NavParams, angFire: AngularFire) {
-    this.tasks = angFire.database.list('/');
+    this.tasks = angFire.database.list('/tasks');
 		this.angFireDB = angFire;
   }
 
