@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="cats" align-title="center">
+    <ion-buttons left>
+      <img class="header-logo" src="assets/img/catsCodeLogo.png">
+    </ion-buttons>
+    <ion-title class="open-project" (click)="scrollToTop()">Open Projects</ion-title>
+   </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-list>
+		<ion-card *ngFor="let project of projects | async">
+			<ion-item>
+        <p></p>
+				<h3>{{project.p_name}}</h3>
+			</ion-item>
+			<ion-card-content>
+				<p><b>Description:</b> {{project.p_description}} </p>
+				<p><b>Languages &amp; Tools:</b> {{project.lang_tools}} </p>
+				<p><b>Name:</b> {{project.name}} </p>
+				<p><b>Email:</b> {{project.email}} </p>
+        <p><b>Expected Length:</b> {{project.p_length}} </p>
+			</ion-card-content>
+		</ion-card>
+	</ion-list>
+</ion-content>

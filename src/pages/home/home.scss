@@ -1,0 +1,27 @@
+page-home {
+
+  .header-logo {
+    height:39px;
+    width: auto;
+  }
+
+  .open-project {
+    font-size: 1.5em;
+    font-style: "SayWeb";
+    color: color($colors, light);
+    text-align: center;
+  }
+
+	#welcome-msg {
+		font-style: "roboto";
+		font-size: 1.2em;
+		color: color($colors, light);
+    padding-right: 10px;
+		text-shadow: 1px -1px #767676,
+	}
+
+  #logout-button {
+    vertical-align: middle;
+    background-color: color($colors, cats-light);
+  }
+}
