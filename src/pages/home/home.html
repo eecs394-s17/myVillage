@@ -11,12 +11,17 @@
 	<ion-list>
 		<ion-card *ngFor="let task of tasks | async">
 			<ion-item>
+			<ion-label>{{task.p_name}}</ion-label>
+			<ion-checkbox color="dark" checked="true"></ion-checkbox>
         <p></p>
-				<h3>{{task.p_name}}</h3>
 			</ion-item>
 			<ion-card-content>
 				<p><b>Description:</b> {{task.p_description}} </p>
 			</ion-card-content>
+			<label class="item item-input">
+			  <span class="input-label">Name</span>
+			  <input type="email">
+			</label>
 		</ion-card>
 	</ion-list>
 </ion-content>
