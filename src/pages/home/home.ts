@@ -13,16 +13,12 @@ import "rxjs/add/operator/map";
 
 export class HomePage {
   @ViewChild(Content) content: Content;
-  projects: FirebaseListObservable<any>;
+  tasks: FirebaseListObservable<any>;
   angFireDB: any;
 
   constructor(private nav: NavController, public navParams: NavParams, public alertCtrl: AlertController, angFire: AngularFire) {
     this.angFireDB = angFire;
-    this.projects = angFire.database.list('/Projects', {
-      query: {
-        limitToLast: 40
-      }
-    }).map((array) => array.reverse()) as FirebaseListObservable<any[]>;
+    this.tasks = angFire.database.list('/');
   }
 
   scrollToTop() {

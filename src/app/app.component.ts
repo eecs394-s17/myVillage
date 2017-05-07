@@ -14,7 +14,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage:any = HomePage;
+  rootPage:any = TabsPage;
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public menu: MenuController, public statusBar: StatusBar, public splashScreen: SplashScreen) {
@@ -22,7 +22,6 @@ export class MyApp {
 
     this.pages = [
       { title: 'Hello Ionic', component: HomePage },
-      // { title: 'Login Page', component: LoginPage },
       { title: 'Tabs Page', component: TabsPage },
     ];
   }

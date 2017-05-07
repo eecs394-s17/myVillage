@@ -9,21 +9,13 @@ import { AngularFireModule } from 'angularfire2';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
-
-const cloudSettings: CloudSettings = {
- 'core': {
-   'app_id': '85c24729'
- }
-};
-
 export const firebaseConfig = {
-    apiKey: "AIzaSyBqeKfX_YrTabuny1p1HoVNsL44YKXnqOQ",
-    authDomain: "catscode-dd650.firebaseapp.com",
-    databaseURL: "https://catscode-dd650.firebaseio.com",
-    projectId: "catscode-dd650",
-    storageBucket: "catscode-dd650.appspot.com",
-    messagingSenderId: "729957060489"
+    apiKey: "AIzaSyCxzKGE4nNpuYVPza48rY0hQ8fRFXgP9DA",
+    authDomain: "myvillage-45883.firebaseapp.com",
+    databaseURL: "https://myvillage-45883.firebaseio.com",
+    projectId: "myvillage-45883",
+    storageBucket: "myvillage-45883.appspot.com",
+    messagingSenderId: "593820200176"
 };
 
 @NgModule({
@@ -35,7 +27,6 @@ export const firebaseConfig = {
   imports: [
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
-    CloudModule.forRoot(cloudSettings)
   ],
   bootstrap: [IonicApp],
   entryComponents: [

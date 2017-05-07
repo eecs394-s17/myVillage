@@ -17,35 +17,27 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 export class TabsPage {
   tab1Root = HomePage;
 
-  projects: FirebaseListObservable<any>;
+  tasks: FirebaseListObservable<any>;
 	angFireDB: any;
 
   constructor(public alertCtrl: AlertController, public nav: NavController, public navParams: NavParams, angFire: AngularFire) {
-    this.projects = angFire.database.list('/Projects');
+    this.tasks = angFire.database.list('/');
 		this.angFireDB = angFire;
   }
 
-  addProject():void{
+  addTask():void{
   	let prompt = this.alertCtrl.create({
-  		title: 'New Project',
-  		message: 'Enter the project details in the form below',
+  		title: 'New Task',
+  		message: 'Enter the task details in the form below',
   		inputs: [
   			{
-  				name: 'p_name',
-  				placeholder: "Project Name"
+  				name: 't_name',
+  				placeholder: "Task Name"
   			},
   			{
-  				name: 'p_description',
-  				placeholder: "Project Description"
+  				name: 't_description',
+  				placeholder: "Task Description"
   			},
-        {
-          name: 'lang_tools',
-          placeholder: "Language and Tools"
-        },
-        {
-          name: 'p_length',
-          placeholder: "Expected Length"
-        }
   		],
   		buttons: [
   			{
@@ -57,11 +49,9 @@ export class TabsPage {
   			{
   				text: "Submit",
   				handler: data => {
-  					var newRef = this.projects.push({
-  						p_name: data.p_name,
-              p_description: data.p_description,
-              lang_tools: data.lang_tools,
-              p_length: data.p_length
+  					var newRef = this.tasks.push({
+  						p_name: data.t_name,
+              p_description: data.t_description,
   					})
   				}
   			}
