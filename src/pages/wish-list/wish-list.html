@@ -1,0 +1,33 @@
+<!--
+  Generated template for the WishList page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Wish List</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-card *ngFor="let wish of wishlist | async">
+  <ion-item>
+  <ion-label>{{wish.p_name}}</ion-label>
+  <ion-checkbox color="dark" checked="true"></ion-checkbox>
+    <p></p>
+  </ion-item>
+  <ion-card-content>
+    <p><b>Description:</b> {{wish.p_description}} </p>
+  </ion-card-content>
+  <label class="item item-input">
+    <span class="input-label">Name</span>
+    <input type="email">
+  </label>
+</ion-card>
+
+
+<ion-content padding>
+
+</ion-content>
