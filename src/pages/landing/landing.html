@@ -7,13 +7,14 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Welcome to MyVillage</ion-title>
+    <!-- <ion-title>Welcome to MyVillage</ion-title> -->
+    <img class="header-logo" src="assets/img/myVillageLogo.jpg">
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
   <ion-row>
     <ion-col>
       <h1 class="title-text"> Get started today!</h1>
@@ -23,14 +24,16 @@
   <ion-row>
     <ion-col>
       <button ion-button class="landing-button" (click) = "changeMomPage()">
-        <h1>New Mom</h1> 
-        <h3>Expecting moms too!</h3>
+        <h1>New Mom
+        <br />
+        Expecting moms too!</h1>
     </button>
     </ion-col>
     <ion-col>
       <button ion-button class="landing-button" (click) = "changeKidPage()">
-        <h1>Villager</h1>
-        <h3>Friends / family members of a new mom, that's you!</h3>
+        <h1>Villager
+        <br/>
+        Friends / family members of a new mom, that's you!</h1>
       </button>
     </ion-col>
   </ion-row>
