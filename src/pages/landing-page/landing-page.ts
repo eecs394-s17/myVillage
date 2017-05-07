@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { TabsPage } from '../tabs/tabs';
 
 /*
   Generated class for the LandingPage page.
@@ -13,10 +14,18 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class LandingPagePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public nav: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LandingPagePage');
+  }
+
+  changeMomPage(){
+    this.nav.setRoot(TabsPage);
+  }
+
+  changeKidPage(){
+    this.nav.setRoot(TabsPage);
   }
 
 }
