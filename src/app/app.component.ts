@@ -7,6 +7,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
+import { LandingPagePage } from '../pages/landing-page/landing-page';
 
 @Component({
   templateUrl: 'app.html'
@@ -14,15 +15,17 @@ import { TabsPage } from '../pages/tabs/tabs';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage:any = TabsPage;
+  rootPage:any = LandingPagePage;
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public menu: MenuController, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     this.pages = [
-      { title: 'Hello Ionic', component: HomePage },
+      { title: 'Home Page', component: HomePage },
       { title: 'Tabs Page', component: TabsPage },
+      { title: 'Landing Page', component: LandingPagePage },
+
     ];
   }
 
