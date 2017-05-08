@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+htmlimport { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { GoogleAuth, User } from '@ionic/cloud-angular';
+
 /*
   Generated class for the Login page.
 
@@ -30,6 +31,7 @@ export class LoginPage {
   logout(){
     this.localGoogleAuth.logout().then(() => console.log("You logged out")) ;
   }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
