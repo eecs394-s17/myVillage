@@ -9,11 +9,14 @@
   <ion-navbar>
     <ion-title>Wish List</ion-title>
   </ion-navbar>
-  <button ion-button color="secondary" outline (click)="addToWishlist()">Add to Wishlist</button>
   <!-- <ion-title class="open-task" (click)="addToWishlist()">Add to wishlist </ion-title> -->
 </ion-header>
 
 <ion-content padding>
+
+  <ion-fab top right edge>
+      <button ion-fab (click)="addToWishlist()"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
+  </ion-fab>
 
   <ion-card *ngFor="let wish of wishList | async">
     <ion-item>
