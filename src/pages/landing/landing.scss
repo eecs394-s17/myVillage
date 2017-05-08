@@ -1,4 +1,9 @@
 page-landing {
+  ion-row {
+    text-align: center;
+    align-items: center;
+  }
+
   .landing-button{
     height: 100px;
     width: 100%;
@@ -11,8 +16,13 @@ page-landing {
     font-size: 2em;
   }
 
-  .header-logo {
+  #header-logo {
     height: 50px;
+    width: auto;
+  }
+
+  #tagline {
+    height: 100px;
     width: auto;
   }
 }

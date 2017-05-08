@@ -7,13 +7,15 @@
 <ion-header>
 
   <ion-navbar>
+    <ion-buttons left>
+      <img class="header-logo" src="assets/img/myVillageLogo.jpg">
+    </ion-buttons>
     <ion-title>Wish List</ion-title>
   </ion-navbar>
   <!-- <ion-title class="open-task" (click)="addToWishlist()">Add to wishlist </ion-title> -->
 </ion-header>
 
-<ion-content padding>
-
+<ion-content>
   <ion-fab top right edge>
       <button ion-fab (click)="addToWishlist()"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
   </ion-fab>
