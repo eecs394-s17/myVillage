@@ -1,0 +1,31 @@
+<ion-content scroll="false" class="login-content" padding>
+  <ion-row>
+    <ion-col>
+      <h2>Welcome to CatsCode</h2>
+    </ion-col>
+  </ion-row>
+
+  <div class="login-box">
+    <form (ngSubmit)="login()" #registerForm="ngForm">
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item class="signin-field">
+              <ion-input type="text" placeholder="Email" name="email" [(ngModel)]="email" required></ion-input>
+            </ion-item>
+            <ion-item class="signin-field">
+              <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="password" required></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="signup-col">
+          <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Login</button>
+        </ion-col>
+      </ion-row>
+      <button ion-button class="submit-btn" (click) = "logout()">Logout</button>
+    </form>
+  </div>
+
+</ion-content>
