@@ -3,4 +3,11 @@ page-wish-list {
     height:39px;
     width: auto;
   }
+
+  .open-item {
+    font-size: 1.5em;
+    font-style: "SayWeb";
+    color: color($colors, light);
+    text-align: center;
+  }
 }

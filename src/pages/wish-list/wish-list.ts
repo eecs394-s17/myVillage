@@ -21,40 +21,79 @@ export class WishListPage {
     this.wishList = angFire.database.list('/wishlist');
   }
 
-  addToWishlist():void{
-  	let prompt = this.alertCtrl.create({
-  		title: 'New Task',
-  		message: 'Enter the task details in the form below',
-  		inputs: [
-  			{
-  				name: 't_name',
-  				placeholder: "Task Name"
-  			},
-  			{
-  				name: 't_description',
-  				placeholder: "Task Description"
-  			},
-  		],
-  		buttons: [
-  			{
-  				text: "Cancel",
-  				handler: data => {
-  					console.log('cancel clicked')
-  				}
-  			},
-  			{
-  				text: "Submit",
-  				handler: data => {
-  					var newRef = this.wishList.push({
-  						p_name: data.t_name,
-              p_description: data.t_description,
-  					})
-  				}
-  			}
-  		]
-  	});
+  wishTapped(wish):void {
+    let prompt = this.alertCtrl.create({
+      title: "Get this Item",
+      message: "Please enter your name and any notes that would be helpful",
+      inputs: [
+        {
+          name: 'wl_takenby',
+          placeholder: 'Name'
+        },
+        {
+          name: 'wl_notes',
+          placeholder: 'Notes'
+        },
+        ],
+        buttons: [
+        {
+          text: "Cancel",
+          handler: data => {
+            console.log('cancel clicked')
+          }
+        },
+        {
+          text: "Submit",
+          handler: data => {
+            this.wishList.update(wish.$key,{
+            wl_taken: "true",
+            wl_takenby: data.wl_takenby,
+            wl_notes: data.wl_notes
+            })
+          }
+        }]
+    });
 
-  	prompt.present();
+    prompt.present();
+  }
+
+  addToWishlist():void{
+    let prompt = this.alertCtrl.create({
+      title: 'New Wish List Item',
+      message: 'Enter the task details in the form below',
+      inputs: [
+        {
+          name: 't_name',
+          placeholder: "Task Name"
+        },
+        {
+          name: 't_description',
+          placeholder: "Task Description"
+        },
+      ],
+      buttons: [
+        {
+          text: "Cancel",
+          handler: data => {
+            console.log('cancel clicked')
+          }
+        },
+        {
+          text: "Submit",
+          handler: data => {
+            var newRef = this.wishList.push({
+              wl_name: data.t_name,
+              wl_description: data.t_description,
+              wl_taken: false,
+              wl_takenby: '',
+              wl_notes: ''
+            })
+          }
+        }
+      ]
+    });
+
+    prompt.present();
   }
 
 }

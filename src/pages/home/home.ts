@@ -25,6 +25,42 @@ export class HomePage {
     this.content.scrollToTop();
   }
 
+  taskTapped(task):void {
+    let prompt = this.alertCtrl.create({
+      title: "Take Task",
+      message: "Please enter your name and any notes that would be helpful",
+      inputs: [
+        {
+          name: 't_takenby',
+          placeholder: 'Name'
+        },
+        {
+          name: 't_notes',
+          placeholder: 'Notes'
+        },
+        ],
+        buttons: [
+        {
+          text: "Cancel",
+          handler: data => {
+            console.log('cancel clicked')
+          }
+        },
+        {
+          text: "Submit",
+          handler: data => {
+            this.tasks.update(task.$key,{
+            t_taken: "true",
+            t_takenby: data.t_takenby,
+            t_notes: data.t_notes
+            })
+          }
+        }]
+    });
+
+    prompt.present();
+  }
+
   addTask():void{
     let prompt = this.alertCtrl.create({
       title: 'New Task',
@@ -50,8 +86,11 @@ export class HomePage {
           text: "Submit",
           handler: data => {
             var newRef = this.tasks.push({
-              p_name: data.t_name,
-              p_description: data.t_description,
+              t_name: data.t_name,
+              t_description: data.t_description,
+              t_taken: "false",
+              t_takenby: '',
+              t_notes: ''
             })
           }
         }

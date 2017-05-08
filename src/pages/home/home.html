@@ -3,7 +3,7 @@
     <ion-buttons left>
       <img class="header-logo" src="assets/img/myVillageLogo.jpg">
     </ion-buttons>
-    <ion-title (click)="scrollToTop()">Tasks</ion-title>
+    <ion-title class="open-task" (click)="scrollToTop()">Tasks</ion-title>
    </ion-toolbar>
 </ion-header>
 
@@ -13,19 +13,13 @@
    		<button ion-fab (click)="addTask()"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
  	</ion-fab>
 	<ion-list>
-		<ion-card *ngFor="let task of tasks | async">
+		<ion-card  *ngFor="let task of tasks | async" (click)="taskTapped(task)" class="red">
 			<ion-item>
-			<ion-label>{{task.p_name}}</ion-label>
-			<ion-checkbox color="dark" checked="true"></ion-checkbox>
-        <p></p>
+			<ion-label>{{task.t_name}}</ion-label>
 			</ion-item>
 			<ion-card-content>
-				<p><b>Description:</b> {{task.p_description}} </p>
+				<p><b>Description:</b> {{task.t_description}} </p>
 			</ion-card-content>
-			<label class="item item-input">
-			  <span class="input-label">Name</span>
-			  <input type="email">
-			</label>
 		</ion-card>
 	</ion-list>
 </ion-content>
