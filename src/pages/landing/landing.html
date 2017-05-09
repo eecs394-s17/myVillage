@@ -13,24 +13,25 @@
 
 </ion-header>
 <ion-content>
-  <ion-row>
-    <ion-col>
-      <img id="tagline" src="assets/img/myVillageTagline.jpg">
-      <h1 class="title-text"> Get started today!</h1>
-      <h1 class="title-text"> I am a... </h1>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col style="padding: 0px 25px;">
-      <button ion-button class="landing-button" (click) = "changeMomPage()">
-        <h1>New/Expecting Mom</h1>
-    </button>
-    </ion-col>
-    <ion-col style="padding: 0px 25px;">
-      <button ion-button class="landing-button" (click) = "changeKidPage()">
-        <h1>Villager </h1>
-      </button>
-    </ion-col>
-  </ion-row>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <img id="tagline" src="assets/img/myVillageTagline.jpg">
+        <h1 class="title-text"> Get started today!</h1>
+        <h1 class="title-text"> I am a... </h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12 col-sm class="landing-button-col">
+        <button ion-button block class="landing-button" (click) = "changeMomPage()">
+          New/Expecting Mom
+        </button>
+      </ion-col>
+      <ion-col col-12 col-sm class="landing-button-col">
+        <button ion-button block class="landing-button" (click) = "changeKidPage()">
+          Villager
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
