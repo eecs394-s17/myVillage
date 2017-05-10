@@ -1,27 +1,33 @@
 <ion-header>
   <ion-toolbar align-title="center">
+
     <ion-buttons left>
-      <img class="header-logo" src="assets/img/myVillageLogo.jpg">
+      <button ion-button menuToggle icon-only>
+        <ion-icon name='menu'></ion-icon>
+      </button>
     </ion-buttons>
     <ion-title class="open-task" (click)="scrollToTop()">Tasks</ion-title>
+    <ion-buttons right>
+      <img class="header-logo" src="assets/img/myVillageLogo.jpg">
+    </ion-buttons>
    </ion-toolbar>
 </ion-header>
 
-<ion-menu [content]="mycontent">
+<ion-menu [content]="mycontent" type="overlay">
   <ion-content>
     <ion-list>
-      <button ion-item >
+      <button ion-item>
         Mental
-        </button>
-        <button ion-item >
+      </button>
+      <button ion-item>
         Emotional
-        </button>
-        <button ion-item >
-        Services
-        </button>
-        <button ion-item >
-        Category 4 - something
-        </button>
+      </button>
+      <button ion-item>
+        Physical
+      </button>
+      <button ion-item>
+        Nutritional
+      </button>
     </ion-list>
   </ion-content>
 </ion-menu>
