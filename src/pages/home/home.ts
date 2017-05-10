@@ -6,6 +6,10 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 import "rxjs/add/operator/map";
 
+import { MenuController } from 'ionic-angular';
+import { TabsPage } from '../tabs/tabs';
+import {LandingPage} from '../landing/landing';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
