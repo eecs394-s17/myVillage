@@ -78,6 +78,10 @@ export class HomePage {
           name: 't_description',
           placeholder: "Task Description"
         },
+        {
+          name: 't_category',
+          placeholder: "Task Category"
+        }
       ],
       buttons: [
         {
