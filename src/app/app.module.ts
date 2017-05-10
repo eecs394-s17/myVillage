@@ -4,7 +4,7 @@ import { MyApp } from './app.component';
 
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
-import { WishListPage } from '../pages/wish-list/wish-list';
+import { SettingsPage } from '../pages/settings/settings';
 import { LandingPage } from '../pages/landing/landing';
 
 import { AngularFireModule } from 'angularfire2';
@@ -25,7 +25,7 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     TabsPage,
-    WishListPage,
+    SettingsPage,
     LandingPage,
   ],
   imports: [
@@ -37,7 +37,7 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     TabsPage,
-    WishListPage,
+    SettingsPage,
     LandingPage
   ],
   providers: [
