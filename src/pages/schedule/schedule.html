@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-segment [(ngModel)]="segment" (ionChange)="updateSchedule()">
+      <ion-segment-button value="alltasks">
+        All Tasks
+      </ion-segment-button>
+      <ion-segment-button value="mytasks">
+        My Tasks
+      </ion-segment-button>
+    </ion-segment>
+
+    <ion-buttons end>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <button ion-button class="register-btn" (click)="prevDay()">PrevDay</button>
+  {{days[currDay]}}
+  <button ion-button class="register-btn" (click)="nextDay()">NextDay</button>
+  <ion-list>
+		<ion-card  *ngFor="let day of daySched | async" (click)="updateSchedule()" class="red">
+			<ion-item>
+			<ion-label>{{day.twelve}}</ion-label>
+			<ion-label>{{day.eleven}}</ion-label>
+			<ion-label>{{day.ten}}</ion-label>
+			</ion-item>
+			<ion-card-content>
+				<p><b>Description:</b>{{day.task}}</p>
+			</ion-card-content>
+		</ion-card>
+	</ion-list>
+</ion-content>

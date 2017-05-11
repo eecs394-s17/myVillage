@@ -9,6 +9,7 @@ import "rxjs/add/operator/map";
 import { MenuController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import { LandingPage } from '../landing/landing';
+import { SchedulePage } from '../schedule/schedule';
 
 @Component({
   selector: 'page-home',
@@ -106,5 +107,9 @@ export class HomePage {
     });
 
     prompt.present();
+  }
+
+  navToSchedule(event) {
+    this.nav.push(SchedulePage);
   }
 }
