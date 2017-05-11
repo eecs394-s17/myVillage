@@ -66,9 +66,10 @@ export class SchedulePage {
   	console.log('/days/' + this.currDay + '/');
   }
 
-  prevDay() {
-  	this.currDay = (this.currDay+6)%7;
-  	console.log(this.currDay);
+  prevDay(key) {
+  	this.currDay = key;
+    this.daySched = this.angFireDB.database.list('/days/' + this.currDay + '/');
+  	console.log('/days/' + this.currDay + '/');
   }
 
   tellDate() {
