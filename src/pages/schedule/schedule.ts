@@ -15,6 +15,7 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 export class SchedulePage {
 
   daySched: FirebaseListObservable<any>;
+  currDate = '2047-05-17';
   angFireDB: any;
   date: any;
   currDay: number; 
@@ -68,6 +69,10 @@ export class SchedulePage {
   prevDay() {
   	this.currDay = (this.currDay-1)%7;
   	console.log(this.currDay);
+  }
+
+  tellDate() {
+    console.log(this.currDate);
   }
 
 }
