@@ -67,7 +67,7 @@ export class SchedulePage {
   }
 
   prevDay() {
-  	this.currDay = (this.currDay-1)%7;
+  	this.currDay = (this.currDay+6)%7;
   	console.log(this.currDay);
   }
 
