@@ -34,6 +34,7 @@ export class LoginPage {
 	   setTimeout(() => {
                this.loading.dismiss();
            });
+	   //console.log(this.user.get('name'));
 	   this.nav.setRoot(TabsPage);
       }, error => {
 	  setTimeout(() => {
@@ -67,5 +68,10 @@ export class LoginPage {
      //this.nav.push(RegisterPage);
      this.nav.setRoot(RegisterPage);
   }
-    
+
+   public logout() {
+    //this.nav.setRoot(LoginPage);
+    this.ionicAuth.logout();
+    window.location.reload();
+  }
 }

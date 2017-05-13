@@ -29,6 +29,9 @@ export class RegisterPage {
   public register() {
     this.ionicAuth.signup(this.details).then(() => {
       console.log(this.details.email + this.details.password);
+      //this.user.set("name", this.firstname + " " + this.lastname);
+      //this.user.save();
+      // let x = this.user.get('name'); // does not match any signature of call target
       this.nav.setRoot(LoginPage);
     }, (err: IDetailedError<string[]>) => {
       for (let e of err.details) {
