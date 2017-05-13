@@ -3,7 +3,7 @@ import { NavController, AlertController, LoadingController, Loading, NavParams }
 import { Auth, User, UserDetails, IDetailedError } from '@ionic/cloud-angular';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { RegisterPage } from '../register/register';
-import { SchedulePage } from '../schedule/schedule';
+import { TabsPage } from '../tabs/tabs';
 
 /*
   Generated class for the Login page.
@@ -34,7 +34,7 @@ export class LoginPage {
 	   setTimeout(() => {
                this.loading.dismiss();
            });
-	   this.nav.setRoot(SchedulePage);
+	   this.nav.setRoot(TabsPage);
       }, error => {
 	  setTimeout(() => {
               this.loading.dismiss();
