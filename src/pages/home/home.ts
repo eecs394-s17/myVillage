@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 
 import { NavController, AlertController, NavParams, Content } from 'ionic-angular';
-
+import { Auth, User, UserDetails, IDetailedError } from '@ionic/cloud-angular';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 import "rxjs/add/operator/map";

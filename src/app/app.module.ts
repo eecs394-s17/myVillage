@@ -14,6 +14,13 @@ import { AngularFireModule } from 'angularfire2';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthService } from '../providers/auth-service';
+import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
+
+const cloudSettings: CloudSettings = {
+ 'core': {
+   'app_id': '4ccd7258'
+ }
+};
 
 export const firebaseConfig = {
     apiKey: "AIzaSyCxzKGE4nNpuYVPza48rY0hQ8fRFXgP9DA",
@@ -35,7 +42,8 @@ export const firebaseConfig = {
     LoginPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp),
+      IonicModule.forRoot(MyApp),
+      CloudModule.forRoot(cloudSettings),
     AngularFireModule.initializeApp(firebaseConfig),
   ],
   bootstrap: [IonicApp],

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController, Loading, NavParams } from 'ionic-angular';
 import { Auth, User, UserDetails, IDetailedError } from '@ionic/cloud-angular';
-import { AuthService } from '../../providers/auth-service';
+import { AuthService} from '../../providers/auth-service';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 
@@ -17,12 +17,12 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 })
 export class LoginPage {
 
-  constructor(private nav: NavController, private alertCtrl: AlertController)
+    constructor(private nav: NavController, private alertCtrl: AlertController, private loadingCtrl: LoadingController, private ionicAuth: AuthService, public user: User, angFire: AngularFire)
   {
   }
 
 
-  details: UserDetails = {email: '', password: ''};
+   details: UserDetails = {email: '', password: ''};
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
