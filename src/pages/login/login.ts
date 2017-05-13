@@ -29,13 +29,19 @@ export class LoginPage {
    public login() {
        this.showLoading()
        this.ionicAuth.login('basic', this.details).then(() => {
-	  console.log("Login succesful");
+	   console.log("Login succesful");
+	   setTimeout(() => {
+               this.loading.dismiss();
+           });
       }, error => {
+	  setTimeout(() => {
+              this.loading.dismiss();
+          });
 	  this.showError("Username/Password is incorrect");
       });
    }
 
-      showLoading() {
+   showLoading() {
     this.loading = this.loadingCtrl.create({
       content: 'Please wait...'
     });
