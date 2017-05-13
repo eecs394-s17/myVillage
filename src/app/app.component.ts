@@ -10,6 +10,7 @@ import { SettingsPage } from '../pages/settings/settings';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { LandingPage } from '../pages/landing/landing';
 import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
 
 @Component({
   templateUrl: 'app.html'
@@ -30,6 +31,7 @@ export class MyApp {
       { title: 'Landing Page', component: LandingPage },
       { title: 'Schedule Page', component: SchedulePage },
       { title: 'Login Page', component: LoginPage },
+      { title: 'Register Page', component: RegisterPage}
     ];
   }
 
