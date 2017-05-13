@@ -9,6 +9,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { SettingsPage } from '../pages/settings/settings';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { LandingPage } from '../pages/landing/landing';
+import { LoginPage } from '../pages/login/login';
 
 @Component({
   templateUrl: 'app.html'
@@ -27,7 +28,8 @@ export class MyApp {
       { title: 'Tabs Page', component: TabsPage },
       { title: 'Settings Page', component: SettingsPage },
       { title: 'Landing Page', component: LandingPage },
-      { title: 'Schedule Page', component: SchedulePage }
+      { title: 'Schedule Page', component: SchedulePage },
+      { title: 'Login Page', component: LoginPage },
     ];
   }
 

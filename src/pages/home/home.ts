@@ -10,6 +10,9 @@ import { MenuController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import { LandingPage } from '../landing/landing';
 import { SchedulePage } from '../schedule/schedule';
+import { LoginPage } from '..//login/login';
+import { AuthService } from '../../providers/auth-service';
+
 
 @Component({
   selector: 'page-home',
@@ -110,6 +113,16 @@ export class HomePage {
   }
 
   navToSchedule(event) {
-    this.nav.push(SchedulePage);
+    console.log(event);
+    switch (event){
+      case "Mental":
+        this.nav.push(SchedulePage);
+        break;
+      case "Login":
+        this.nav.push(LoginPage);
+        break;
+      default:
+        break;
+    }
   }
 }
