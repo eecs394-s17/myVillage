@@ -11,6 +11,9 @@ import { SettingsPage } from '../settings/settings'
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
+
+export var isMother: boolean = false;
+
 @Component({
   selector: 'page-tabs',
   templateUrl: 'tabs.html'
@@ -19,11 +22,19 @@ export class TabsPage {
   tab1Root = HomePage;
   tab2Root = SettingsPage
 
-  tasks: FirebaseListObservable<any>;
-	angFireDB: any;
-
-  constructor(public alertCtrl: AlertController, public nav: NavController, public navParams: NavParams, angFire: AngularFire) {
-    this.tasks = angFire.database.list('/tasks');
+    tasks: FirebaseListObservable<any>;
+    angFireDB: any;
+    Username: any;
+    UserStatus: any;
+    
+  constructor(public alertCtrl: AlertController, public nav: NavController, public navParams: NavParams, angFire: AngularFire)  {
+      this.UserStatus = navParams.get("currentUserStatus");
+      this.Username = navParams.get("currentUsername");
+      console.log(this.Username);
+      console.log(this.UserStatus);
+      isMother = (this.UserStatus == 'M');
+      console.log(isMother);
+      this.tasks = angFire.database.list('/tasks');
 		this.angFireDB = angFire;
   }
 

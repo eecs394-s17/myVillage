@@ -13,6 +13,7 @@ import { UserData } from '../../providers/user-data';
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
+
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
@@ -37,8 +38,19 @@ export class LoginPage {
 	   setTimeout(() => {
                this.loading.dismiss();
            });
-	   //console.log(this.user.get('name'));
-	   this.nav.setRoot(TabsPage);
+	   if(this.ionicAuth.isAuthenticated()){
+	       console.log("This user is authenticated!");
+	       console.log(this.user);
+	   }
+	   else {
+	       console.log("This user is NOT authenticated");
+	   }
+
+	   this.nav.setRoot(TabsPage, {
+	       currentUsername: this.user.get('name', 'Anonymous Villager'),
+	       currentUserStatus: this.user.get('status', 'V')
+	   });
+
       }, error => {
 	  setTimeout(() => {
               this.loading.dismiss();
