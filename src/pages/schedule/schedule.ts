@@ -18,9 +18,9 @@ export class SchedulePage {
   currDate = '2047-05-17';
   angFireDB: any;
   date: any;
-  currDay: number; 
+  currDay: number;
   tasks: FirebaseListObservable<any>;
-  days = { 1: 'Monday', 2: 'Tuesday', 3: 'Wednesday', 4: 'Thursday', 5: 'Friday', 6: 'Saturday', 0: 'Sunday', '-1': 'Saturday', '-2': 'Friday', '-3': 'Thursday', '-4': 'Wednesday', '-5': 'Tuesday', '-6': 'Monday' }
+  days = { 1: 'Mon', 2: 'Tue', 3: 'Wed', 4: 'Thur', 5: 'Fri', 6: 'Sat', 0: 'Sun', '-1': 'Sat', '-2': 'Fri', '-3': 'Thur', '-4': 'Wed', '-5': 'Tue', '-6': 'Mon' }
 
   constructor(
     public alertCtrl: AlertController,
@@ -50,7 +50,7 @@ export class SchedulePage {
     console.log('loaded schedule page');
     console.log(this.currDay);
   }
-  
+
   goToSessionDetail(sessionData: any) {
     // go to the session detail page
     // and pass in the session data

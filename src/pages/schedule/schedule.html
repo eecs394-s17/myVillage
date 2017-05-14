@@ -25,15 +25,19 @@
     <ion-label>Date</ion-label>
     <ion-datetime displayFormat="MMM DD, YYYY" max="2056" [(ngModel)]="currDate" (click)="tellDate()"></ion-datetime>
   </ion-item>
-  <button ion-button class="register-btn" (click)="prevDay(0)">Sunday</button>
-  <button ion-button class="register-btn" (click)="prevDay(1)">Monday</button>
-  <button ion-button class="register-btn" (click)="prevDay(2)">Tuesday</button>
-  <button ion-button class="register-btn" (click)="prevDay(3)">Wednesday</button>
-  <button ion-button class="register-btn" (click)="prevDay(4)">Thursday</button>
-  <button ion-button class="register-btn" (click)="prevDay(5)">Friday</button>
-  <button ion-button class="register-btn" (click)="prevDay(6)">Saturday</button>
-  {{days[currDay]}}
-  <button ion-button class="register-btn" (click)="nextDay()">NextDay</button>
+  <button ion-button class="register-btn" (click)="prevDay(0)">Sun</button>
+  <button ion-button class="register-btn" (click)="prevDay(1)">Mon</button>
+  <button ion-button class="register-btn" (click)="prevDay(2)">Tue</button>
+  <button ion-button class="register-btn" (click)="prevDay(3)">Wed</button>
+  <button ion-button class="register-btn" (click)="prevDay(4)">Thur</button>
+  <button ion-button class="register-btn" (click)="prevDay(5)">Fri</button>
+  <button ion-button class="register-btn" (click)="prevDay(6)">Sat</button>
+
+  <p>
+    <ion-icon class="curr-day-left" name="ios-arrow-back"  (click)="PreviousDay()"></ion-icon>
+    Current Day: {{days[currDay]}}
+    <ion-icon class="curr-day-right" name="ios-arrow-forward"  (click)="nextDay()"></ion-icon>
+  </p>
   <ion-list>
     <ion-card>
       <ion-item-divider sticky>
