@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
+import { LoginPage } from '../login/login';
 
 /*
   Generated class for the LandingPage page.
@@ -21,11 +22,11 @@ export class LandingPage {
   }
 
   changeMomPage(){
-    this.nav.setRoot(TabsPage);
+    this.nav.setRoot(LoginPage);
   }
 
   changeKidPage(){
-    this.nav.setRoot(TabsPage);
+    this.nav.setRoot(LoginPage);
   }
 
 }

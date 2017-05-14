@@ -10,8 +10,10 @@ import { MenuController } from 'ionic-angular';
 import { TabsPage, isMother } from '../tabs/tabs';
 import { LandingPage } from '../landing/landing';
 import { SchedulePage } from '../schedule/schedule';
-import { LoginPage } from '..//login/login';
 import { AuthService } from '../../providers/auth-service';
+import { GiftsPage } from '../gifts/gifts';
+import { ServiceProvidersPage } from '../service-providers/service-providers';
+import { UserData } from '../../providers/user-data';
 
 @Component({
   selector: 'page-home',
@@ -21,10 +23,10 @@ import { AuthService } from '../../providers/auth-service';
 export class HomePage {
   @ViewChild(Content) content: Content;
   tasks: FirebaseListObservable<any>;
-    angFireDB: any;
-    IsMother: any;
+  angFireDB: any;
+  showStyle: false;
 
-  constructor(private nav: NavController, public navParams: NavParams, public alertCtrl: AlertController, angFire: AngularFire) {
+  constructor(private nav: NavController, public navParams: NavParams, public alertCtrl: AlertController, angFire: AngularFire, private ionicAuth: Auth, public user: User,public userData: UserData) {
     this.angFireDB = angFire;
     this.tasks = angFire.database.list('/tasks');
     this.IsMother = isMother;
@@ -33,6 +35,16 @@ export class HomePage {
   scrollToTop() {
     this.content.scrollToTop();
   }
+
+  getStyle() {
+    if(this.showStyle) {
+      return "yellow";
+      }
+    else {
+      return "";
+    }
+  }
+
 
   taskTapped(task):void {
     let prompt = this.alertCtrl.create({
@@ -101,6 +113,7 @@ export class HomePage {
             var newRef = this.tasks.push({
               t_name: data.t_name,
               t_description: data.t_description,
+              t_category: data.t_category,
               t_taken: "false",
               t_takenby: '',
               t_notes: ''
@@ -116,12 +129,23 @@ export class HomePage {
   navToSchedule(event) {
     console.log(event);
     switch (event){
-      case "Mental":
+      case "Schedule":
         this.nav.push(SchedulePage);
         break;
-      case "Login":
-        this.nav.push(LoginPage);
+      case "Gifts":
+        this.nav.push(GiftsPage);
         break;
+      case "Service":
+        this.nav.push(ServiceProvidersPage);
+        break;
+
+      case "Logout":
+        //this.nav.setRoot(LoginPage);
+        this.userData.logout();
+        this.ionicAuth.logout();
+        window.location.reload();
+        break;
+
       default:
         break;
     }

@@ -5,7 +5,7 @@
         <ion-icon name='menu'></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title class="open-task" (click)="scrollToTop()">Tasks</ion-title>
+    <ion-title class="open-task" (click)="scrollToTop()">Registry Items</ion-title>
     <ion-buttons right>
       <img class="header-logo" src="assets/img/myVillageLogo.jpg">
     </ion-buttons>
@@ -20,20 +20,17 @@
   </ion-header>
   <ion-content>
     <ion-list>
-      <button ion-item (click)="navToSchedule('Mental')">
-        Mental
+      <button ion-item (click)="navToSchedule('Schedule')">
+        Schedule
       </button>
-      <button ion-item (click)="navToSchedule('Emotional')">
-        Emotional
+      <button ion-item (click)="navToSchedule('Service')">
+        Service Provider
       </button>
-      <button ion-item (click)="navToSchedule('Physical')">
-        Physical
+      <button ion-item (click)="navToSchedule('Gifts')">
+        Gifts
       </button>
-      <button ion-item (click)="navToSchedule('Nutritional')">
-        Nutritional
-      </button>
-      <button ion-item (click)="navToSchedule('Login')">
-        Login
+      <button ion-item (click)="navToSchedule('Logout')">
+        Logout
       </button>
     </ion-list>
   </ion-content>
@@ -46,12 +43,18 @@
    		<button ion-fab (click)="addTask()"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
  	  </ion-fab>
 	<ion-list>
-		<ion-card  *ngFor="let task of tasks | async" (click)="taskTapped(task)" class="red">
+    <div>
+      <div [style.background-color]="getStyle()">
+      I am a div that wants to be styled
+      </div>
+      <button (click)="showStyle = !showStyle;">Toggle style</button>
+    </div>
+		<ion-card *ngFor="let task of tasks | async" (click)="taskTapped(task)" class="red">
 			<ion-item>
 			<ion-label>{{task.t_name}}</ion-label>
 			</ion-item>
-			<ion-card-content>
-				<p><b>Description:</b> {{task.t_description}} </p>
+			<ion-card-content class ="{{task.t_category}}">
+				<p><b>Description:</b> {{task.t_description}}</p>
 			</ion-card-content>
 		</ion-card>
 	</ion-list>

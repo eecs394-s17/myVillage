@@ -5,6 +5,8 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { RegisterPage } from '../register/register';
 import { TabsPage } from '../tabs/tabs';
 
+import { UserData } from '../../providers/user-data';
+
 /*
   Generated class for the Login page.
 
@@ -18,7 +20,7 @@ import { TabsPage } from '../tabs/tabs';
 })
 export class LoginPage {
 
-    constructor(private nav: NavController, private alertCtrl: AlertController, private loadingCtrl: LoadingController, private ionicAuth: Auth, public user: User, angFire: AngularFire)
+    constructor(private nav: NavController, private alertCtrl: AlertController, private loadingCtrl: LoadingController, private ionicAuth: Auth, public user: User, angFire: AngularFire, public userData: UserData)
     {}
     
   loading: Loading;
@@ -30,6 +32,7 @@ export class LoginPage {
 
    public login() {
        this.showLoading()
+       this.userData.login(this.details.email);
        this.ionicAuth.login('basic', this.details).then(() => {
 	   console.log("Login succesful");
 	   setTimeout(() => {
@@ -83,6 +86,7 @@ export class LoginPage {
 
    public logout() {
     //this.nav.setRoot(LoginPage);
+    this.userData.logout()
     this.ionicAuth.logout();
     window.location.reload();
   }
