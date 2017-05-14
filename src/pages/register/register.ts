@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Auth, User, UserDetails, IDetailedError } from '@ionic/cloud-angular';
 import { LoginPage } from "../login/login";
+import { HomePage } from "../home/home";
 
 /*
   Generated class for the Register page.
@@ -14,7 +15,7 @@ import { LoginPage } from "../login/login";
   templateUrl: 'register.html'
 })
 export class RegisterPage {
-  details: UserDetails = {'email': '', 'password': ''};
+  details: UserDetails = {'email': '', 'password': '', 'name': '', 'username': ''};
   lastname: any;
   firstname: any;
   email: any;
@@ -29,10 +30,15 @@ export class RegisterPage {
   public register() {
     this.ionicAuth.signup(this.details).then(() => {
       console.log(this.details.email + this.details.password);
-      //this.user.set("name", this.firstname + " " + this.lastname);
-      //this.user.save();
-      // let x = this.user.get('name'); // does not match any signature of call target
-      this.nav.setRoot(LoginPage);
+	
+	this.ionicAuth.login('basic', this.details).then(() => {
+	   console.log("Login succesful (on registration page!)");
+	   this.user.set("name", this.firstname + " " + this.lastname);
+	    this.user.save();
+       }, error =>{
+	   console.log("Login failed on registration page. This should not happen");
+       });
+      this.nav.setRoot(HomePage);
     }, (err: IDetailedError<string[]>) => {
       for (let e of err.details) {
         if (e === 'conflict_email') {

@@ -15,15 +15,10 @@
           <ion-list>
             <ion-item class="reg-field">
               <ion-label fixed class="reg-form-label required">First Name</ion-label>
-              <ion-input type="text" name="firstName" placeholder="Willie" [(ngModel)] = "firstname" required></ion-input>
+              <ion-input type="text" name="firstName" placeholder="Willie" [(ngModel)] = "details.name" required></ion-input>
             </ion-item>
 
-            <ion-item class="reg-field">
-              <ion-label fixed class="reg-form-label required">Last Name</ion-label>
-              <ion-input type="text" name="lastName" placeholder="Cat" [(ngModel)] = "lastname" required></ion-input>
-            </ion-item>
-
-            <ion-item class="reg-field">
+             <ion-item class="reg-field">
               <ion-label fixed class="reg-form-label required">Email</ion-label>
               <ion-input type="text" name="email" placeholder="WillieCat2017@u.northwestern.edu" [(ngModel)] = "details.email" required></ion-input>
             </ion-item>

@@ -34,6 +34,13 @@ export class LoginPage {
 	   setTimeout(() => {
                this.loading.dismiss();
            });
+	   if(this.ionicAuth.isAuthenticated()){
+	       console.log("This user is authenticated!");
+	       console.log(this.user);
+	   }
+	   else {
+	       console.log("This user is NOT authenticated");
+	   }
 	   //console.log(this.user.get('name'));
 	   this.nav.setRoot(TabsPage);
       }, error => {
