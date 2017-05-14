@@ -25,6 +25,7 @@ export class HomePage {
   @ViewChild(Content) content: Content;
   tasks: FirebaseListObservable<any>;
   angFireDB: any;
+  showStyle: false;
 
   constructor(private nav: NavController, public navParams: NavParams, public alertCtrl: AlertController, angFire: AngularFire, private ionicAuth: Auth, public user: User,public userData: UserData) {
     this.angFireDB = angFire;
@@ -34,6 +35,16 @@ export class HomePage {
   scrollToTop() {
     this.content.scrollToTop();
   }
+
+  getStyle() {
+    if(this.showStyle) {
+      return "yellow";
+      }
+    else {
+      return "";
+    }
+  }
+
 
   taskTapped(task):void {
     let prompt = this.alertCtrl.create({
