@@ -35,7 +35,23 @@
   {{days[currDay]}}
   <button ion-button class="register-btn" (click)="nextDay()">NextDay</button>
   <ion-list>
-		<ion-card  *ngFor="let hour of daySched | async" (click)="updateSchedule()" class="red">
+    <ion-item-divider sticky>
+      <ion-label>
+        9:00
+      </ion-label>
+    </ion-item-divider>
+    <ion-card *ngFor="let task of tasks | async" (click)="updateSchedule()">
+      <ion-item-sliding #slidingItem>
+        <button ion-item (click)="taskTapped(task)">
+          <h3>Description</h3>
+          <p>
+            {{task.name}} &mdash;
+            John Doe has taken this task!
+          </p>
+        </button>
+      </ion-item-sliding>
+    </ion-card>
+		<ion-card *ngFor="let hour of daySched | async" (click)="updateSchedule()" class="red">
       <ion-item-divider sticky>
         <ion-label>
           {{hour.time}}

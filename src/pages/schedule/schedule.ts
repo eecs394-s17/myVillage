@@ -19,6 +19,7 @@ export class SchedulePage {
   angFireDB: any;
   date: any;
   currDay: number; 
+  tasks: FirebaseListObservable<any>;
   days = { 1: 'Monday', 2: 'Tuesday', 3: 'Wednesday', 4: 'Thursday', 5: 'Friday', 6: 'Saturday', 0: 'Sunday', '-1': 'Saturday', '-2': 'Friday', '-3': 'Thursday', '-4': 'Wednesday', '-5': 'Tuesday', '-6': 'Monday' }
 
   constructor(
@@ -41,6 +42,7 @@ export class SchedulePage {
     this.currDay = num;
     this.daySched = this.angFireDB.database.list('/days/' + this.currDay + '/');
     console.log(this.days[this.date.getDay()]);
+    this.tasks = this.angFireDB.database.list('/days/' + this.currDay + '/10/tasks');
   }
 
   updateSchedule() {
@@ -74,6 +76,42 @@ export class SchedulePage {
 
   tellDate() {
     console.log(this.currDate);
+  }
+
+  taskTapped(task):void {
+    let prompt = this.alertCtrl.create({
+      title: "Take Task",
+      message: "Please enter your name and any notes that would be helpful",
+      inputs: [
+        {
+          name: 't_takenby',
+          placeholder: 'Name'
+        },
+        {
+          name: 't_notes',
+          placeholder: 'Notes'
+        },
+        ],
+        buttons: [
+        {
+          text: "Cancel",
+          handler: data => {
+            console.log('cancel clicked')
+          }
+        },
+        {
+          text: "Submit",
+          handler: data => {
+            this.tasks.update(task.$key,{
+            t_taken: "true",
+            t_takenby: data.t_takenby,
+            t_notes: data.t_notes
+            })
+          }
+        }]
+    });
+
+    prompt.present();
   }
 
 }
