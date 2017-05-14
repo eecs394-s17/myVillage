@@ -20,7 +20,7 @@ export class SchedulePage {
   date: any;
   currDay: number;
   tasks: FirebaseListObservable<any>;
-  days = { 1: 'Mon', 2: 'Tue', 3: 'Wed', 4: 'Thur', 5: 'Fri', 6: 'Sat', 0: 'Sun', '-1': 'Sat', '-2': 'Fri', '-3': 'Thur', '-4': 'Wed', '-5': 'Tue', '-6': 'Mon' }
+  days = { 0: 'Sun', 1: 'Mon', 2: 'Tue', 3: 'Wed', 4: 'Thur', 5: 'Fri', 6: 'Sat'}
 
   constructor(
     public alertCtrl: AlertController,
@@ -69,7 +69,12 @@ export class SchedulePage {
   }
 
   prevDay(key) {
-  	this.currDay = key;
+    if (this.currDay == 0){
+      this.currDay =  7 - this.currDay;
+    }
+    this.currDay = (this.currDay-1)%7;
+  	//this.currDay = key;
+    console.log(this.currDay);
     this.daySched = this.angFireDB.database.list('/days/' + this.currDay + '/');
   	console.log('/days/' + this.currDay + '/');
   }

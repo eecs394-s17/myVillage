@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, Content } from 'ionic-angular';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
+import { UserData } from '../../providers/user-data';
+
 /*
   Generated class for the WishList page.
 
@@ -15,10 +17,16 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 export class SettingsPage {
   wishList: FirebaseListObservable<any>;
   angFireDB: any;
+  username: string;
 
-  constructor(private nav: NavController, public navParams: NavParams, public alertCtrl: AlertController, angFire: AngularFire) {
+  constructor(private nav: NavController, public navParams: NavParams, public alertCtrl: AlertController, angFire: AngularFire, public userData: UserData) {
     this.angFireDB = angFire;
     this.wishList = angFire.database.list('/wishlist');
+  }
+
+  ionViewDidLoad() {
+    this.getUsername();
+    console.log('ionViewDidLoad settings');
   }
 
   wishTapped(wish):void {
@@ -94,6 +102,17 @@ export class SettingsPage {
     });
 
     prompt.present();
+  }
+
+  sayMyName() {
+    console.log(this.username);
+  }
+
+  getUsername() {
+    this.userData.getUsername().then((username) => {
+      console.log(this.username);
+      this.username = username;
+    });
   }
 
 }
