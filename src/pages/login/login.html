@@ -1,0 +1,56 @@
+<!--
+  Generated template for the Login page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>login</ion-title>
+  </ion-navbar>
+
+  <div class="login-box">
+      <form (ngSubmit)="login()" #registerForm="ngForm">
+        <ion-row>
+          <ion-col>
+            <ion-list>
+              <ion-item class="signin-field">
+                <ion-input type="text" placeholder="Email" name="email" [(ngModel)]="details.email" required></ion-input>
+              </ion-item>
+              <ion-item class="signin-field">
+                <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="details.password" required></ion-input>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="signup-col">
+            <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Login</button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </div>
+
+  <div class="register-box">
+    <ion-row>
+      <ion-col>
+        <p (click)="createAccount()">New to MyVillage? Sign up now.</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="register-col">
+        <button ion-button class="register-btn" (click)="createAccount()">Create Account</button>
+      </ion-col>
+    </ion-row>
+    <button ion-button class="register-btn" (click)="logout()">Logout</button>
+  </div>
+
+  
+</ion-header>
+
+<ion-content padding>
+
+</ion-content>
+
+

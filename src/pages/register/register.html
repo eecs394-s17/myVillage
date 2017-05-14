@@ -1,0 +1,47 @@
+<!--
+  Generated template for the Register page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+ </ion-header>
+
+<ion-content class="login-content" padding>
+    <form (ngSubmit)="register()" #registerForm="ngForm">
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item class="reg-field">
+              <ion-label fixed class="reg-form-label required">First Name</ion-label>
+              <ion-input type="text" name="firstName" placeholder="Willie" [(ngModel)] = "firstname" required></ion-input>
+            </ion-item>
+
+            <ion-item class="reg-field">
+              <ion-label fixed class="reg-form-label required">Last Name</ion-label>
+              <ion-input type="text" name="lastName" placeholder="Cat" [(ngModel)] = "lastname" required></ion-input>
+            </ion-item>
+
+            <ion-item class="reg-field">
+              <ion-label fixed class="reg-form-label required">Email</ion-label>
+              <ion-input type="text" name="email" placeholder="WillieCat2017@u.northwestern.edu" [(ngModel)] = "details.email" required></ion-input>
+            </ion-item>
+
+            <ion-item class="reg-field">
+              <ion-label fixed class="reg-form-label required">Password</ion-label>
+              <ion-input type="text" name="Password" placeholder="Password" [(ngModel)] = "details.password" required></ion-input>
+            </ion-item>
+
+           </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-row id="reg-row">
+        <ion-col>
+          <button ion-button class="reg-btn" full type="submit" [disabled]="!registerForm.form.valid">Create Account</button>
+        </ion-col>
+      </ion-row>
+
+    </form>
+</ion-content>

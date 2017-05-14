@@ -12,6 +12,7 @@ log.txt
 .vscode/
 npm-debug.log*
 
+
 .idea/
 .sass-cache/
 .tmp/
@@ -32,3 +33,5 @@ $RECYCLE.BIN/
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
+
+/src/pages/login/#login.html#

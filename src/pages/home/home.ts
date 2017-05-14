@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 
 import { NavController, AlertController, NavParams, Content } from 'ionic-angular';
-
+import { Auth, User, UserDetails, IDetailedError } from '@ionic/cloud-angular';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 import "rxjs/add/operator/map";
@@ -9,6 +9,10 @@ import "rxjs/add/operator/map";
 import { MenuController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import { LandingPage } from '../landing/landing';
+import { SchedulePage } from '../schedule/schedule';
+import { LoginPage } from '..//login/login';
+import { AuthService } from '../../providers/auth-service';
+
 
 @Component({
   selector: 'page-home',
@@ -106,5 +110,19 @@ export class HomePage {
     });
 
     prompt.present();
+  }
+
+  navToSchedule(event) {
+    console.log(event);
+    switch (event){
+      case "Mental":
+        this.nav.push(SchedulePage);
+        break;
+      case "Login":
+        this.nav.push(LoginPage);
+        break;
+      default:
+        break;
+    }
   }
 }

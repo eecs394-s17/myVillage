@@ -6,10 +6,21 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SettingsPage } from '../pages/settings/settings';
 import { LandingPage } from '../pages/landing/landing';
+import { SchedulePage } from '../pages/schedule/schedule';
+import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
 
 import { AngularFireModule } from 'angularfire2';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { AuthService } from '../providers/auth-service';
+import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
+
+const cloudSettings: CloudSettings = {
+ 'core': {
+   'app_id': '4ccd7258'
+ }
+};
 
 export const firebaseConfig = {
     apiKey: "AIzaSyCxzKGE4nNpuYVPza48rY0hQ8fRFXgP9DA",
@@ -27,9 +38,13 @@ export const firebaseConfig = {
     TabsPage,
     SettingsPage,
     LandingPage,
+    SchedulePage,
+    LoginPage,
+    RegisterPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp),
+      IonicModule.forRoot(MyApp),
+      CloudModule.forRoot(cloudSettings),
     AngularFireModule.initializeApp(firebaseConfig),
   ],
   bootstrap: [IonicApp],
@@ -38,11 +53,15 @@ export const firebaseConfig = {
     HomePage,
     TabsPage,
     SettingsPage,
-    LandingPage
+    LandingPage,
+    SchedulePage,
+    LoginPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

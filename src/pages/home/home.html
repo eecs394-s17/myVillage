@@ -20,17 +20,20 @@
   </ion-header>
   <ion-content>
     <ion-list>
-      <button ion-item>
+      <button ion-item (click)="navToSchedule('Mental')">
         Mental
       </button>
-      <button ion-item>
+      <button ion-item (click)="navToSchedule('Emotional')">
         Emotional
       </button>
-      <button ion-item>
+      <button ion-item (click)="navToSchedule('Physical')">
         Physical
       </button>
-      <button ion-item>
+      <button ion-item (click)="navToSchedule('Nutritional')">
         Nutritional
+      </button>
+      <button ion-item (click)="navToSchedule('Login')">
+        Login
       </button>
     </ion-list>
   </ion-content>
