@@ -5,7 +5,7 @@
         <ion-icon name='menu'></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title class="open-task" (click)="scrollToTop()">Tasks</ion-title>
+    <ion-title class="open-task" (click)="scrollToTop()">Registry Items</ion-title>
     <ion-buttons right>
       <img class="header-logo" src="assets/img/myVillageLogo.jpg">
     </ion-buttons>
@@ -20,17 +20,14 @@
   </ion-header>
   <ion-content>
     <ion-list>
-      <button ion-item (click)="navToSchedule('Mental')">
-        Mental
+      <button ion-item (click)="navToSchedule('Schedule')">
+        Schedule
       </button>
-      <button ion-item (click)="navToSchedule('Emotional')">
-        Emotional
+      <button ion-item (click)="navToSchedule('Service')">
+        Service Provider
       </button>
-      <button ion-item (click)="navToSchedule('Physical')">
-        Physical
-      </button>
-      <button ion-item (click)="navToSchedule('Nutritional')">
-        Nutritional
+      <button ion-item (click)="navToSchedule('Gifts')">
+        Gifts
       </button>
       <button ion-item (click)="navToSchedule('Login')">
         Login

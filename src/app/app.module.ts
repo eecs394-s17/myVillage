@@ -9,6 +9,9 @@ import { LandingPage } from '../pages/landing/landing';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+import { GiftsPage } from '../pages/gifts/gifts';
+import { ServiceProvidersPage } from '../pages/service-providers/service-providers';
+
 
 import { AngularFireModule } from 'angularfire2';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -40,7 +43,9 @@ export const firebaseConfig = {
     LandingPage,
     SchedulePage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    GiftsPage,
+    ServiceProvidersPage
   ],
   imports: [
       IonicModule.forRoot(MyApp),
@@ -56,7 +61,9 @@ export const firebaseConfig = {
     LandingPage,
     SchedulePage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    GiftsPage,
+    ServiceProvidersPage
   ],
   providers: [
     StatusBar,

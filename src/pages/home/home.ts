@@ -10,8 +10,9 @@ import { MenuController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import { LandingPage } from '../landing/landing';
 import { SchedulePage } from '../schedule/schedule';
-import { LoginPage } from '..//login/login';
 import { AuthService } from '../../providers/auth-service';
+import { GiftsPage } from '../gifts/gifts';
+import { ServiceProvidersPage } from '../service-providers/service-providers';
 
 
 @Component({
@@ -115,11 +116,14 @@ export class HomePage {
   navToSchedule(event) {
     console.log(event);
     switch (event){
-      case "Mental":
+      case "Schedule":
         this.nav.push(SchedulePage);
         break;
-      case "Login":
-        this.nav.push(LoginPage);
+      case "Gifts":
+        this.nav.push(GiftsPage);
+        break;
+      case "Service":
+        this.nav.push(ServiceProvidersPage);
         break;
       default:
         break;
