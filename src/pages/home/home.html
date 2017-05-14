@@ -44,12 +44,13 @@
    		<button ion-fab (click)="addTask()"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
  	</ion-fab>
 	<ion-list>
-		<ion-card  *ngFor="let task of tasks | async" (click)="taskTapped(task)" class="red">
-			<ion-item>
+		<ion-card *ngFor="let task of tasks | async" (click)="taskTapped(task)" class="red">
+			<ion-item class="mental-color">
 			<ion-label>{{task.t_name}}</ion-label>
 			</ion-item>
-			<ion-card-content>
-				<p><b>Description:</b> {{task.t_description}} </p>
+			<ion-card-content class ="mental-color">
+				<p><b>Description:</b> {{task.t_description}}</p>
+        <p><b>Category:</b> {{task.t_category}} </p>
 			</ion-card-content>
 		</ion-card>
 	</ion-list>
