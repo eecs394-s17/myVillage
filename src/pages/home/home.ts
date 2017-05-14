@@ -102,6 +102,7 @@ export class HomePage {
             var newRef = this.tasks.push({
               t_name: data.t_name,
               t_description: data.t_description,
+              t_category: data.t_category,
               t_taken: "false",
               t_takenby: '',
               t_notes: ''
