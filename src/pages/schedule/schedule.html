@@ -35,13 +35,13 @@
   {{days[currDay]}}
   <button ion-button class="register-btn" (click)="nextDay()">NextDay</button>
   <ion-list>
-    <ion-item-divider sticky>
-      <ion-label>
-        9:00
-      </ion-label>
-    </ion-item-divider>
-    <ion-card *ngFor="let task of tasks | async" (click)="updateSchedule()">
-      <ion-item-sliding #slidingItem>
+    <ion-card>
+      <ion-item-divider sticky>
+        <ion-label>
+          9:00
+        </ion-label>
+      </ion-item-divider>
+      <ion-item-sliding #slidingItem *ngFor="let task of tasks | async" (click)="updateSchedule()">
         <button ion-item (click)="taskTapped(task)">
           <h3>Description</h3>
           <p>
