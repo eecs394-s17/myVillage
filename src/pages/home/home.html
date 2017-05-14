@@ -51,12 +51,7 @@
       <button (click)="showStyle = !showStyle;">Toggle style</button>
     </div>
 		<ion-card *ngFor="let task of tasks | async" (click)="taskTapped(task)" class="red">
-<<<<<<< Updated upstream
 			<ion-item>
-			<ion-item class="mental-color">
-=======
-			<ion-item >
->>>>>>> Stashed changes
 			<ion-label>{{task.t_name}}</ion-label>
 			</ion-item>
 			<ion-card-content class ="{{task.t_category}}">
