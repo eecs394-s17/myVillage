@@ -29,8 +29,21 @@ page-home {
     background-color: color($colors, cats-light);
   }
 
-  .mental-color {
-    border-left: 2px solid #3BC7C4;
+  .mental {
+    border-left: 10px solid #9b59b6;
     padding-left: 10px;
   }
+  .physical{
+    border-left: 10px solid #2ecc71;
+    padding-left: 10px;
+  }
+  .nutritional{
+    border-left: 10px solid #e74c3c;
+    padding-left: 10px;
+  }
+  .other {
+    border-left: 10px solid #f1c40f;
+    padding-left: 10px;
+  }
+
 }
