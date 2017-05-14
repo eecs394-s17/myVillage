@@ -45,9 +45,8 @@
  	</ion-fab>
 	<ion-list>
 		<ion-card *ngFor="let task of tasks | async" (click)="taskTapped(task)" class="red">
-			<ion-item>
 			<ion-item class="mental-color">
-			<ion-label>{{task.t_name}}</ion-label>
+			   <ion-label>{{task.t_name}}</ion-label>
 			</ion-item>
 			<ion-card-content class ="mental-color">
 				<p><b>Description:</b> {{task.t_description}}</p>
