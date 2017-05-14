@@ -2,6 +2,8 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
+import { IonicStorageModule } from '@ionic/storage';
+
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SettingsPage } from '../pages/settings/settings';
@@ -15,6 +17,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthService } from '../providers/auth-service';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
+
+import { Storage } from '@ionic/storage';
+
+import { UserData } from '../providers/user-data';
 
 const cloudSettings: CloudSettings = {
  'core': {
@@ -46,6 +52,7 @@ export const firebaseConfig = {
       IonicModule.forRoot(MyApp),
       CloudModule.forRoot(cloudSettings),
     AngularFireModule.initializeApp(firebaseConfig),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -61,6 +68,7 @@ export const firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
+    UserData,
     AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
