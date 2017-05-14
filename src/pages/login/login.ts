@@ -32,7 +32,6 @@ export class LoginPage {
 
    public login() {
        this.showLoading()
-       this.userData.login(this.details.email);
        this.ionicAuth.login('basic', this.details).then(() => {
 	   console.log("Login succesful");
 	   setTimeout(() => {
@@ -45,10 +44,12 @@ export class LoginPage {
 	   else {
 	       console.log("This user is NOT authenticated");
 	   }
-
+	   let curUsername = this.user.get('name', 'Anonymous Villager');
+	   let curUserstat = this.user.get('status', 'V');
+	   this.userData.login(this.details.email, curUsername, curUserstat);
 	   this.nav.setRoot(TabsPage, {
-	       currentUsername: this.user.get('name', 'Anonymous Villager'),
-	       currentUserStatus: this.user.get('status', 'V')
+	       currentUsername: curUsername,
+	       currentUserStatus: curUserstat
 	   });
 
       }, error => {

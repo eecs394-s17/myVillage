@@ -14,17 +14,21 @@ import { Storage } from '@ionic/storage';
 @Injectable()
 export class UserData {
 
-	HAS_LOGGED_IN = 'hasloggedin';
-
+    HAS_LOGGED_IN = 'hasloggedin';
+    NAME_OF_USER = 'usersName';
+    STATUS_OF_USER = 'usersStatus';
+  
   constructor(public http: Http, public storage: Storage, public events: Events,) {
     console.log('Hello UserData Provider');
   }
 
-  login(username: string): void {
-    this.storage.set(this.HAS_LOGGED_IN, true);
-    this.setUsername(username);
-    this.events.publish('user:login');
-    console.log('saved in user-data' + username);
+    login(username: string, usersName: string, usersStat: string): void {
+	this.storage.set(this.HAS_LOGGED_IN, true);
+	this.setUsername(username);
+	this.storage.set(this.NAME_OF_USER, usersName);
+	this.storage.set(this.STATUS_OF_USER, usersStat);
+	this.events.publish('user:login');
+	console.log('saved in user-data' + username + ', ' + usersName + ', ' + usersStat);
   };
 
   signup(username: string): void {
@@ -36,6 +40,8 @@ export class UserData {
   logout(): void {
     this.storage.remove(this.HAS_LOGGED_IN);
     this.storage.remove('username');
+    this.storage.remove(this.NAME_OF_USER);
+    this.storage.remove(this.STATUS_OF_USER);
     this.events.publish('user:logout');
   };
 
