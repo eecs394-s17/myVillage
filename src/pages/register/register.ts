@@ -43,9 +43,9 @@ export class RegisterPage {
 	   console.log("Login failed on registration page. This should not happen");
        });
 	
-	this.nav.push(TabsPage, {
-	    currentUsername: this.user.get('name', 'Anonymous Villager'),
-	    currentUserStatus: this.user.get('status', 'V')
+	this.nav.setRoot(TabsPage, {
+	    currentUsername: this.name,
+	    currentUserStatus: this.status
 	});
     }, (err: IDetailedError<string[]>) => {
       for (let e of err.details) {

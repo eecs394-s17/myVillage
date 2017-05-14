@@ -25,7 +25,8 @@ export class HomePage {
   tasks: FirebaseListObservable<any>;
   angFireDB: any;
   showStyle: false;
-
+  IsMother: any;
+    
   constructor(private nav: NavController, public navParams: NavParams, public alertCtrl: AlertController, angFire: AngularFire, private ionicAuth: Auth, public user: User,public userData: UserData) {
     this.angFireDB = angFire;
     this.tasks = angFire.database.list('/tasks');
