@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Auth, User, UserDetails, IDetailedError } from '@ionic/cloud-angular';
 import { LoginPage } from "../login/login";
-import { HomePage } from "../home/home";
+import { TabsPage } from "../tabs/tabs";
 
 /*
   Generated class for the Register page.
@@ -10,18 +10,21 @@ import { HomePage } from "../home/home";
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
+
 @Component({
   selector: 'page-register',
   templateUrl: 'register.html'
 })
 export class RegisterPage {
-  details: UserDetails = {'email': '', 'password': '', 'name': '', 'username': ''};
-  lastname: any;
-  firstname: any;
-  email: any;
+  details: UserDetails = {'email': '', 'password': ''};
+  status: any;
+    email: any;
+    name: any;
     
   constructor(private nav: NavController, private ionicAuth: Auth, public user: User)
-  { } 
+    {
+
+    } 
   
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
@@ -33,12 +36,17 @@ export class RegisterPage {
 	
 	this.ionicAuth.login('basic', this.details).then(() => {
 	   console.log("Login succesful (on registration page!)");
-	   this.user.set("name", this.firstname + " " + this.lastname);
+	    this.user.set("status", this.status);
+            this.user.set("name", this.name);
 	    this.user.save();
        }, error =>{
 	   console.log("Login failed on registration page. This should not happen");
        });
-      this.nav.setRoot(HomePage);
+	
+	this.nav.push(TabsPage, {
+	    currentUsername: this.user.get('name', 'Anonymous Villager'),
+	    currentUserStatus: this.user.get('status', 'V')
+	});
     }, (err: IDetailedError<string[]>) => {
       for (let e of err.details) {
         if (e === 'conflict_email') {

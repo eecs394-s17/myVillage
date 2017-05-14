@@ -7,12 +7,11 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import "rxjs/add/operator/map";
 
 import { MenuController } from 'ionic-angular';
-import { TabsPage } from '../tabs/tabs';
+import { TabsPage, isMother } from '../tabs/tabs';
 import { LandingPage } from '../landing/landing';
 import { SchedulePage } from '../schedule/schedule';
 import { LoginPage } from '..//login/login';
 import { AuthService } from '../../providers/auth-service';
-
 
 @Component({
   selector: 'page-home',
@@ -22,11 +21,13 @@ import { AuthService } from '../../providers/auth-service';
 export class HomePage {
   @ViewChild(Content) content: Content;
   tasks: FirebaseListObservable<any>;
-  angFireDB: any;
+    angFireDB: any;
+    IsMother: any;
 
   constructor(private nav: NavController, public navParams: NavParams, public alertCtrl: AlertController, angFire: AngularFire) {
     this.angFireDB = angFire;
     this.tasks = angFire.database.list('/tasks');
+    this.IsMother = isMother;
   }
 
   scrollToTop() {

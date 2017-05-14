@@ -11,6 +11,7 @@ import { TabsPage } from '../tabs/tabs';
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
+
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
@@ -41,8 +42,12 @@ export class LoginPage {
 	   else {
 	       console.log("This user is NOT authenticated");
 	   }
-	   //console.log(this.user.get('name'));
-	   this.nav.setRoot(TabsPage);
+
+	   this.nav.setRoot(TabsPage, {
+	       currentUsername: this.user.get('name', 'Anonymous Villager'),
+	       currentUserStatus: this.user.get('status', 'V')
+	   });
+
       }, error => {
 	  setTimeout(() => {
               this.loading.dismiss();
