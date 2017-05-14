@@ -13,6 +13,7 @@ import { SchedulePage } from '../schedule/schedule';
 import { AuthService } from '../../providers/auth-service';
 import { GiftsPage } from '../gifts/gifts';
 import { ServiceProvidersPage } from '../service-providers/service-providers';
+import { UserData } from '../../providers/user-data';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class HomePage {
   tasks: FirebaseListObservable<any>;
   angFireDB: any;
 
-  constructor(private nav: NavController, public navParams: NavParams, public alertCtrl: AlertController, angFire: AngularFire) {
+  constructor(private nav: NavController, public navParams: NavParams, public alertCtrl: AlertController, angFire: AngularFire, private ionicAuth: Auth, public user: User,public userData: UserData) {
     this.angFireDB = angFire;
     this.tasks = angFire.database.list('/tasks');
   }
@@ -125,6 +126,14 @@ export class HomePage {
       case "Service":
         this.nav.push(ServiceProvidersPage);
         break;
+
+      case "Logout":
+        //this.nav.setRoot(LoginPage);
+        this.userData.logout();
+        this.ionicAuth.logout();
+        window.location.reload();
+        break;
+
       default:
         break;
     }

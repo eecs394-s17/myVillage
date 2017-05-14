@@ -29,8 +29,8 @@
       <button ion-item (click)="navToSchedule('Gifts')">
         Gifts
       </button>
-      <button ion-item (click)="navToSchedule('Login')">
-        Login
+      <button ion-item (click)="navToSchedule('Logout')">
+        Logout
       </button>
     </ion-list>
   </ion-content>
@@ -44,7 +44,7 @@
    		<button ion-fab (click)="addTask()"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
  	</ion-fab>
 	<ion-list>
-		<ion-card  *ngFor="let task of tasks | async" (click)="taskTapped(task)" class="red">
+		<ion-card *ngFor="let task of tasks | async" (click)="taskTapped(task)" class="red">
 			<ion-item>
 			<ion-label>{{task.t_name}}</ion-label>
 			</ion-item>
