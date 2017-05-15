@@ -58,7 +58,16 @@ export class UserData {
 
   hasLoggedIn(): Promise<boolean> {
     return this.storage.get(this.HAS_LOGGED_IN).then((value) => {
-      return value === true;
+	 return value === true; 
+	/*let x: [boolean, string, string];
+	let y: string;
+	let z: string;
+	this.storage.get(this.NAME_OF_USER).then((val) => {
+	    y = value });
+	this.storage.get(this.STATUS_OF_USER).then((val) => {
+	    z = value});
+	x = [value === true, y, z];
+	return x;*/
     });
   };
 
