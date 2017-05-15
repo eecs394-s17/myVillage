@@ -68,14 +68,14 @@ export class LoginPage {
   }
 
   showError(text) {
-    setTimeout(() => {
-      this.loading.dismiss();
-    });
+    //setTimeout(() => {
+    //  this.loading.dismiss();
+    //});
 
     let alert = this.alertCtrl.create({
       title: 'Fail',
       subTitle: text,
-      buttons: ['OK']
+      buttons: ['Try Again']
     });
     alert.present(prompt);
   }

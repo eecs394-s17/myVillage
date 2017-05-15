@@ -12,9 +12,6 @@ page-home {
     text-align: center;
   }
 
-  .joker {
-    color: color($colors, cats-light);
-  }
 
 	#welcome-msg {
 		font-style: "roboto";
@@ -30,20 +27,28 @@ page-home {
   }
 
   .mental {
-    border-left: 10px solid #9b59b6;
-    padding-left: 10px;
+    //border-bottom: 2px solid #9b59b6;
+    border-left: 3px solid #9b59b6;
+    //border-top: 2px solid #9b59b6;
+    //border-right: 2px solid #9b59b6;
   }
   .physical{
-    border-left: 10px solid #2ecc71;
-    padding-left: 10px;
+    //border-bottom: 2px solid #2ecc71;
+    border-left: 3px solid #2ecc71;
+    //border-top: 2px solid #2ecc71;
+    //border-right: 2px solid #2ecc71;
   }
   .nutritional{
-    border-left: 10px solid #e74c3c;
-    padding-left: 10px;
+    //border-bottom: 2px solid #e74c3c;
+    border-left: 3px solid #e74c3c;
+    //border-top: 2px solid #e74c3c;
+    //border-right: 2px solid #e74c3c;
   }
   .other {
-    border-left: 10px solid #f1c40f;
-    padding-left: 10px;
+    //border-bottom: 2px solid #f1c40f;
+    border-left: 3px solid #f1c40f;
+    //border-top: 2px solid #f1c40f;
+    //border-right: 2px solid #f1c40f;
   }
 
 }

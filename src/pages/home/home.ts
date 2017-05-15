@@ -134,7 +134,7 @@ export class HomePage {
         this.nav.push(SchedulePage);
         break;
       case "Gifts":
-        this.nav.push(GiftsPage);
+        //this.nav.push(GiftsPage);
         break;
       case "Service":
         this.nav.push(ServiceProvidersPage);
