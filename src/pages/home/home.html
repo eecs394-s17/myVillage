@@ -42,6 +42,7 @@
 	  <ion-fab top right edge *ngIf ="IsMother">
    		<button ion-fab (click)="addTask()"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
  	  </ion-fab>
+    <button ion-button block (click)="openModal()">Open Modal</button>
 	<ion-list>
 		<ion-card  *ngFor="let task of tasks | async" (click)="taskTapped(task)">
       <div class ="{{task.t_category}}">
