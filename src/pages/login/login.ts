@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController, Loading, NavParams } from 'ionic-angular';
 import { Auth, User, UserDetails, IDetailedError } from '@ionic/cloud-angular';
@@ -20,12 +21,16 @@ import { UserData } from '../../providers/user-data';
 })
 export class LoginPage {
 
-    constructor(private nav: NavController, private alertCtrl: AlertController, private loadingCtrl: LoadingController, private ionicAuth: Auth, public user: User, angFire: AngularFire, public userData: UserData)
-    {}
+    constructor(private nav: NavController, private alertCtrl: AlertController, private loadingCtrl: LoadingController, private ionicAuth: Auth, public user: User, angFire: AngularFire, public userData: UserData, public navParams: NavParams)
+    {
+	this.userStatus = navParams.get("status");
+	console.log(this.userStatus);
+    }
     
   loading: Loading;
   details: UserDetails = {email: '', password: ''};
-
+  userStatus: any;
+    
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
@@ -81,8 +86,11 @@ export class LoginPage {
   }
 
   public createAccount() {
-     //this.nav.push(RegisterPage);
-     this.nav.setRoot(RegisterPage);
+      //this.nav.push(RegisterPage);
+      //this.nav.setRoot(RegisterPage);
+      this.nav.setRoot(RegisterPage, {
+	  status: this.userStatus
+      });
   }
 
    public logout() {

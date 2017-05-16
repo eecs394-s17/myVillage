@@ -21,9 +21,10 @@ export class RegisterPage {
     email: any;
     name: any;
     
-  constructor(private nav: NavController, private ionicAuth: Auth, public user: User)
+    constructor(private nav: NavController, private ionicAuth: Auth, public user: User, public navParams: NavParams)
     {
-
+	this.status = navParams.get("status");
+	console.log(this.status);
     } 
   
   ionViewDidLoad() {

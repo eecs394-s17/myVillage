@@ -26,11 +26,17 @@ export class LandingPage {
   }
 
   changeMomPage(){
-    this.nav.setRoot(LoginPage);
+      //this.nav.setRoot(LoginPage);
+      this.nav.setRoot(LoginPage, {
+	  status: "M"
+      });
   }
 
   changeKidPage(){
-    this.nav.setRoot(LoginPage);
+      //this.nav.setRoot(LoginPage);
+      this.nav.setRoot(LoginPage, {
+	  status: "V"
+      });
   }
 
 }
