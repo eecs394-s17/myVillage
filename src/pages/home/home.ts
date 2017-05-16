@@ -1,19 +1,23 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { NavController, AlertController, NavParams, Content } from 'ionic-angular';
+import { ModalController, NavController, AlertController, NavParams, Content } from 'ionic-angular';
 import { Auth, User, UserDetails, IDetailedError } from '@ionic/cloud-angular';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 import "rxjs/add/operator/map";
 
 import { MenuController } from 'ionic-angular';
-import { TabsPage, isMother } from '../tabs/tabs';
+import { TabsPage, isMother, isVillager } from '../tabs/tabs';
 import { LandingPage } from '../landing/landing';
 import { SchedulePage } from '../schedule/schedule';
+
 import { AuthService } from '../../providers/auth-service';
 import { GiftsPage } from '../gifts/gifts';
 import { ServiceProvidersPage } from '../service-providers/service-providers';
 import { UserData } from '../../providers/user-data';
+
+import { LoginPage } from '../login/login';
+import { ModalPage } from '../modal/modal';
 
 @Component({
   selector: 'page-home',
@@ -23,14 +27,19 @@ import { UserData } from '../../providers/user-data';
 export class HomePage {
   @ViewChild(Content) content: Content;
   tasks: FirebaseListObservable<any>;
+  gifts: FirebaseListObservable<any>;
   angFireDB: any;
   showStyle: false;
   IsMother: any;
+  IsVillager: any;
     
-  constructor(private nav: NavController, public navParams: NavParams, public alertCtrl: AlertController, angFire: AngularFire, private ionicAuth: Auth, public user: User,public userData: UserData) {
+  constructor(public modalCtrl: ModalController, private nav: NavController, public navParams: NavParams, public alertCtrl: AlertController, angFire: AngularFire, private ionicAuth: Auth, public user: User,public userData: UserData) {
+
     this.angFireDB = angFire;
     this.tasks = angFire.database.list('/tasks');
+    this.gifts = angFire.database.list('/gifts');
     this.IsMother = isMother;
+    this.IsVillager = isVillager;
   }
 
   scrollToTop() {
@@ -125,6 +134,47 @@ export class HomePage {
     });
 
     prompt.present();
+  }
+
+  addGift():void{
+    let prompt = this.alertCtrl.create({
+      title: 'Send mom a gift',
+      message: 'Choose the amount and what it is for!',
+      inputs: [
+        {
+          name: 'g_amount',
+          placeholder: "Gift Amount"
+        },
+        {
+          name: 'g_for',
+          placeholder: "For"
+        }
+      ],
+      buttons: [
+        {
+          text: "Cancel",
+          handler: data => {
+            console.log('cancel clicked')
+          }
+        },
+        {
+          text: "Submit",
+          handler: data => {
+            var newRef = this.gifts.push({
+              g_amount: data.g_amount,
+              g_for: data.g_for
+            })
+          }
+        }
+      ]
+    });
+
+    prompt.present();
+  }
+
+  openModal() {
+    let myModal = this.modalCtrl.create(ModalPage);
+    myModal.present();
   }
 
   navToSchedule(event) {

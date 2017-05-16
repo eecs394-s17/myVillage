@@ -5,7 +5,7 @@
         <ion-icon name='menu'></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title class="open-task" (click)="scrollToTop()">Registry Items</ion-title>
+    <ion-title class="open-task" (click)="scrollToTop()">Registry</ion-title>
     <ion-buttons right>
       <img class="header-logo" src="assets/img/myVillageLogo.jpg">
     </ion-buttons>
@@ -40,8 +40,11 @@
 
 <ion-content padding>
 	  <ion-fab top right edge *ngIf ="IsMother">
-   		<button ion-fab (click)="addTask()"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
+   		<button ion-fab (click)="openModal()"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
  	  </ion-fab>
+    <ion-fab top right edge *ngIf ="IsVillager">
+      <button ion-fab (click)="addGift()"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
+    </ion-fab>
 	<ion-list>
 		<ion-card  *ngFor="let task of tasks | async" (click)="taskTapped(task)">
       <div class ="{{task.t_category}}">

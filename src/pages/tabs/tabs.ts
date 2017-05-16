@@ -13,6 +13,7 @@ import { SettingsPage } from '../settings/settings'
 */
 
 export var isMother: boolean = false;
+export var isVillager: boolean = false;
 
 @Component({
   selector: 'page-tabs',
@@ -33,6 +34,7 @@ export class TabsPage {
       console.log(this.Username);
       console.log(this.UserStatus);
       isMother = (this.UserStatus == 'M');
+      isVillager = (this.UserStatus == 'V');
       console.log(isMother);
       this.tasks = angFire.database.list('/tasks');
 		this.angFireDB = angFire;

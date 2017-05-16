@@ -13,6 +13,7 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { GiftsPage } from '../pages/gifts/gifts';
 import { ServiceProvidersPage } from '../pages/service-providers/service-providers';
+import { ModalPage } from '../pages/modal/modal';
 
 
 import { AngularFireModule } from 'angularfire2';
@@ -51,7 +52,8 @@ export const firebaseConfig = {
     LoginPage,
     RegisterPage,
     GiftsPage,
-    ServiceProvidersPage
+    ServiceProvidersPage,
+    ModalPage
   ],
   imports: [
       IonicModule.forRoot(MyApp),
@@ -70,7 +72,8 @@ export const firebaseConfig = {
     LoginPage,
     RegisterPage,
     GiftsPage,
-    ServiceProvidersPage
+    ServiceProvidersPage,
+    ModalPage
   ],
   providers: [
     StatusBar,
