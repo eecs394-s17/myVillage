@@ -50,9 +50,11 @@ export class SchedulePage {
   ionViewDidLoad() {
     this.app.setTitle('Schedule');
     this.updateSchedule();
-    // let num = this.startDate.getDay();
-    // this.currDay = num;
+    let num = this.startDate.getDay();
+    this.currDay = num;
+
     this.endDate.setDate(this.startDate.getDate() + 1);
+    this.currDate = this.startDate.toISOString();
     this.daySched = this.angFireDB.database.list('/days/' + this.currDay + '/');
     // this.tasks = this.angFireDB.database.list('/days/' + this.currDay + '/10/tasks');
 
@@ -86,17 +88,24 @@ export class SchedulePage {
   }
 
   nextDay() {
-  	this.currDay = (this.currDay+1)%7;
+    this.startDate = this.endDate;
+    this.endDate.setDate(this.startDate.getDate() + 1);
+    this.currDate = this.startDate.toISOString();
+  	this.currDay = this.startDate.getDay()
   	console.log(this.currDay);
   	this.daySched = this.angFireDB.database.list('/days/' + this.currDay + '/');
   	console.log('/days/' + this.currDay + '/');
   }
 
   prevDay(key) {
-    if (this.currDay == 0){
-      this.currDay =  7 - this.currDay;
-    }
-    this.currDay = (this.currDay-1)%7;
+    this.endDate = this.startDate
+    this.startDate.setDate(this.startDate.getDate() - 1);
+    this.currDate = this.startDate.toISOString();
+    this.currDay = this.startDate.getDay()
+    // if (this.currDay == 0){
+    //   this.currDay =  7 - this.currDay;
+    // }
+    // this.currDay = (this.currDay-1)%7;
   	//this.currDay = key;
     console.log(this.currDay);
     this.daySched = this.angFireDB.database.list('/days/' + this.currDay + '/');
