@@ -46,14 +46,11 @@
       <button ion-fab (click)="addGift()"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
     </ion-fab>
 	<ion-list>
-		<ion-card  *ngFor="let task of tasks | async" (click)="taskTapped(task)">
+		<ion-card *ngFor="let task of tasks | async" (click)="taskTapped(task)">
       <div class ="{{task.t_category}}">
-			 <ion-item>
-			   <ion-label>{{task.t_name}}</ion-label>
+			 <ion-item *ngIf="task.taken == 0">
+			   <ion-label>{{task.name}}</ion-label>
 			 </ion-item>
-			 <ion-card-content>
-        <p><b>Description:</b> {{task.t_description}}</p>
-			 </ion-card-content>
       </div>
 		</ion-card>
 	</ion-list>

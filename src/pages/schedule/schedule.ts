@@ -20,7 +20,9 @@ export class SchedulePage {
   date: any;
   currDay: number;
   tasks: FirebaseListObservable<any>;
+  test: FirebaseListObservable<any>;
   days = { 0: 'Sun', 1: 'Mon', 2: 'Tue', 3: 'Wed', 4: 'Thur', 5: 'Fri', 6: 'Sat'}
+  taken = 2;  // 2 == all, 0 == untaken, 1 == taken
 
   constructor(
     public alertCtrl: AlertController,
@@ -43,6 +45,13 @@ export class SchedulePage {
     this.daySched = this.angFireDB.database.list('/days/' + this.currDay + '/');
     console.log(this.days[this.date.getDay()]);
     this.tasks = this.angFireDB.database.list('/days/' + this.currDay + '/10/tasks');
+    this.test = this.angFireDB.database.list('/tasks/', {
+      query: {
+        orderByChild: 'date',
+        startAt: 0,
+        endAt: 9999999999999
+      }
+    });
   }
 
   updateSchedule() {
@@ -117,6 +126,11 @@ export class SchedulePage {
     });
 
     prompt.present();
+  }
+
+  taskTaken(num) {
+    this.taken = num
+    console.log(this.taken);
   }
 
 }

@@ -5,11 +5,14 @@
     </button>
 
     <ion-segment [(ngModel)]="segment" (ionChange)="updateSchedule()">
-      <ion-segment-button value="alltasks">
+      <ion-segment-button value="alltasks" (click)="taskTaken(2)">
         All Tasks
       </ion-segment-button>
-      <ion-segment-button value="mytasks">
-        My Tasks
+      <ion-segment-button value="takentasks" (click)="taskTaken(1)">
+        Taken Tasks
+      </ion-segment-button>
+      <ion-segment-button value="untakentasks" (click)="taskTaken(0)">
+        Untaken Tasks
       </ion-segment-button>
     </ion-segment>
 
@@ -74,4 +77,16 @@
 			</ion-card-content> -->
 		</ion-card>
 	</ion-list>
+  <ion-list>
+    askldfjklasdjflkasjdf
+    <ion-item-sliding #slidingItem *ngFor="let task of test | async" (click)="updateSchedule()">
+        <button ion-item *ngIf="task.taken == taken || taken == 2" (click)="taskTapped(task)">
+          <h3>Description</h3>
+          <p>
+            {{task.name}} &mdash;
+            {{task.date}}
+          </p>
+        </button>
+      </ion-item-sliding>
+  </ion-list>
 </ion-content>
