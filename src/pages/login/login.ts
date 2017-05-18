@@ -25,6 +25,7 @@ export class LoginPage {
     {
 	this.userStatus = navParams.get("status");
 	console.log(this.userStatus);
+	this.userData.logout() // if we're going to log in, make sure there isn't old data here 
     }
     
   loading: Loading;
@@ -38,6 +39,7 @@ export class LoginPage {
    public login() {
        this.showLoading()
        this.ionicAuth.login('basic', this.details).then(() => {
+	   this.userData.logout() // if we're going to log in, make sure there isn't old data here 
 	   console.log("Login succesful");
 	   setTimeout(() => {
                this.loading.dismiss();
@@ -51,10 +53,12 @@ export class LoginPage {
 	   }
 	   let curUsername = this.user.get('name', 'Anonymous Villager');
 	   let curUserstat = this.user.get('status', 'V');
-	   this.userData.login(this.details.email, curUsername, curUserstat);
+	   let curVillageID = this.user.get('villageID', 'No village ID');
+	   this.userData.login(this.details.email, curUsername, curUserstat, curVillageID);
 	   this.nav.setRoot(TabsPage, {
 	       currentUsername: curUsername,
-	       currentUserStatus: curUserstat
+	       currentUserStatus: curUserstat,
+	       villageID: curVillageID
 	   });
 
       }, error => {
@@ -95,7 +99,7 @@ export class LoginPage {
 
    public logout() {
     //this.nav.setRoot(LoginPage);
-    this.userData.logout()
+     this.userData.logout() 
     this.ionicAuth.logout();
     window.location.reload();
   }

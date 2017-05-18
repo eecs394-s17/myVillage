@@ -3,7 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Auth, User, UserDetails, IDetailedError } from '@ionic/cloud-angular';
 import { LoginPage } from "../login/login";
 import { TabsPage } from "../tabs/tabs";
-
+import { UserData } from '../../providers/user-data';
 /*
   Generated class for the Register page.
 
@@ -20,8 +20,9 @@ export class RegisterPage {
   status: any;
     email: any;
     name: any;
+    villageID: any;
     
-    constructor(private nav: NavController, private ionicAuth: Auth, public user: User, public navParams: NavParams)
+    constructor(private nav: NavController, private ionicAuth: Auth, public user: User, public navParams: NavParams, public userData: UserData)
     {
 	this.status = navParams.get("status");
 	console.log(this.status);
@@ -36,17 +37,21 @@ export class RegisterPage {
       console.log(this.details.email + this.details.password);
 	
 	this.ionicAuth.login('basic', this.details).then(() => {
-	   console.log("Login succesful (on registration page!)");
+	    this.userData.logout() // if we're going to log in, make sure there isn't old data here 
+	    console.log("Login succesful (on registration page!)");
 	    this.user.set("status", this.status);
             this.user.set("name", this.name);
+	    this.user.set("villageID", this.villageID);
 	    this.user.save();
-       }, error =>{
+	    this.userData.login(this.details.email, this.name, this.status, this.villageID);
+	}, error =>{
 	   console.log("Login failed on registration page. This should not happen");
        });
 	
 	this.nav.setRoot(TabsPage, {
 	    currentUsername: this.name,
-	    currentUserStatus: this.status
+	    currentUserStatus: this.status,
+	    villageID: this.villageID
 	});
     }, (err: IDetailedError<string[]>) => {
       for (let e of err.details) {
@@ -60,3 +65,8 @@ export class RegisterPage {
   }
 
 }
+
+
+
+
+

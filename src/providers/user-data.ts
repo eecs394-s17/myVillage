@@ -22,12 +22,13 @@ export class UserData {
     console.log('Hello UserData Provider');
   }
 
-    login(username: string, usersName: string, usersStat: string): void {
+    login(username: string, usersName: string, usersStat: string, villageID: string): void {
 	this.storage.set(this.HAS_LOGGED_IN, true);
 	this.setUsername(username);
 	this.storage.set(this.NAME_OF_USER, usersName);
 	this.storage.set(this.STATUS_OF_USER, usersStat);
 	this.events.publish('user:login');
+	this.storage.set('villageID', villageID);
 	console.log('saved in user-data' + username + ', ' + usersName + ', ' + usersStat);
   };
 
@@ -38,11 +39,12 @@ export class UserData {
   };
 
   logout(): void {
-    this.storage.remove(this.HAS_LOGGED_IN);
-    this.storage.remove('username');
-    this.storage.remove(this.NAME_OF_USER);
-    this.storage.remove(this.STATUS_OF_USER);
-    this.events.publish('user:logout');
+      this.storage.remove(this.HAS_LOGGED_IN);
+      this.storage.remove('username');
+      this.storage.remove(this.NAME_OF_USER);
+      this.storage.remove(this.STATUS_OF_USER);
+      this.storage.remove('villageID');
+      this.events.publish('user:logout');
   };
 
   setUsername(username: string): void {
@@ -56,9 +58,33 @@ export class UserData {
     });
   };
 
-  hasLoggedIn(): Promise<boolean> {
+  getName(): Promise<string> {
+    return this.storage.get(this.NAME_OF_USER).then((value) => {
+    	console.log('user-data' + value);
+      return value;
+    });
+  };
+
+  getStatus(): Promise<string> {
+    return this.storage.get(this.STATUS_OF_USER).then((value) => {
+    	console.log('user-data' + value);
+      return value;
+    });
+  };
+
+  getVillageID(): Promise<string> {
+    return this.storage.get('villageID').then((value) => {
+    	console.log('user-data' + value);
+      return value;
+    });
+  };
+
+    
+    hasLoggedIn(): Promise<boolean> {
     return this.storage.get(this.HAS_LOGGED_IN).then((value) => {
-	 return value === true; 
+	console.log("LOGGED IN STATUS IS" + value);
+	console.log("RETURN VALUE IS" + (value === true));
+	return value === true; 
 	/*let x: [boolean, string, string];
 	let y: string;
 	let z: string;
@@ -72,3 +98,6 @@ export class UserData {
   };
 
 }
+
+
+
