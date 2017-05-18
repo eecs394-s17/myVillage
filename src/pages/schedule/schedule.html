@@ -79,7 +79,7 @@
 	</ion-list>
   <ion-list>
     askldfjklasdjflkasjdf
-    <ion-item-sliding #slidingItem *ngFor="let task of test | async" (click)="updateSchedule()">
+    <ion-item-sliding #slidingItem *ngFor="let task of tasks | async" (click)="updateSchedule()">
         <button ion-item *ngIf="task.taken == taken || taken == 2" (click)="taskTapped(task)">
           <h3>Description</h3>
           <p>
