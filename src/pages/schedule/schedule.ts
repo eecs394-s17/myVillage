@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { AlertController, App, FabContainer, ItemSliding, List, ModalController, NavController, ToastController, LoadingController, Refresher } from 'ionic-angular';
 
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { villageID } from '../tabs/tabs';
 /*
   Generated class for the Schedule page.
 
@@ -62,7 +63,7 @@ export class SchedulePage {
     console.log(Number(this.endDate))
     // this.tasks = this.angFireDB.database.list('/days/' + this.currDay + '/10/tasks');
 
-    this.tasks = this.angFireDB.database.list('/tasks/', {
+    this.tasks = this.angFireDB.database.list(villageID + '/tasks/', {
       query: {
         orderByChild: 'date',
         startAt: Number(this.startDate),
