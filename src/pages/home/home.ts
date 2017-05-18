@@ -34,12 +34,19 @@ export class HomePage {
   IsVillager: any;
     
   constructor(public modalCtrl: ModalController, private nav: NavController, public navParams: NavParams, public alertCtrl: AlertController, angFire: AngularFire, private ionicAuth: Auth, public user: User,public userData: UserData) {
-
     this.angFireDB = angFire;
-    this.tasks = angFire.database.list('/tasks');
-    this.gifts = angFire.database.list('/gifts');
     this.IsMother = isMother;
     this.IsVillager = isVillager;
+  }
+
+  ionViewDidLoad() {
+    this.tasks = this.angFireDB.database.list('/tasks/', {
+      query: {
+        orderByChild: 'date',
+        startAt: 0,
+        endAt: 9999999999999
+      }
+    });
   }
 
   scrollToTop() {

@@ -15,12 +15,21 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 export class SchedulePage {
 
   daySched: FirebaseListObservable<any>;
-  currDate = '2047-05-17';
+  currDate: any;
   angFireDB: any;
-  date: any;
+  startDate: any;
+  endDate: any;
   currDay: number;
   tasks: FirebaseListObservable<any>;
+  test: FirebaseListObservable<any>;
+  months = [
+    "January", "February", "March",
+    "April", "May", "June", "July",
+    "August", "September", "October",
+    "November", "December"
+  ];
   days = { 0: 'Sun', 1: 'Mon', 2: 'Tue', 3: 'Wed', 4: 'Thur', 5: 'Fri', 6: 'Sat'}
+  taken = 2;  // 2 == all, 0 == untaken, 1 == taken
 
   constructor(
     public alertCtrl: AlertController,
@@ -32,17 +41,34 @@ export class SchedulePage {
     angFire: AngularFire
   ) {
   	this.angFireDB = angFire;
-  	this.date = new Date()
+  	this.startDate = new Date();
+    this.endDate = new Date();
+    this.currDate = new Date().toISOString();
+
   }
 
   ionViewDidLoad() {
     this.app.setTitle('Schedule');
     this.updateSchedule();
-    let num = this.date.getDay();
+    let num = this.startDate.getDay();
     this.currDay = num;
+
+    this.endDate.setDate(this.startDate.getDate() + 1);
+    this.currDate = this.startDate.toISOString();
     this.daySched = this.angFireDB.database.list('/days/' + this.currDay + '/');
-    console.log(this.days[this.date.getDay()]);
-    this.tasks = this.angFireDB.database.list('/days/' + this.currDay + '/10/tasks');
+    // this.tasks = this.angFireDB.database.list('/days/' + this.currDay + '/10/tasks');
+
+    console.log(Number(this.startDate))
+    console.log(Number(this.endDate))
+    // this.tasks = this.angFireDB.database.list('/days/' + this.currDay + '/10/tasks');
+
+    this.tasks = this.angFireDB.database.list('/tasks/', {
+      query: {
+        orderByChild: 'date',
+        startAt: Number(this.startDate),
+        endAt: Number(this.endDate)
+      }
+    });
   }
 
   updateSchedule() {
@@ -62,17 +88,24 @@ export class SchedulePage {
   }
 
   nextDay() {
-  	this.currDay = (this.currDay+1)%7;
+    this.startDate = this.endDate;
+    this.endDate.setDate(this.startDate.getDate() + 1);
+    this.currDate = this.startDate.toISOString();
+  	this.currDay = this.startDate.getDay()
   	console.log(this.currDay);
   	this.daySched = this.angFireDB.database.list('/days/' + this.currDay + '/');
   	console.log('/days/' + this.currDay + '/');
   }
 
   prevDay(key) {
-    if (this.currDay == 0){
-      this.currDay =  7 - this.currDay;
-    }
-    this.currDay = (this.currDay-1)%7;
+    this.endDate = this.startDate
+    this.startDate.setDate(this.startDate.getDate() - 1);
+    this.currDate = this.startDate.toISOString();
+    this.currDay = this.startDate.getDay()
+    // if (this.currDay == 0){
+    //   this.currDay =  7 - this.currDay;
+    // }
+    // this.currDay = (this.currDay-1)%7;
   	//this.currDay = key;
     console.log(this.currDay);
     this.daySched = this.angFireDB.database.list('/days/' + this.currDay + '/');
@@ -117,6 +150,11 @@ export class SchedulePage {
     });
 
     prompt.present();
+  }
+
+  taskTaken(num) {
+    this.taken = num
+    console.log(this.taken);
   }
 
 }
