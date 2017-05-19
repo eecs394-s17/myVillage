@@ -52,13 +52,16 @@
     <ion-label>Date</ion-label>
     <ion-datetime displayFormat="MMM DD, YYYY" pickerFormat="MMMM DD, YYYY" max="2050" [(ngModel)]="currDate"></ion-datetime>
   </ion-item>
-  <button ion-button class="day-btn" (click)="changeDay(0)">Sun</button>
-  <button ion-button class="day-btn"(click)="changeDay(1)">Mon</button>
-  <button ion-button class="day-btn" (click)="changeDay(2)">Tue</button>
-  <button ion-button class="day-btn" (click)="changeDay(3)">Wed</button>
-  <button ion-button class="day-btn" (click)="changeDay(4)">Thur</button>
-  <button ion-button class="day-btn" (click)="changeDay(5)">Fri</button>
-  <button ion-button class="day-btn" (click)="changeDay(6)">Sat</button>
+
+  <div id="btn-holder">
+    <button ion-button class="day-btn" [ngClass]="{'active': currDay==0}"  (click)="changeDay(0)">Sun</button>
+    <button ion-button class="day-btn" [ngClass]="{'active': currDay==1}" (click)="changeDay(1)">Mon</button>
+    <button ion-button class="day-btn" [ngClass]="{'active': currDay==2}" (click)="changeDay(2)">Tue</button>
+    <button ion-button class="day-btn" [ngClass]="{'active': currDay==3}" (click)="changeDay(3)">Wed</button>
+    <button ion-button class="day-btn" [ngClass]="{'active': currDay==4}" (click)="changeDay(4)">Thur</button>
+    <button ion-button class="day-btn" [ngClass]="{'active': currDay==5}" (click)="changeDay(5)">Fri</button>
+    <button ion-button class="day-btn" [ngClass]="{'active': currDay==6}" (click)="changeDay(6)">Sat</button>
+  </div>
 
   <p>
     <ion-icon class="curr-day-left" name="ios-arrow-back"  (click)="prevDay()"></ion-icon>

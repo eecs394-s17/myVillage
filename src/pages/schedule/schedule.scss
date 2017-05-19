@@ -8,5 +8,15 @@ page-schedule {
 	}
 	.curr-day-left{
 		padding-right: 10px;
+		margin-left: 10px;
 	}
+
+	#btn-holder {
+		margin-left: 10px;
+	}
+
+	.active {
+		background-color: color($colors, secondary);
+	}
+
 }
