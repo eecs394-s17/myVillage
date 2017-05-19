@@ -56,18 +56,26 @@ export class SchedulePage {
   ionViewDidLoad() {
     this.app.setTitle('Schedule');
     this.updateSchedule();
-
-    console.log('Start date is: ' + this.startDate);
-    console.log('End date is: ', this.endDate)
+    console.log('Village ID: ' + villageID);
+    console.log('Start date is: ' + this.startDate.valueOf());
+    console.log('End date is: ', this.endDate.valueOf())
     console.log('Current day is: ' + this.currDay);
 
     // this.tasks = this.angFireDB.database.list('/days/' + this.currDay + '/10/tasks');
-    this.updateTasks();
+    this.tasks = this.angFireDB.database.list('/tasks/', {
+      query: {
+        orderByChild: 'date',
+        // startAt: 0,
+        // endAt: 500000000000000
+        startAt: this.startDate.valueOf(),
+        endAt: this.endDate.valueOf()
+      }
+    });
 
   }
 
   updateTasks() {
-    this.tasks = this.angFireDB.database.list(villageID + '/tasks/', {
+    this.tasks = this.angFireDB.database.list('/tasks/', {
       query: {
         orderByChild: 'date',
         startAt: this.startDate.valueOf(),
@@ -106,8 +114,9 @@ export class SchedulePage {
 
   prevDay() {
     console.log(this.startDate);
-    this.endDate = this.startDate;
     this.startDate.subtract(1, 'days');
+    this.endDate = this.startDate.clone().add(1, 'days');
+    console.log(this.startDate);
     this.currDate = this.startDate.toISOString();
     this.currDay = this.startDate.day();
     this.daySched = this.angFireDB.database.list(villageID + '/days/' + this.currDay + '/');
