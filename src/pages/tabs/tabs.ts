@@ -43,7 +43,7 @@ export class TabsPage {
       console.log(this.UserStatus);
       isMother = (this.UserStatus == 'M');
       if (isMother){
-	  this.tab1Root = SchedulePage;
+	  this.tab1Root = HomePage//SchedulePage;
       }else{
 	  this.tab1Root = HomePage;
       }

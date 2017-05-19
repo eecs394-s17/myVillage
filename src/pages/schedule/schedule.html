@@ -5,6 +5,8 @@
     </button>
 
     <ion-segment [(ngModel)]="segment" (ionChange)="updateSchedule()">
+
+      
       <ion-segment-button value="alltasks" (click)="taskTaken(2)">
         All Tasks
       </ion-segment-button>
@@ -22,7 +24,33 @@
 
 </ion-header>
 
+
+
 <ion-content>
+         <ion-menu [content]="mycontent" type="overlay">
+    <ion-header>
+      <ion-title>
+	Categories
+      </ion-title>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+	<button ion-item (click)="navToSchedule('Schedule')">
+          Schedule
+	</button>
+	<button ion-item (click)="navToSchedule('Service')">
+          Service Provider
+	</button>
+	<button ion-item (click)="navToSchedule('Gifts')">
+          Gifts
+	</button>
+	<button ion-item (click)="navToSchedule('Logout')">
+          Logout
+	</button>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
   <ion-item>
     <ion-icon name="calendar" item-start></ion-icon>
     <ion-label>Date</ion-label>
