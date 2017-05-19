@@ -3,6 +3,8 @@ import { AlertController, App, FabContainer, ItemSliding, List, ModalController,
 
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { villageID } from '../tabs/tabs';
+import { ServiceProvidersPage } from '../service-providers/service-providers';
+
 /*
   Generated class for the Schedule page.
 
@@ -39,7 +41,8 @@ export class SchedulePage {
     public modalCtrl: ModalController,
     public navCtrl: NavController,
     public toastCtrl: ToastController,
-    angFire: AngularFire
+      angFire: AngularFire,
+      public nav: NavController
   ) {
   	this.angFireDB = angFire;
   	this.startDate = new Date();
@@ -56,8 +59,7 @@ export class SchedulePage {
 
     this.endDate.setDate(this.startDate.getDate() + 1);
     this.currDate = this.startDate.toISOString();
-    this.daySched = this.angFireDB.database.list('/days/' + this.currDay + '/');
-    // this.tasks = this.angFireDB.database.list('/days/' + this.currDay + '/10/tasks');
+        // this.tasks = this.angFireDB.database.list('/days/' + this.currDay + '/10/tasks');
 
     console.log(Number(this.startDate))
     console.log(Number(this.endDate))
@@ -94,8 +96,8 @@ export class SchedulePage {
     this.currDate = this.startDate.toISOString();
   	this.currDay = this.startDate.getDay()
   	console.log(this.currDay);
-  	this.daySched = this.angFireDB.database.list('/days/' + this.currDay + '/');
-  	console.log('/days/' + this.currDay + '/');
+  	this.daySched = this.angFireDB.database.list(villageID + '/days/' + this.currDay + '/');
+  	console.log(villageID + '/days/' + this.currDay + '/');
   }
 
   prevDay(key) {
@@ -109,8 +111,8 @@ export class SchedulePage {
     // this.currDay = (this.currDay-1)%7;
   	//this.currDay = key;
     console.log(this.currDay);
-    this.daySched = this.angFireDB.database.list('/days/' + this.currDay + '/');
-  	console.log('/days/' + this.currDay + '/');
+    this.daySched = this.angFireDB.database.list(villageID + '/days/' + this.currDay + '/');
+  	console.log(villageID + '/days/' + this.currDay + '/');
   }
 
   tellDate() {
@@ -157,5 +159,11 @@ export class SchedulePage {
     this.taken = num
     console.log(this.taken);
   }
-
+    
 }
+
+
+
+
+
+

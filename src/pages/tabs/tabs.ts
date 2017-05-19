@@ -4,7 +4,14 @@ import { NavController, AlertController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { SettingsPage } from '../settings/settings'
-
+import { SchedulePage } from '../schedule/schedule'
+import { ServiceProvidersPage } from '../service-providers/service-providers';
+import { UserData } from '../../providers/user-data';
+import { GiftsPage } from '../gifts/gifts';
+import { LoginPage } from '../login/login';
+import { ModalPage } from '../modal/modal';
+import { AuthService } from '../../providers/auth-service';
+import { Auth, User, UserDetails, IDetailedError } from '@ionic/cloud-angular';
 /*
   Generated class for the Tabs page.
 
@@ -21,7 +28,7 @@ export var villageID: any;
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-  tab1Root = HomePage;
+  tab1Root: any;
   tab2Root = SettingsPage
 
     tasks: FirebaseListObservable<any>;
@@ -29,12 +36,17 @@ export class TabsPage {
     Username: any;
     UserStatus: any;
     
-  constructor(public alertCtrl: AlertController, public nav: NavController, public navParams: NavParams, angFire: AngularFire)  {
+    constructor(public alertCtrl: AlertController, public nav: NavController, public navParams: NavParams, angFire: AngularFire, public userData: UserData, private ionicAuth: Auth)  {
       this.UserStatus = navParams.get("currentUserStatus");
       this.Username = navParams.get("currentUsername");
       console.log(this.Username);
       console.log(this.UserStatus);
       isMother = (this.UserStatus == 'M');
+      if (isMother){
+	  this.tab1Root = SchedulePage;
+      }else{
+	  this.tab1Root = HomePage;
+      }
       console.log(isMother);
       isVillager = (this.UserStatus == 'V');
       villageID = (navParams.get("villageID"));
@@ -78,4 +90,35 @@ export class TabsPage {
 
   	prompt.present();
   }
+
+  navToSchedule(event) {
+    console.log(event);
+    switch (event){
+      case "Schedule":
+        this.nav.push(SchedulePage);
+        break;
+      case "Gifts":
+        //this.nav.push(GiftsPage);
+        break;
+      case "Service":
+        this.nav.push(ServiceProvidersPage);
+        break;
+
+      case "Logout":
+        //this.nav.setRoot(LoginPage);
+        this.userData.logout();
+        this.ionicAuth.logout();
+        window.location.reload();
+        break;
+
+      default:
+        break;
+    }
+  }
+  
 }
+
+
+
+
+

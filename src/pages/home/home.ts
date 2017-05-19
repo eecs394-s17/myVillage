@@ -18,7 +18,7 @@ import { UserData } from '../../providers/user-data';
 
 import { LoginPage } from '../login/login';
 import { ModalPage } from '../modal/modal';
-
+import { villageID } from '../tabs/tabs';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -40,7 +40,7 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-    this.tasks = this.angFireDB.database.list('/tasks/', {
+    this.tasks = this.angFireDB.database.list(villageID + '/tasks/', {
       query: {
         orderByChild: 'date',
         startAt: 0,
@@ -134,42 +134,6 @@ export class HomePage {
               t_taken: "false",
               t_takenby: '',
               t_notes: ''
-            })
-          }
-        }
-      ]
-    });
-
-    prompt.present();
-  }
-
-  addGift():void{
-    let prompt = this.alertCtrl.create({
-      title: 'Send mom a gift',
-      message: 'Choose the amount and what it is for!',
-      inputs: [
-        {
-          name: 'g_amount',
-          placeholder: "Gift Amount"
-        },
-        {
-          name: 'g_for',
-          placeholder: "For"
-        }
-      ],
-      buttons: [
-        {
-          text: "Cancel",
-          handler: data => {
-            console.log('cancel clicked')
-          }
-        },
-        {
-          text: "Submit",
-          handler: data => {
-            var newRef = this.gifts.push({
-              g_amount: data.g_amount,
-              g_for: data.g_for
             })
           }
         }
