@@ -14,7 +14,7 @@ import { RegisterPage } from '../pages/register/register';
 import { GiftsPage } from '../pages/gifts/gifts';
 import { ServiceProvidersPage } from '../pages/service-providers/service-providers';
 import { ModalPage } from '../pages/modal/modal';
-
+import * as moment from 'moment';
 
 import { AngularFireModule } from 'angularfire2';
 import { StatusBar } from '@ionic-native/status-bar';
