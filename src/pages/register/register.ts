@@ -21,13 +21,17 @@ export class RegisterPage {
     email: any;
     name: any;
     villageID: any;
-    
+
     constructor(private nav: NavController, private ionicAuth: Auth, public user: User, public navParams: NavParams, public userData: UserData)
     {
 	this.status = navParams.get("status");
 	console.log(this.status);
-    } 
-  
+    }
+
+  public goBacktoLog() {
+    this.nav.setRoot(LoginPage);
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
@@ -35,9 +39,9 @@ export class RegisterPage {
   public register() {
     this.ionicAuth.signup(this.details).then(() => {
       console.log(this.details.email + this.details.password);
-	
+
 	this.ionicAuth.login('basic', this.details).then(() => {
-	    this.userData.logout() // if we're going to log in, make sure there isn't old data here 
+	    this.userData.logout() // if we're going to log in, make sure there isn't old data here
 	    console.log("Login succesful (on registration page!)");
 	    this.user.set("status", this.status);
             this.user.set("name", this.name);
@@ -47,7 +51,7 @@ export class RegisterPage {
 	}, error =>{
 	   console.log("Login failed on registration page. This should not happen");
        });
-	
+
 	this.nav.setRoot(TabsPage, {
 	    currentUsername: this.name,
 	    currentUserStatus: this.status,
@@ -65,8 +69,3 @@ export class RegisterPage {
   }
 
 }
-
-
-
-
-
