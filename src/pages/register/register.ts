@@ -21,7 +21,8 @@ export class RegisterPage {
     email: any;
     name: any;
     villageID: any;
-
+    newVillageP: boolean  = false;
+    
     constructor(private nav: NavController, private ionicAuth: Auth, public user: User, public navParams: NavParams, public userData: UserData)
     {
 	this.status = navParams.get("status");
@@ -32,6 +33,7 @@ export class RegisterPage {
     this.nav.setRoot(LoginPage);
   }
 
+    
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
@@ -45,7 +47,11 @@ export class RegisterPage {
 	    console.log("Login succesful (on registration page!)");
 	    this.user.set("status", this.status);
             this.user.set("name", this.name);
-	    this.user.set("villageID", this.villageID);
+	    if (this.newVillageP){
+		console.log("You should create a new villageID here!");
+	    } else{
+		this.user.set("villageID", this.villageID);
+	    }
 	    this.user.save();
 	    this.userData.login(this.details.email, this.name, this.status, this.villageID);
 	}, error =>{

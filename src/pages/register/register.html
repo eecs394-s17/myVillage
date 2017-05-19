@@ -31,11 +31,14 @@
 
 	    <ion-item class="reg-field">
               <ion-label fixed class="reg-form-label required">Village ID</ion-label>
-              <ion-input type="text" name="Password" placeholder="Password" [(ngModel)] = "villageID" required></ion-input>b
+              <ion-input type="text" name="Password" placeholder="Password" [(ngModel)] = "villageID"></ion-input>
             </ion-item>
 
-
-
+	    <ion-item class="reg-field">
+	      <ion-label fixed class="reg-form-label">Create a new village? </ion-label>
+	      <ion-checkbox name="newVillage" [(ngModel)]="newVillageP"></ion-checkbox>
+	    </ion-item>
+	    
            </ion-list>
 	</ion-col>
       </ion-row>
