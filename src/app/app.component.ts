@@ -1,8 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, MenuController, Nav } from 'ionic-angular';
+import { App, Platform, MenuController, Nav } from 'ionic-angular';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Auth, User, UserDetails, IDetailedError } from '@ionic/cloud-angular';
 
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -11,6 +12,9 @@ import { SchedulePage } from '../pages/schedule/schedule';
 import { LandingPage } from '../pages/landing/landing';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+import { GiftsPage } from '../pages/gifts/gifts';
+import { UserData } from '../providers/user-data';
+import { ServiceProvidersPage } from '../pages/service-providers/service-providers';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,8 +24,15 @@ export class MyApp {
 
   rootPage:any = LandingPage;
   pages: Array<{title: string, component: any}>;
+  menuPages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public menu: MenuController, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform,
+    public menu: MenuController,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    private ionicAuth: Auth,
+    public user: User,
+    public userData: UserData) {
     this.initializeApp();
 
     this.pages = [
@@ -33,7 +44,14 @@ export class MyApp {
       { title: 'Login Page', component: LoginPage },
       { title: 'Register Page', component: RegisterPage}
     ];
-  }
+    this.menuPages = [
+      { title: 'New Mom Care Plan', component: HomePage },
+      { title: 'Schedule', component: SchedulePage },
+      { title: 'Service Providers', component: ServiceProvidersPage },
+      { title: 'Gifts Page', component: GiftsPage },
+      { title: 'Logout', component: LoginPage },
+
+    ];  }
 
   initializeApp() {
     this.platform.ready().then(() => {
@@ -48,6 +66,11 @@ export class MyApp {
     // close the menu when clicking a link from the menu
     this.menu.close();
     // navigate to the new page if it is not the current page
+    if (page == "Logout") {
+      this.userData.logout();
+      this.ionicAuth.logout();
+      window.location.reload();
+    }
     this.nav.setRoot(page.component);
   }
 
