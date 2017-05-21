@@ -5,6 +5,7 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { villageID } from '../tabs/tabs';
 import { ServiceProvidersPage } from '../service-providers/service-providers';
 import * as moment from 'moment';
+import { ModalPage } from '../modal/modal';
 
 /*
   Generated class for the Schedule page.
@@ -61,14 +62,20 @@ export class SchedulePage {
     console.log('End date is: ', this.endDate.valueOf())
     console.log('Current day is: ' + this.currDay);
 
-    // this.tasks = this.angFireDB.database.list('/days/' + this.currDay + '/10/tasks');
-    this.tasks = this.angFireDB.database.list('/tasks/', {
+    // this.tasks = this.angFireDB.database.list('/tasks/', {
+    //   query: {
+    //     orderByChild: 'date',
+    //     // startAt: 0,
+    //     // endAt: 500000000000000
+    //     startAt: this.startDate.valueOf(),
+    //     endAt: this.endDate.valueOf()
+    //   }
+    // });
+    this.tasks = this.angFireDB.database.list(villageID + '/tasks/', {
       query: {
         orderByChild: 'date',
-        // startAt: 0,
-        // endAt: 500000000000000
-        startAt: this.startDate.valueOf(),
-        endAt: this.endDate.valueOf()
+        startAt: 0,
+        endAt: 9999999999999
       }
     });
 
@@ -177,6 +184,11 @@ export class SchedulePage {
   taskTaken(num) {
     this.taken = num
     console.log(this.taken);
+  }
+
+  openModal() {
+    let myModal = this.modalCtrl.create(ModalPage);
+    myModal.present();
   }
 
 }

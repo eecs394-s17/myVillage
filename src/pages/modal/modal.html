@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>New Registry Item</ion-title>
+    <ion-title>New Care Plan Item</ion-title>
 </ion-navbar>
 
 </ion-header>
@@ -25,11 +25,11 @@
 	<ion-item>
 		<!-- <ion-label>Task1</ion-label> -->
 		<ion-label>{{content[0]}}</ion-label>
-    <ion-checkbox [(ngModel)]="task1"></ion-checkbox>
+    <ion-checkbox [(ngModel)]="task1" (ionChange)="chooseTask(0)"></ion-checkbox>
 	</ion-item>
 	<ion-item>
 		<ion-label>{{content[1]}}</ion-label>
-    <ion-checkbox [(ngModel)]="task2"></ion-checkbox>
+    <ion-checkbox [(ngModel)]="task2" (ionChange)="chooseTask(1)"></ion-checkbox>
 	</ion-item>
 	<ion-item>
 	  <ion-label>When do you want it?</ion-label>

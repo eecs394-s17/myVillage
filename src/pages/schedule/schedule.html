@@ -23,29 +23,6 @@
 </ion-header>
 
 <ion-content>
-         <ion-menu [content]="mycontent" type="overlay">
-    <ion-header>
-      <ion-title>
-	Categories
-      </ion-title>
-    </ion-header>
-    <ion-content>
-      <ion-list>
-	<button ion-item (click)="navToSchedule('Schedule')">
-          Schedule
-	</button>
-	<button ion-item (click)="navToSchedule('Service')">
-          Service Provider
-	</button>
-	<button ion-item (click)="navToSchedule('Gifts')">
-          Gifts
-	</button>
-	<button ion-item (click)="navToSchedule('Logout')">
-          Logout
-	</button>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
 
   <ion-item>
     <ion-icon name="calendar" item-start></ion-icon>
@@ -68,6 +45,7 @@
     Current Day: {{days[currDay]}}
     <ion-icon class="curr-day-right" name="ios-arrow-forward"  (click)="nextDay()"></ion-icon>
   </p>
+  <button ion-button block (click)="openModal()">Add Task</button>
   <ion-list>
     <ion-card>
       <ion-item-divider sticky>
@@ -76,7 +54,7 @@
         </ion-label>
       </ion-item-divider>
       <ion-item-sliding #slidingItem *ngFor="let task of tasks | async" (click)="updateSchedule()">
-        <button ion-item (click)="taskTapped(task)">
+        <button ion-item *ngIf="task.taken == taken || taken == 2" (click)="taskTapped(task)">
           <h3>Description</h3>
           <p>
             {{task.name}} &mdash;
