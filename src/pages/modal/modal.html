@@ -32,15 +32,12 @@
     <ion-checkbox [(ngModel)]="task2" (ionChange)="chooseTask(1)"></ion-checkbox>
 	</ion-item>
 	<ion-item>
-	  <ion-label>When do you want it?</ion-label>
-	  <ion-select [(ngModel)]="gender">
-	    <ion-option value="0">12:00</ion-option>
-	    <ion-option value="1">1:00</ion-option>
-	    <ion-option value="2">2:00</ion-option>
-      <!-- <ion-option>
-        <ion-datetime displayFormat="MM/YYYY" pickerFormat="MMMM YYYY" [(ngModel)]="myDate"></ion-datetime>
-      </ion-option> -->
-	  </ion-select>
+	  <ion-label>What day do you want it?</ion-label>
+    <ion-datetime displayFormat="DDDD, MMM DD, YYYY" pickerFormat="MMM DD, YYYY" [(ngModel)]="taskDate"></ion-datetime>
 	</ion-item>
+  <ion-item>
+    <ion-label>What time do you want it?</ion-label>
+    <ion-datetime displayFormat="h:mm A" [(ngModel)]="taskTime"></ion-datetime>
+  </ion-item>
 	<button ion-button block (click)="closeModal()">Submit</button>
 </ion-content>

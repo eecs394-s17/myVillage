@@ -3,6 +3,8 @@ import { ViewController, NavController, NavParams } from 'ionic-angular';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 import { villageID } from '../tabs/tabs';
+import * as moment from 'moment';
+
 
 /*
   Generated class for the Modal page.
@@ -21,9 +23,11 @@ export class ModalPage {
   angFireDB: any;
   taskChecks: Array<boolean> = [false, false];
   taskName: String;
-  taskDate: 1234567;
+  taskDate: any;
+  taskTime: any;
+  taskDateTime: any;
   taskCategory: String;
- 
+
   constructor(public viewCtrl: ViewController, angFire: AngularFire, public navCtrl: NavController, public navParams: NavParams) {
     this.angFireDB = angFire;
   }
@@ -34,25 +38,28 @@ export class ModalPage {
   }
 
   closeModal() {
-    let count = 0;
+    console.log(this.taskDate);
+    console.log(this.taskTime);
+    this.taskDateTime = moment(this.taskDate + " " + this.taskTime);
     for (let bool of this.taskChecks) {
-      if ((bool) && (this.content[count] != 'n/a/')) {
-        this.taskName = this.content[count];
+      if ((bool) && (this.content[0] != 'n/a/')) {
+        this.taskName = this.content[0];
         this.tasks.push({
-          date: this.taskDate,
-          name: this.taskName,
           category: this.taskCategory,
+          datetime: this.taskDateTime.valueOf(),
           taken: 0
         });
       }
     }
     this.tasks.push({
-      date: this.taskDate,
       name: this.taskName,
       category: this.taskCategory,
+      datetime: this.taskDateTime.valueOf(),
       taken: 0
     })
+    console.log(moment.utc(this.taskDateTime.valueOf()).local());
     this.viewCtrl.dismiss();
+
   }
 
   getCategory(category) {
