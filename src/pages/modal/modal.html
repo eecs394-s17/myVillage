@@ -17,10 +17,10 @@
 	<ion-item>
 	  <ion-label>What type of help do you need?</ion-label>
 	  <ion-select [(ngModel)]="category" (ngModelChange)="getCategory(category)">
-	    <ion-option value="p">Physical</ion-option>
-	    <ion-option value="m">Mental/Emotional</ion-option>
-	    <ion-option value="n">Nutritional</ion-option>
-      <ion-option value="o">Other</ion-option>
+	    <ion-option value="physical">Physical</ion-option>
+	    <ion-option value="mental">Mental/Emotional</ion-option>
+	    <ion-option value="nutritional">Nutritional</ion-option>
+      <ion-option value="other">Other</ion-option>
 	  </ion-select>
 	</ion-item>
   <ng-container *ngIf="category">
@@ -31,7 +31,7 @@
   </ng-container>
 	<ion-item>
 	  <ion-label>What day do you want it?</ion-label>
-    <ion-datetime displayFormat="DDDD, MMMM D, YYYY" pickerFormat="MMM DD, YYYY" [(ngModel)]="taskDate"></ion-datetime>
+    <ion-datetime displayFormat="DDDD, MMMM D, YYYY" pickerFormat="MMM DD, YYYY" min="2017" max="2017" [(ngModel)]="taskDate"></ion-datetime>
 	</ion-item>
   <ion-item>
     <ion-label>What time do you want it?</ion-label>

@@ -17,8 +17,10 @@ import * as moment from 'moment';
   templateUrl: 'modal.html'
 })
 export class ModalPage {
-  content: Array<string> = ['n/a', 'n/a']; // = ['Task1', 'Task2'];
-  catHash = { 'p': ['physical task 1', 'physical task 2'], 'm': ['mental task 1', 'mental task 2'], 'n': ['nutrition task 1', 'nutrition task 2'] };
+  content: Array<string>; // = ['Task1', 'Task2'];
+  catHash = { 'physical': ['physical task 1', 'physical task 2'],
+              'mental': ['mental task 1', 'mental task 2'],
+              'nutritional': ['nutritional task 1', 'nutritional task 2'] };
   tasks: FirebaseListObservable<any>;
   angFireDB: any;
   taskChecks: Array<boolean> = [false, false];
@@ -38,16 +40,17 @@ export class ModalPage {
   }
 
   closeModal() {
-    console.log(this.taskDate);
-    console.log(this.taskTime);
     this.taskDateTime = moment(this.taskDate + " " + this.taskTime);
-    for (let i in this.taskChecks) {
-      console.log("i =" + i)
-      console.log("Task Name, Category, & DateTime");
-      console.log(this.taskName); // for some reason taskName isn't getting saved
-      console.log(this.taskCategory);
-      console.log(this.taskDateTime);
-      if ((this.taskChecks[i]) && (this.content[i] != 'n/a/')) {
+    console.log("Content 0 = " + this.content[0]);
+    console.log("Content 1 = " + this.content[1]);
+    for (var i=0; i<this.content.length; i++) {
+      console.log("i=" + i);
+      console.log("Content " + i + "= " + this.content[i]);
+      console.log("Task Name: " + this.taskName); // for some reason taskName isn't getting saved
+      console.log("Category: " + this.taskCategory);
+      console.log("DateTime: " + this.taskDateTime);
+      if (this.content[i]) {
+        console.log("Content " + i + "= " + this.content[i]);
         this.taskName = this.content[i];
         this.tasks.push({
           name: this.taskName,
@@ -55,9 +58,7 @@ export class ModalPage {
           datetime: this.taskDateTime.valueOf(),
           taken: 0
         });
-      }
-      else {
-        alert("Please fill out all fields.")
+        console.log("This is being pushed");
       }
     }
 

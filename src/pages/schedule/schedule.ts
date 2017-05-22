@@ -27,12 +27,6 @@ export class SchedulePage {
   currDay: number;
   tasks: FirebaseListObservable<any>;
   test: FirebaseListObservable<any>;
-  months = [
-    "January", "February", "March",
-    "April", "May", "June", "July",
-    "August", "September", "October",
-    "November", "December"
-  ];
   days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
   taken = 2;  // 2 == all, 0 == untaken, 1 == taken
 
@@ -48,15 +42,17 @@ export class SchedulePage {
   ) {
   	this.angFireDB = angFire;
   	this.startDate = moment();
-    this.currDate = moment().toISOString();
+    console.log("Start date is: " + this.startDate);
+    this.currDate = this.startDate.toISOString();
+    console.log("Current date is: " + this.currDate);
     this.currDay = moment().day();
     this.endDate = moment().add(1, 'days');
-
   }
 
   ionViewDidLoad() {
     this.app.setTitle('Schedule');
-    this.updateSchedule();
+    this.endDate = this.startDate.add(1, 'days');
+    // this.updateSchedule();
     console.log('Village ID: ' + villageID);
     console.log('Start date is: ' + this.startDate.valueOf());
     console.log('End date is: ', this.endDate.valueOf())
@@ -73,9 +69,7 @@ export class SchedulePage {
     // });
     this.tasks = this.angFireDB.database.list(villageID + '/tasks/', {
       query: {
-        orderByChild: 'date',
-        startAt: 0,
-        endAt: 9999999999999
+        orderByChild: 'datetime'
       }
     });
 
@@ -84,7 +78,7 @@ export class SchedulePage {
   updateTasks() {
     this.tasks = this.angFireDB.database.list('/tasks/', {
       query: {
-        orderByChild: 'date',
+        orderByChild: 'datetime',
         startAt: this.startDate.valueOf(),
         endAt: this.endDate.valueOf()
       }
@@ -109,8 +103,9 @@ export class SchedulePage {
 
   nextDay() {
     this.startDate = this.endDate;
-    console.log(this.startDate);
+    console.log("StartDate: " + this.startDate);
     this.currDate = this.startDate.toISOString();
+    console.log("CurrDate: " + this.currDate);
     this.endDate = this.startDate.clone().add(1, 'days');
   	this.currDay = this.startDate.day();
   	console.log(this.currDay);
@@ -123,8 +118,9 @@ export class SchedulePage {
     console.log(this.startDate);
     this.startDate.subtract(1, 'days');
     this.endDate = this.startDate.clone().add(1, 'days');
-    console.log(this.startDate);
+    console.log("StartDate: " + this.startDate);
     this.currDate = this.startDate.toISOString();
+    console.log("CurrDate: " + this.currDate);
     this.currDay = this.startDate.day();
     this.daySched = this.angFireDB.database.list(villageID + '/days/' + this.currDay + '/');
     this.updateTasks();
