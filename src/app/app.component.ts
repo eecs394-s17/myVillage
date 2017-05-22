@@ -4,6 +4,7 @@ import { App, Platform, MenuController, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Auth, User, UserDetails, IDetailedError } from '@ionic/cloud-angular';
+import { UserData } from '../providers/user-data';
 
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -13,8 +14,10 @@ import { LandingPage } from '../pages/landing/landing';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { GiftsPage } from '../pages/gifts/gifts';
-import { UserData } from '../providers/user-data';
 import { ServiceProvidersPage } from '../pages/service-providers/service-providers';
+import { AboutPage } from '../pages/about/about';
+import { FAQsPage } from '../pages/faqs/faqs';
+import { MomentsPage } from '../pages/moments/moments';
 
 @Component({
   templateUrl: 'app.html'
@@ -42,13 +45,20 @@ export class MyApp {
       { title: 'Landing Page', component: LandingPage },
       { title: 'Schedule Page', component: SchedulePage },
       { title: 'Login Page', component: LoginPage },
-      { title: 'Register Page', component: RegisterPage}
+      { title: 'Register Page', component: RegisterPage},
+      { title: 'About Page', component: AboutPage},
+      { title: 'FAQs Page', component: FAQsPage},
+      { title: 'Moments Page', component: MomentsPage }
     ];
+
     this.menuPages = [
       { title: 'New Mom Care Plan', component: HomePage },
       { title: 'Schedule', component: SchedulePage },
       { title: 'Service Providers', component: ServiceProvidersPage },
-      { title: 'Gifts Page', component: GiftsPage },
+      { title: 'Gifts', component: GiftsPage },
+      { title: 'Moments', component: MomentsPage },
+      { title: 'FAQs', component: FAQsPage},
+      { title: 'About', component: AboutPage},
       { title: 'Logout', component: LoginPage },
 
     ];  }
