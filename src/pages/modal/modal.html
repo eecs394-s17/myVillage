@@ -18,22 +18,20 @@
 	  <ion-label>What type of help do you need?</ion-label>
 	  <ion-select [(ngModel)]="category" (ngModelChange)="getCategory(category)">
 	    <ion-option value="p">Physical</ion-option>
-	    <ion-option value="m">Mental</ion-option>
+	    <ion-option value="m">Mental/Emotional</ion-option>
 	    <ion-option value="n">Nutritional</ion-option>
+      <ion-option value="o">Other</ion-option>
 	  </ion-select>
 	</ion-item>
-	<ion-item>
-		<!-- <ion-label>Task1</ion-label> -->
-		<ion-label>{{content[0]}}</ion-label>
-    <ion-checkbox [(ngModel)]="task1" (ionChange)="chooseTask(0)"></ion-checkbox>
-	</ion-item>
-	<ion-item>
-		<ion-label>{{content[1]}}</ion-label>
-    <ion-checkbox [(ngModel)]="task2" (ionChange)="chooseTask(1)"></ion-checkbox>
-	</ion-item>
+  <ng-container *ngIf="category">
+    <ion-item  *ngFor="let c of content">
+  		<ion-label>{{c}}</ion-label>
+      <ion-checkbox [(ngModel)]="task1" (ionChange)="chooseTask(0)"></ion-checkbox>
+  	</ion-item>
+  </ng-container>
 	<ion-item>
 	  <ion-label>What day do you want it?</ion-label>
-    <ion-datetime displayFormat="DDDD, MMM DD, YYYY" pickerFormat="MMM DD, YYYY" [(ngModel)]="taskDate"></ion-datetime>
+    <ion-datetime displayFormat="DDDD, MMMM D, YYYY" pickerFormat="MMM DD, YYYY" [(ngModel)]="taskDate"></ion-datetime>
 	</ion-item>
   <ion-item>
     <ion-label>What time do you want it?</ion-label>
