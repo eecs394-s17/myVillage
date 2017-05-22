@@ -41,54 +41,35 @@ export class SchedulePage {
       public nav: NavController
   ) {
   	this.angFireDB = angFire;
-  	this.startDate = moment();
+  	this.startDate = moment().startOf('day');
     console.log("Start date is: " + this.startDate);
-    this.currDate = this.startDate.toISOString();
+    this.currDate = this.startDate.format();
     console.log("Current date is: " + this.currDate);
-    this.currDay = moment().day();
-    this.endDate = moment().add(1, 'days');
+    this.currDay = this.startDate.day();
+    this.endDate = this.startDate.add(1, 'days');
   }
 
   ionViewDidLoad() {
     this.app.setTitle('Schedule');
-    this.endDate = this.startDate.add(1, 'days');
-    // this.updateSchedule();
-    console.log('Village ID: ' + villageID);
-    console.log('Start date is: ' + this.startDate.valueOf());
-    console.log('End date is: ', this.endDate.valueOf())
-    console.log('Current day is: ' + this.currDay);
 
-    // this.tasks = this.angFireDB.database.list('/tasks/', {
-    //   query: {
-    //     orderByChild: 'date',
-    //     // startAt: 0,
-    //     // endAt: 500000000000000
-    //     startAt: this.startDate.valueOf(),
-    //     endAt: this.endDate.valueOf()
-    //   }
-    // });
     this.tasks = this.angFireDB.database.list(villageID + '/tasks/', {
-      query: {
-        orderByChild: 'datetime'
-      }
-    });
-
-  }
-
-  updateTasks() {
-    this.tasks = this.angFireDB.database.list('/tasks/', {
       query: {
         orderByChild: 'datetime',
         startAt: this.startDate.valueOf(),
         endAt: this.endDate.valueOf()
       }
     });
+
   }
 
-  updateSchedule() {
-    // Close any open sliding items when the schedule updates
-    console.log('loaded schedule page');
-    console.log(this.currDay);
+  updateTasks() {
+    this.tasks = this.angFireDB.database.list(villageID + '/tasks/', {
+      query: {
+        orderByChild: 'datetime',
+        startAt: this.startDate.valueOf(),
+        endAt: this.endDate.valueOf()
+      }
+    });
   }
 
   goToSessionDetail(sessionData: any) {
@@ -104,8 +85,9 @@ export class SchedulePage {
   nextDay() {
     this.startDate = this.endDate;
     console.log("StartDate: " + this.startDate);
-    this.currDate = this.startDate.toISOString();
+    this.currDate = this.startDate.format();
     console.log("CurrDate: " + this.currDate);
+    console.log("EndDate: " + this.endDate);
     this.endDate = this.startDate.clone().add(1, 'days');
   	this.currDay = this.startDate.day();
   	console.log(this.currDay);
@@ -119,8 +101,9 @@ export class SchedulePage {
     this.startDate.subtract(1, 'days');
     this.endDate = this.startDate.clone().add(1, 'days');
     console.log("StartDate: " + this.startDate);
-    this.currDate = this.startDate.toISOString();
+    this.currDate = this.startDate.format();
     console.log("CurrDate: " + this.currDate);
+    console.log("EndDate: " + this.endDate);
     this.currDay = this.startDate.day();
     this.daySched = this.angFireDB.database.list(villageID + '/days/' + this.currDay + '/');
     this.updateTasks();
@@ -131,10 +114,12 @@ export class SchedulePage {
     console.log('key' + key);
     this.startDate.day(key);
     this.endDate = this.startDate.clone().add(1, 'days');
-    this.currDate = this.startDate.toISOString();
+    this.currDate = this.startDate.format();
     this.currDay = this.startDate.day();
     console.log('currDay: ' + this.currDay);
     console.log('nextDay: ' + this.endDate.day());
+    console.log("startDate: " + this.startDate);
+    console.log("EndDate: " + this.endDate);
     console.log('new currDay: ' + this.currDay);
     this.daySched = this.angFireDB.database.list(villageID + '/days/' + this.currDay + '/');
     console.log(this.daySched);

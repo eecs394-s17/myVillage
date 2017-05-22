@@ -5,7 +5,7 @@
         <ion-icon name='menu'></ion-icon>
       </button>
     </ion-buttons>
-    <ion-segment [(ngModel)]="segment" (ionChange)="updateSchedule()">
+    <ion-segment [(ngModel)]="segment">
       <ion-segment-button value="alltasks" (click)="taskTaken(2)">
         All Tasks
       </ion-segment-button>
@@ -60,7 +60,7 @@
         </button>
       </ion-item-sliding>
     </ion-card>
-		<ion-card *ngFor="let hour of daySched | async" (click)="updateSchedule()" class="red">
+		<ion-card *ngFor="let hour of daySched | async">
       <ion-item-divider sticky>
         <ion-label>
           {{hour.time}}
@@ -78,7 +78,7 @@
 		</ion-card>
 	</ion-list>
   <ion-list>
-    <ion-item-sliding #slidingItem *ngFor="let task of tasks | async" (click)="updateSchedule()">
+    <ion-item-sliding #slidingItem *ngFor="let task of tasks | async">
         <button ion-item *ngIf="task.taken == taken || taken == 2" (click)="taskTapped(task)">
           <h3>Description</h3>
           <p>

@@ -24,14 +24,14 @@
 	  </ion-select>
 	</ion-item>
   <ng-container *ngIf="category">
-    <ion-item  *ngFor="let c of content">
+    <ion-item *ngFor="let c of content">
   		<ion-label>{{c}}</ion-label>
       <ion-checkbox [(ngModel)]="task + $index" (ionChange)="chooseTask($index)"></ion-checkbox>
   	</ion-item>
   </ng-container>
 	<ion-item>
 	  <ion-label>What day do you want it?</ion-label>
-    <ion-datetime displayFormat="DDDD, MMMM D, YYYY" pickerFormat="MMM DD, YYYY" min="2017" max="2017" [(ngModel)]="taskDate"></ion-datetime>
+    <ion-datetime displayFormat="DDDD, MMMM D, YYYY" pickerFormat="MMM DD, YYYY" min="2017" max="2018" [(ngModel)]="taskDate"></ion-datetime>
 	</ion-item>
   <ion-item>
     <ion-label>What time do you want it?</ion-label>

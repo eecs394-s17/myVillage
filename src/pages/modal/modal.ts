@@ -20,7 +20,7 @@ export class ModalPage {
   content: Array<string>; // = ['Task1', 'Task2'];
   catHash = { 'physical': ['physical task 1', 'physical task 2'],
               'mental': ['mental task 1', 'mental task 2'],
-              'nutritional': ['nutritional task 1', 'nutritional task 2'] };
+              'nutritional': ['nutritional task 1', 'nutritional task 2']};
   tasks: FirebaseListObservable<any>;
   angFireDB: any;
   taskChecks: Array<boolean> = [false, false];
@@ -61,15 +61,6 @@ export class ModalPage {
         console.log("This is being pushed");
       }
     }
-
-    // if (this.taskName && this.taskCategory && this.taskDateTime) {
-    //   this.tasks.push({
-    //     name: this.taskName,
-    //     category: this.taskCategory,
-    //     datetime: this.taskDateTime.valueOf(),
-    //     taken: 0
-    //   })
-    // }
 
     // console.log(moment.utc(this.taskDateTime.valueOf()).local());
     this.viewCtrl.dismiss();
