@@ -42,9 +42,7 @@ export class SchedulePage {
   ) {
   	this.angFireDB = angFire;
   	this.startDate = moment().startOf('day');
-    console.log("Start date is: " + this.startDate);
     this.currDate = this.startDate.format();
-    console.log("Current date is: " + this.currDate);
     this.currDay = this.startDate.day();
     this.endDate = this.startDate.add(1, 'days');
   }
@@ -79,18 +77,13 @@ export class SchedulePage {
     //   name: sessionData.name,
     //   session: sessionData
     // });
-    console.log('GoTo button');
   }
 
   nextDay() {
     this.startDate = this.endDate;
-    console.log("StartDate: " + this.startDate);
     this.currDate = this.startDate.format();
-    console.log("CurrDate: " + this.currDate);
-    console.log("EndDate: " + this.endDate);
     this.endDate = this.startDate.clone().add(1, 'days');
   	this.currDay = this.startDate.day();
-  	console.log(this.currDay);
   	this.daySched = this.angFireDB.database.list(villageID + '/days/' + this.currDay + '/');
   	console.log(villageID + '/days/' + this.currDay + '/');
     this.updateTasks();
@@ -100,29 +93,18 @@ export class SchedulePage {
     console.log(this.startDate);
     this.startDate.subtract(1, 'days');
     this.endDate = this.startDate.clone().add(1, 'days');
-    console.log("StartDate: " + this.startDate);
     this.currDate = this.startDate.format();
-    console.log("CurrDate: " + this.currDate);
-    console.log("EndDate: " + this.endDate);
     this.currDay = this.startDate.day();
     this.daySched = this.angFireDB.database.list(villageID + '/days/' + this.currDay + '/');
     this.updateTasks();
   }
 
   changeDay(key) {
-    console.log('This is logging');
-    console.log('key' + key);
-    this.startDate.day(key);
+    this.startDate.day(key); // change date window based on day selected
     this.endDate = this.startDate.clone().add(1, 'days');
     this.currDate = this.startDate.format();
     this.currDay = this.startDate.day();
-    console.log('currDay: ' + this.currDay);
-    console.log('nextDay: ' + this.endDate.day());
-    console.log("startDate: " + this.startDate);
-    console.log("EndDate: " + this.endDate);
-    console.log('new currDay: ' + this.currDay);
     this.daySched = this.angFireDB.database.list(villageID + '/days/' + this.currDay + '/');
-    console.log(this.daySched);
     this.updateTasks();
   }
 
@@ -164,7 +146,6 @@ export class SchedulePage {
 
   taskTaken(num) {
     this.taken = num
-    console.log(this.taken);
   }
 
   openModal() {
