@@ -21,6 +21,7 @@ export class RegisterPage {
     email: any;
     name: any;
     villageID: any;
+    lastName: any;
 
     constructor(private nav: NavController, private ionicAuth: Auth, public user: User, public navParams: NavParams, public userData: UserData)
     {
@@ -45,15 +46,16 @@ export class RegisterPage {
 	    console.log("Login succesful (on registration page!)");
 	    this.user.set("status", this.status);
             this.user.set("name", this.name);
+	    this.user.set("lastName", this.lastName);
 	    this.user.set("villageID", this.villageID);
 	    this.user.save();
-	    this.userData.login(this.details.email, this.name, this.status, this.villageID);
+	    this.userData.login(this.details.email, this.name, this.status, this.villageID, this.lastName);
 	}, error =>{
 	   console.log("Login failed on registration page. This should not happen");
        });
 
 	this.nav.setRoot(TabsPage, {
-	    currentUsername: this.name,
+	    currentUsername: this.name + ' ' + this.lastName,
 	    currentUserStatus: this.status,
 	    villageID: this.villageID
 	});

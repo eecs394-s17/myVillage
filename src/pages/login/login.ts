@@ -51,12 +51,13 @@ export class LoginPage {
 	   else {
 	       console.log("This user is NOT authenticated");
 	   }
-	   let curUsername = this.user.get('name', 'Anonymous Villager');
+	   let curUsername = this.user.get('name', 'Anonymous');
+	   let curLastName = this.user.get('lastName', 'Villager');
 	   let curUserstat = this.user.get('status', 'V');
 	   let curVillageID = this.user.get('villageID', 'No village ID');
-	   this.userData.login(this.details.email, curUsername, curUserstat, curVillageID);
+	   this.userData.login(this.details.email, curUsername, curUserstat, curVillageID, curLastName);
 	   this.nav.setRoot(TabsPage, {
-	       currentUsername: curUsername,
+	       currentUsername: curUsername + ' ' + curLastName,
 	       currentUserStatus: curUserstat,
 	       villageID: curVillageID
 	   });
