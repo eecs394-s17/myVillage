@@ -14,6 +14,10 @@ import { RegisterPage } from '../pages/register/register';
 import { GiftsPage } from '../pages/gifts/gifts';
 import { ServiceProvidersPage } from '../pages/service-providers/service-providers';
 import { ModalPage } from '../pages/modal/modal';
+import { AboutPage } from '../pages/about/about';
+import { FAQsPage } from '../pages/faqs/faqs';
+import { MomentsPage } from '../pages/moments/moments';
+
 import * as moment from 'moment';
 
 import { AngularFireModule } from 'angularfire2';
@@ -53,7 +57,10 @@ export const firebaseConfig = {
     RegisterPage,
     GiftsPage,
     ServiceProvidersPage,
-    ModalPage
+    ModalPage,
+    AboutPage,
+    FAQsPage,
+    MomentsPage
   ],
   imports: [
       IonicModule.forRoot(MyApp),
@@ -73,7 +80,10 @@ export const firebaseConfig = {
     RegisterPage,
     GiftsPage,
     ServiceProvidersPage,
-    ModalPage
+    ModalPage,
+    AboutPage,
+    FAQsPage,
+    MomentsPage
   ],
   providers: [
     StatusBar,

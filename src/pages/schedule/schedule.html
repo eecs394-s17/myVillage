@@ -1,10 +1,11 @@
 <ion-header>
-  <ion-navbar no-border-bottom>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-
-    <ion-segment [(ngModel)]="segment" (ionChange)="updateSchedule()">
+  <ion-navbar no-border-bottom align-title="center">
+    <ion-buttons left>
+      <button ion-button menuToggle icon-only>
+        <ion-icon name='menu'></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-segment [(ngModel)]="segment">
       <ion-segment-button value="alltasks" (click)="taskTaken(2)">
         All Tasks
       </ion-segment-button>
@@ -15,42 +16,15 @@
         Untaken Tasks
       </ion-segment-button>
     </ion-segment>
-
-    <ion-buttons end>
-    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 <ion-content>
-         <ion-menu [content]="mycontent" type="overlay">
-    <ion-header>
-      <ion-title>
-	Categories
-      </ion-title>
-    </ion-header>
-    <ion-content>
-      <ion-list>
-	<button ion-item (click)="navToSchedule('Schedule')">
-          Schedule
-	</button>
-	<button ion-item (click)="navToSchedule('Service')">
-          Service Provider
-	</button>
-	<button ion-item (click)="navToSchedule('Gifts')">
-          Gifts
-	</button>
-	<button ion-item (click)="navToSchedule('Logout')">
-          Logout
-	</button>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
-
   <ion-item>
     <ion-icon name="calendar" item-start></ion-icon>
     <ion-label>Date</ion-label>
-    <ion-datetime displayFormat="MMM DD, YYYY" pickerFormat="MMMM DD, YYYY" max="2050" [(ngModel)]="currDate"></ion-datetime>
+    <ion-datetime displayFormat="MMM DD, YYYY" pickerFormat="MMMM DD, YYYY" max="2050" [(ngModel)]="currDate">
+    </ion-datetime>
   </ion-item>
 
   <div id="btn-holder">
@@ -64,15 +38,16 @@
   </div>
 
   <p>
-    <ion-icon class="curr-day-left" name="ios-arrow-back"  (click)="prevDay()"></ion-icon>
+    <ion-icon class="curr-day-left" name="arrow-back"  (click)="prevDay()"></ion-icon>
     Current Day: {{days[currDay]}}
-    <ion-icon class="curr-day-right" name="ios-arrow-forward"  (click)="nextDay()"></ion-icon>
+    <ion-icon class="curr-day-right" name="arrow-forward"  (click)="nextDay()"></ion-icon>
   </p>
+  <button ion-button block (click)="openModal()">Add Task</button>
   <ion-list>
     <ion-card>
       <ion-item-divider sticky>
         <ion-label>
-          9:00
+          9:00 AM
         </ion-label>
       </ion-item-divider>
       <ion-item-sliding #slidingItem *ngFor="let task of tasks | async" (click)="updateSchedule()">
@@ -85,7 +60,7 @@
         </button>
       </ion-item-sliding>
     </ion-card>
-		<ion-card *ngFor="let hour of daySched | async" (click)="updateSchedule()" class="red">
+		<ion-card *ngFor="let hour of daySched | async">
       <ion-item-divider sticky>
         <ion-label>
           {{hour.time}}
@@ -103,7 +78,7 @@
 		</ion-card>
 	</ion-list>
   <ion-list>
-    <ion-item-sliding #slidingItem *ngFor="let task of tasks | async" (click)="updateSchedule()">
+    <ion-item-sliding #slidingItem *ngFor="let task of tasks | async">
         <button ion-item *ngIf="task.taken == taken || taken == 2" (click)="taskTapped(task)">
           <h3>Description</h3>
           <p>

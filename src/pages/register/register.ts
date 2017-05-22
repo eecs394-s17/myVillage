@@ -26,8 +26,8 @@ export class RegisterPage {
     villageID: any;
     newVillageP: boolean  = false;
     newKeyVal: any; 
+    lastName: any;
 
-    
     constructor(private nav: NavController, private ionicAuth: Auth, public user: User, public navParams: NavParams, public userData: UserData, public angFireDB: AngularFire)
     {
 	this.status = navParams.get("status");
@@ -68,7 +68,8 @@ export class RegisterPage {
 	    console.log("Login succesful (on registration page!)");
 	    this.user.set("status", this.status);
             this.user.set("name", this.name);
-	    
+	    this.user.set("lastName", this.lastName);
+
 	    if (this.newVillageP) {
 		console.log("You should create a new villageID here!");
 
@@ -90,6 +91,8 @@ export class RegisterPage {
 		// this id would be added to the symbol table
 		var newSymbolTable = this.angFireDB.database.list('/villageSymbolMap/' + this.newKeyVal);
 		newSymbolTable.push(newVillagePush.key);
+
+		this.villageID = newVillagePush.key;
 	    } else{
 		if (this.villageID == "village") {
 		    this.user.set("villageID", this.villageID);
@@ -106,18 +109,22 @@ export class RegisterPage {
 			    console.log("Corresponding villageID...");
 			    console.log(vals[i].$value);
 			    this.user.set("villageID", '/villages/' + vals[i].$value);
+			    this.villageID = '/villages/' + vals[i].$value;
 			}
 		    });
 		}
 	    }
+
+	    console.log("This is the current villageID");
+	    console.log(this.villageID);
 	    this.user.save();
-	    this.userData.login(this.details.email, this.name, this.status, this.villageID);
+	    this.userData.login(this.details.email, this.name, this.status, this.villageID, this.lastName);
 	}, error =>{
 	   console.log("Login failed on registration page. This should not happen");
        });
 
 	this.nav.setRoot(TabsPage, {
-	    currentUsername: this.name,
+	    currentUsername: this.name + ' ' + this.lastName,
 	    currentUserStatus: this.status,
 	    villageID: this.villageID
 	});

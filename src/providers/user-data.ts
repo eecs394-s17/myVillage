@@ -22,14 +22,15 @@ export class UserData {
     console.log('Hello UserData Provider');
   }
 
-    login(username: string, usersName: string, usersStat: string, villageID: string): void {
-	this.storage.set(this.HAS_LOGGED_IN, true);
-	this.setUsername(username);
-	this.storage.set(this.NAME_OF_USER, usersName);
-	this.storage.set(this.STATUS_OF_USER, usersStat);
-	this.events.publish('user:login');
-	this.storage.set('villageID', villageID);
-	console.log('saved in user-data' + username + ', ' + usersName + ', ' + usersStat);
+  login(username: string, usersName: string, usersStat: string, villageID: string, usersLastName: string): void {
+			this.storage.set(this.HAS_LOGGED_IN, true);
+			this.setUsername(username);
+			this.storage.set(this.NAME_OF_USER, usersName);
+			this.storage.set(this.STATUS_OF_USER, usersStat);
+			this.storage.set('USERS_LAST_NAME', usersLastName);
+			this.events.publish('user:login');
+			this.storage.set('villageID', villageID);
+			console.log('saved in user-data' + username + ', ' + usersName + ', ' + usersStat);
   };
 
   signup(username: string): void {
@@ -44,6 +45,7 @@ export class UserData {
       this.storage.remove(this.NAME_OF_USER);
       this.storage.remove(this.STATUS_OF_USER);
       this.storage.remove('villageID');
+      this.storage.remove('USERS_LAST_NAME');
       this.events.publish('user:logout');
   };
 
@@ -63,6 +65,13 @@ export class UserData {
     	console.log('user-data' + value);
       return value;
     });
+  };
+		
+  getLastName(): Promise<string> {
+			return this.storage.get('USERS_LAST_NAME').then((value) => {
+    	    console.log('user-data' + value);
+					return value;
+			});
   };
 
   getStatus(): Promise<string> {

@@ -29,10 +29,12 @@ export class LandingPage {
 		this.userData.getName().then((curUserName) => {
 		    this.userData.getStatus().then((curUserStatus) => {
 			this.userData.getVillageID().then((curVillageID) => {
-			    this.nav.setRoot(TabsPage, {
-				currentUsername: curUserName,
-				currentUserStatus: curUserStatus,
-				villageID: curVillageID
+			    this.userData.getLastName().then((curLastName) => {
+				this.nav.setRoot(TabsPage, {
+				    currentUsername: curUserName + ' ' + curLastName,
+				    currentUserStatus: curUserStatus,
+				    villageID: curVillageID
+				});
 			    });
 			});
 		    });

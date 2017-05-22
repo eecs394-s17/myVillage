@@ -19,6 +19,7 @@ import { UserData } from '../../providers/user-data';
 import { LoginPage } from '../login/login';
 import { ModalPage } from '../modal/modal';
 import { villageID } from '../tabs/tabs';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -32,8 +33,16 @@ export class HomePage {
   showStyle: false;
   IsMother: any;
   IsVillager: any;
-    
-  constructor(public modalCtrl: ModalController, private nav: NavController, public navParams: NavParams, public alertCtrl: AlertController, angFire: AngularFire, private ionicAuth: Auth, public user: User,public userData: UserData) {
+
+  constructor(public modalCtrl: ModalController,
+    private nav: NavController,
+    public navParams: NavParams,
+    public alertCtrl: AlertController,
+    angFire: AngularFire,
+    private ionicAuth: Auth,
+    public user: User,
+    public userData: UserData,
+    public menuCtrl: MenuController) {
     this.angFireDB = angFire;
     this.IsMother = isMother;
     this.IsVillager = isVillager;
@@ -42,7 +51,7 @@ export class HomePage {
   ionViewDidLoad() {
     this.tasks = this.angFireDB.database.list(villageID + '/tasks/', {
       query: {
-        orderByChild: 'date',
+        orderByChild: 'datetime',
         startAt: 0,
         endAt: 9999999999999
       }
@@ -148,28 +157,28 @@ export class HomePage {
     myModal.present();
   }
 
-  navToSchedule(event) {
-    console.log(event);
-    switch (event){
-      case "Schedule":
-        this.nav.push(SchedulePage);
-        break;
-      case "Gifts":
-        //this.nav.push(GiftsPage);
-        break;
-      case "Service":
-        this.nav.push(ServiceProvidersPage);
-        break;
-
-      case "Logout":
-        //this.nav.setRoot(LoginPage);
-        this.userData.logout();
-        this.ionicAuth.logout();
-        window.location.reload();
-        break;
-
-      default:
-        break;
-    }
-  }
+  // navToSchedule(event) {
+  //   console.log(event);
+  //   switch (event){
+  //     case "Schedule":
+  //       this.nav.push(SchedulePage);
+  //       break;
+  //     case "Gifts":
+  //       //this.nav.push(GiftsPage);
+  //       break;
+  //     case "Service":
+  //       this.nav.push(ServiceProvidersPage);
+  //       break;
+  //
+  //     case "Logout":
+  //       //this.nav.setRoot(LoginPage);
+  //       this.userData.logout();
+  //       this.ionicAuth.logout();
+  //       window.location.reload();
+  //       break;
+  //
+  //     default:
+  //       break;
+  //   }
+  // }
 }
