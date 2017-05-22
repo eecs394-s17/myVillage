@@ -38,16 +38,16 @@
   </div>
 
   <p>
-    <ion-icon class="curr-day-left" name="ios-arrow-back"  (click)="prevDay()"></ion-icon>
+    <ion-icon class="curr-day-left" name="arrow-back"  (click)="prevDay()"></ion-icon>
     Current Day: {{days[currDay]}}
-    <ion-icon class="curr-day-right" name="ios-arrow-forward"  (click)="nextDay()"></ion-icon>
+    <ion-icon class="curr-day-right" name="arrow-forward"  (click)="nextDay()"></ion-icon>
   </p>
-  <button ion-button block (click)="openModal()">Add Task</button>"
+  <button ion-button block (click)="openModal()">Add Task</button>
   <ion-list>
     <ion-card>
       <ion-item-divider sticky>
         <ion-label>
-          9:00
+          9:00 AM
         </ion-label>
       </ion-item-divider>
       <ion-item-sliding #slidingItem *ngFor="let task of tasks | async" (click)="updateSchedule()">
