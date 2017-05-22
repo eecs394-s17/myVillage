@@ -26,7 +26,7 @@
   <ng-container *ngIf="category">
     <ion-item  *ngFor="let c of content">
   		<ion-label>{{c}}</ion-label>
-      <ion-checkbox [(ngModel)]="task1" (ionChange)="chooseTask(0)"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="task + $index" (ionChange)="chooseTask($index)"></ion-checkbox>
   	</ion-item>
   </ng-container>
 	<ion-item>

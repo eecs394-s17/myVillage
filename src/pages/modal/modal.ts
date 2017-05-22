@@ -41,23 +41,36 @@ export class ModalPage {
     console.log(this.taskDate);
     console.log(this.taskTime);
     this.taskDateTime = moment(this.taskDate + " " + this.taskTime);
-    for (let bool of this.taskChecks) {
-      if ((bool) && (this.content[0] != 'n/a/')) {
-        this.taskName = this.content[0];
+    for (let i in this.taskChecks) {
+      console.log("i =" + i)
+      console.log("Task Name, Category, & DateTime");
+      console.log(this.taskName); // for some reason taskName isn't getting saved
+      console.log(this.taskCategory);
+      console.log(this.taskDateTime);
+      if ((this.taskChecks[i]) && (this.content[i] != 'n/a/')) {
+        this.taskName = this.content[i];
         this.tasks.push({
+          name: this.taskName,
           category: this.taskCategory,
           datetime: this.taskDateTime.valueOf(),
           taken: 0
         });
       }
+      else {
+        alert("Please fill out all fields.")
+      }
     }
-    this.tasks.push({
-      name: this.taskName,
-      category: this.taskCategory,
-      datetime: this.taskDateTime.valueOf(),
-      taken: 0
-    })
-    console.log(moment.utc(this.taskDateTime.valueOf()).local());
+
+    // if (this.taskName && this.taskCategory && this.taskDateTime) {
+    //   this.tasks.push({
+    //     name: this.taskName,
+    //     category: this.taskCategory,
+    //     datetime: this.taskDateTime.valueOf(),
+    //     taken: 0
+    //   })
+    // }
+
+    // console.log(moment.utc(this.taskDateTime.valueOf()).local());
     this.viewCtrl.dismiss();
 
   }
