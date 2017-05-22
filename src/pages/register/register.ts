@@ -4,6 +4,8 @@ import { Auth, User, UserDetails, IDetailedError } from '@ionic/cloud-angular';
 import { LoginPage } from "../login/login";
 import { TabsPage } from "../tabs/tabs";
 import { UserData } from '../../providers/user-data';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
+
 /*
   Generated class for the Register page.
 
@@ -15,6 +17,7 @@ import { UserData } from '../../providers/user-data';
   selector: 'page-register',
   templateUrl: 'register.html'
 })
+
 export class RegisterPage {
   details: UserDetails = {'email': '', 'password': ''};
   status: any;
@@ -22,11 +25,29 @@ export class RegisterPage {
     name: any;
     villageID: any;
     newVillageP: boolean  = false;
+    newKeyVal: any; 
+
     
-    constructor(private nav: NavController, private ionicAuth: Auth, public user: User, public navParams: NavParams, public userData: UserData)
+    constructor(private nav: NavController, private ionicAuth: Auth, public user: User, public navParams: NavParams, public userData: UserData, public angFireDB: AngularFire)
     {
 	this.status = navParams.get("status");
 	console.log(this.status);
+
+	let villageSymbols = this.angFireDB.database.list('/villageSymbolMap/');
+	console.log(villageSymbols);
+	villageSymbols.forEach(newKey => {
+	    console.log('GETTING THE KEYS...');
+	    console.log(newKey);
+	    console.log(newKey.length);
+	    for (var i = 0; i < newKey.length; i++) {
+		console.log(newKey[i]);
+		if (newKey[i].$key === "newKey"){
+		    console.log("New Key Val:");
+		    console.log(newKey[i].$value);
+		    this.newKeyVal = newKey[i].$value;
+		}
+	    }
+	}); 
     }
 
   public goBacktoLog() {
@@ -47,10 +68,47 @@ export class RegisterPage {
 	    console.log("Login succesful (on registration page!)");
 	    this.user.set("status", this.status);
             this.user.set("name", this.name);
-	    if (this.newVillageP){
+	    
+	    if (this.newVillageP) {
 		console.log("You should create a new villageID here!");
+
+		console.log(this.newKeyVal);
+		if (this.newKeyVal){
+		    this.angFireDB.database.list('/').update('villageSymbolMap', {'newKey': this.newKeyVal + 1});
+		}
+
+		// make new village subarea and put stuff there
+		let newVillage = this.angFireDB.database.list('/villages/');
+		//console.log(newVillage.$key);
+		var  newVillagePush = newVillage.push({ tasks: {date: 1, name: "Test", taken: "1"}});
+		console.log("THIS SHOULD SHOW UP");
+		console.log("ID of new pushed thing");
+		console.log(newVillagePush.key);
+	    
+		this.user.set("villageID", newVillagePush.key);
+
+		// this id would be added to the symbol table
+		var newSymbolTable = this.angFireDB.database.list('/villageSymbolMap/' + this.newKeyVal);
+		newSymbolTable.push(newVillagePush.key);
 	    } else{
-		this.user.set("villageID", this.villageID);
+		if (this.villageID == "village") {
+		    this.user.set("villageID", this.villageID);
+		} else {
+		    console.log("Checking symbol table...from symbol table...");
+		    let relevantVillageSymbol = this.angFireDB.database.list('/villageSymbolMap/' + this.villageID);
+		    console.log(relevantVillageSymbol);
+		    relevantVillageSymbol.forEach(vals => {
+			console.log('here come the vals...');
+			console.log(vals);
+			console.log(vals.length);
+			for (var i = 0; i < vals.length; i++) {
+			    console.log(vals[i]);
+			    console.log("Corresponding villageID...");
+			    console.log(vals[i].$value);
+			    this.user.set("villageID", '/villages/' + vals[i].$value);
+			}
+		    });
+		}
 	    }
 	    this.user.save();
 	    this.userData.login(this.details.email, this.name, this.status, this.villageID);
