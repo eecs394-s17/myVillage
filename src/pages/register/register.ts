@@ -54,7 +54,6 @@ export class RegisterPage {
     this.nav.setRoot(LoginPage);
   }
 
-    
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
