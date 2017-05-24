@@ -27,7 +27,8 @@ export class RegisterPage {
     newVillageP: boolean  = false;
     newKeyVal: any; 
     lastName: any;
-
+    villageIDsymbol: any;
+    
     constructor(private nav: NavController, private ionicAuth: Auth, public user: User, public navParams: NavParams, public userData: UserData, public angFireDB: AngularFire)
     {
 	this.status = navParams.get("status");
@@ -76,17 +77,18 @@ export class RegisterPage {
 		if (this.newKeyVal){
 		    this.angFireDB.database.list('/').update('villageSymbolMap', {'newKey': this.newKeyVal + 1});
 		}
-
+		this.user.set("villageIDsymbol", this.newKeyVal);
+		this.villageIDsymbol = this.newKeyVal;
 		// make new village subarea and put stuff there
 		let newVillage = this.angFireDB.database.list('/villages/');
 		//console.log(newVillage.$key);
-		var  newVillagePush = newVillage.push({ tasks: {date: 1, name: "Test", taken: "1"}});
+		let newVillagePush = newVillage.push({ tasks: {date: 1, name: "Test", taken: "1"}});
 		console.log("THIS SHOULD SHOW UP");
 		console.log("ID of new pushed thing");
 		console.log(newVillagePush.key);
 	    
 		// this id would be added to the symbol table
-		var newSymbolTable = this.angFireDB.database.list('/villageSymbolMap/' + this.newKeyVal);
+		let newSymbolTable = this.angFireDB.database.list('/villageSymbolMap/' + this.newKeyVal);
 		newSymbolTable.push(newVillagePush.key);
 
 		this.villageID = '/villages/' + newVillagePush.key;
@@ -94,8 +96,12 @@ export class RegisterPage {
 	    } else{
 		if (this.villageID == "village") {
 		    this.user.set("villageID", this.villageID);
+		    this.user.set("villageIDsymbol", this.villageID);
+		    this.villageIDsymbol = this.villageID;
 		} else {
 		    console.log("Checking symbol table...from symbol table...");
+		    this.user.set("villageIDsymbol", this.villageID);
+		    this.villageIDsymbol = this.villageID;
 		    let relevantVillageSymbol = this.angFireDB.database.list('/villageSymbolMap/' + this.villageID);
 		    console.log(relevantVillageSymbol);
 		    relevantVillageSymbol.forEach(vals => {
@@ -115,13 +121,16 @@ export class RegisterPage {
 
 	    console.log("This is the current villageID");
 	    console.log(this.villageID);
+	    console.log("Thisis the villageID symbol");
+	    console.log(this.villageIDsymbol);
 	    this.user.save();
-	    this.userData.login(this.details.email, this.name, this.status, this.villageID, this.lastName);
+	    this.userData.login(this.details.email, this.name, this.status, this.villageID, this.lastName, this.villageIDsymbol);
 
 	    this.nav.setRoot(TabsPage, {
 		currentUsername: this.name + ' ' + this.lastName,
 		currentUserStatus: this.status,
-		villageID: this.villageID
+		villageID: this.villageID,
+		villageIDsymbol: this.villageIDsymbol
 	    });
 	}, error =>{
 	   console.log("Login failed on registration page. This should not happen");

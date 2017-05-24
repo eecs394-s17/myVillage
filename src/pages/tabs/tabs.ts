@@ -35,12 +35,15 @@ export class TabsPage {
     angFireDB: any;
     Username: any;
     UserStatus: any;
+    villageIDsymbol: string;
     
     constructor(public alertCtrl: AlertController, public nav: NavController, public navParams: NavParams, angFire: AngularFire, public userData: UserData, private ionicAuth: Auth)  {
       this.UserStatus = navParams.get("currentUserStatus");
+      console.log(this.UserStatus);
       this.Username = navParams.get("currentUsername");
       console.log(this.Username);
-      console.log(this.UserStatus);
+      this.villageIDsymbol = navParams.get("villageIDsymbol");
+      console.log(this.villageIDsymbol);
       isMother = (this.UserStatus == 'M');
       if (isMother){
 	  this.tab1Root = HomePage//SchedulePage;
@@ -53,7 +56,7 @@ export class TabsPage {
       villageID = (navParams.get("villageID"));
       console.log(villageID);
       this.tasks = angFire.database.list('/tasks');
-		this.angFireDB = angFire;
+	this.angFireDB = angFire;
   }
 
   addTask():void{
