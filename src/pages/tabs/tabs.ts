@@ -48,7 +48,8 @@ export class TabsPage {
 	  this.tab1Root = HomePage;
       }
       console.log(isMother);
-      isVillager = (this.UserStatus == 'V');
+	isVillager = (this.UserStatus == 'V');
+	console.log("VillageID for tabs page...");	
       villageID = (navParams.get("villageID"));
       console.log(villageID);
       this.tasks = angFire.database.list('/tasks');

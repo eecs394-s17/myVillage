@@ -85,13 +85,12 @@ export class RegisterPage {
 		console.log("ID of new pushed thing");
 		console.log(newVillagePush.key);
 	    
-		this.user.set("villageID", newVillagePush.key);
-
 		// this id would be added to the symbol table
 		var newSymbolTable = this.angFireDB.database.list('/villageSymbolMap/' + this.newKeyVal);
 		newSymbolTable.push(newVillagePush.key);
 
-		this.villageID = newVillagePush.key;
+		this.villageID = '/villages/' + newVillagePush.key;
+		this.user.set("villageID", this.villageID);
 	    } else{
 		if (this.villageID == "village") {
 		    this.user.set("villageID", this.villageID);
@@ -118,15 +117,15 @@ export class RegisterPage {
 	    console.log(this.villageID);
 	    this.user.save();
 	    this.userData.login(this.details.email, this.name, this.status, this.villageID, this.lastName);
+
+	    this.nav.setRoot(TabsPage, {
+		currentUsername: this.name + ' ' + this.lastName,
+		currentUserStatus: this.status,
+		villageID: this.villageID
+	    });
 	}, error =>{
 	   console.log("Login failed on registration page. This should not happen");
        });
-
-	this.nav.setRoot(TabsPage, {
-	    currentUsername: this.name + ' ' + this.lastName,
-	    currentUserStatus: this.status,
-	    villageID: this.villageID
-	});
     }, (err: IDetailedError<string[]>) => {
       for (let e of err.details) {
         if (e === 'conflict_email') {
