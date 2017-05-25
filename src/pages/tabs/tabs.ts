@@ -22,6 +22,7 @@ import { Auth, User, UserDetails, IDetailedError } from '@ionic/cloud-angular';
 export var isMother: boolean = false;
 export var isVillager: boolean = false;
 export var villageID: any;
+export var villageIDsymbol: string;
 
 @Component({
   selector: 'page-tabs',
@@ -35,15 +36,14 @@ export class TabsPage {
     angFireDB: any;
     Username: any;
     UserStatus: any;
-    villageIDsymbol: string;
     
     constructor(public alertCtrl: AlertController, public nav: NavController, public navParams: NavParams, angFire: AngularFire, public userData: UserData, private ionicAuth: Auth)  {
       this.UserStatus = navParams.get("currentUserStatus");
       console.log(this.UserStatus);
       this.Username = navParams.get("currentUsername");
       console.log(this.Username);
-      this.villageIDsymbol = navParams.get("villageIDsymbol");
-      console.log(this.villageIDsymbol);
+      villageIDsymbol = navParams.get("villageIDsymbol");
+      console.log(villageIDsymbol);
       isMother = (this.UserStatus == 'M');
       if (isMother){
 	  this.tab1Root = HomePage//SchedulePage;

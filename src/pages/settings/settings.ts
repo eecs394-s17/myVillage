@@ -3,7 +3,7 @@ import { NavController, NavParams, AlertController, Content } from 'ionic-angula
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 import { UserData } from '../../providers/user-data';
-
+import { villageIDsymbol } from '../tabs/tabs';
 /*
   Generated class for the WishList page.
 
@@ -15,13 +15,15 @@ import { UserData } from '../../providers/user-data';
   templateUrl: 'settings.html'
 })
 export class SettingsPage {
-  wishList: FirebaseListObservable<any>;
-  angFireDB: any;
-  username: string;
+    wishList: FirebaseListObservable<any>;
+    angFireDB: any;
+    username: string;
+    villageSymbol: string;
 
   constructor(private nav: NavController, public navParams: NavParams, public alertCtrl: AlertController, angFire: AngularFire, public userData: UserData) {
     this.angFireDB = angFire;
     this.wishList = angFire.database.list('/wishlist');
+      this.villageSymbol = villageIDsymbol; 
   }
 
   ionViewDidLoad() {
