@@ -55,11 +55,13 @@ export class LoginPage {
 	   let curLastName = this.user.get('lastName', 'Villager');
 	   let curUserstat = this.user.get('status', 'V');
 	   let curVillageID = this.user.get('villageID', 'No village ID');
-	   this.userData.login(this.details.email, curUsername, curUserstat, curVillageID, curLastName);
+	   let curVillageIDsymbol = this.user.get('villageIDsymbol', 'No villageID symbol');
+	   this.userData.login(this.details.email, curUsername, curUserstat, curVillageID, curLastName, curVillageIDsymbol);
 	   this.nav.setRoot(TabsPage, {
 	       currentUsername: curUsername + ' ' + curLastName,
 	       currentUserStatus: curUserstat,
-	       villageID: curVillageID
+	       villageID: curVillageID,
+	       villageIDsymbol: curVillageIDsymbol
 	   });
 
       }, error => {

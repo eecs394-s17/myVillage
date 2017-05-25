@@ -22,6 +22,7 @@ import { Auth, User, UserDetails, IDetailedError } from '@ionic/cloud-angular';
 export var isMother: boolean = false;
 export var isVillager: boolean = false;
 export var villageID: any;
+export var villageIDsymbol: string;
 
 @Component({
   selector: 'page-tabs',
@@ -38,9 +39,11 @@ export class TabsPage {
     
     constructor(public alertCtrl: AlertController, public nav: NavController, public navParams: NavParams, angFire: AngularFire, public userData: UserData, private ionicAuth: Auth)  {
       this.UserStatus = navParams.get("currentUserStatus");
+      console.log(this.UserStatus);
       this.Username = navParams.get("currentUsername");
       console.log(this.Username);
-      console.log(this.UserStatus);
+      villageIDsymbol = navParams.get("villageIDsymbol");
+      console.log(villageIDsymbol);
       isMother = (this.UserStatus == 'M');
       if (isMother){
 	  this.tab1Root = HomePage//SchedulePage;
@@ -48,11 +51,12 @@ export class TabsPage {
 	  this.tab1Root = HomePage;
       }
       console.log(isMother);
-      isVillager = (this.UserStatus == 'V');
+	isVillager = (this.UserStatus == 'V');
+	console.log("VillageID for tabs page...");	
       villageID = (navParams.get("villageID"));
       console.log(villageID);
       this.tasks = angFire.database.list('/tasks');
-		this.angFireDB = angFire;
+	this.angFireDB = angFire;
   }
 
   addTask():void{

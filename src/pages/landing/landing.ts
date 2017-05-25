@@ -30,10 +30,13 @@ export class LandingPage {
 		    this.userData.getStatus().then((curUserStatus) => {
 			this.userData.getVillageID().then((curVillageID) => {
 			    this.userData.getLastName().then((curLastName) => {
-				this.nav.setRoot(TabsPage, {
-				    currentUsername: curUserName + ' ' + curLastName,
-				    currentUserStatus: curUserStatus,
-				    villageID: curVillageID
+				this.userData.getVillageIDsymbol().then((villageIDsymbol) => {
+				    this.nav.setRoot(TabsPage, {
+					currentUsername: curUserName + ' ' + curLastName,
+					currentUserStatus: curUserStatus,
+					villageID: curVillageID,
+					villageIDsymbol: villageIDsymbol
+				    });
 				});
 			    });
 			});
