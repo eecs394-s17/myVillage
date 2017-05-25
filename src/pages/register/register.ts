@@ -93,6 +93,20 @@ export class RegisterPage {
 
 		this.villageID = '/villages/' + newVillagePush.key;
 		this.user.set("villageID", this.villageID);
+
+		console.log("This is the current villageID");
+		console.log(this.villageID);
+		console.log("Thisis the villageID symbol");
+		console.log(this.villageIDsymbol);
+		this.user.save();
+		this.userData.login(this.details.email, this.name, this.status, this.villageID, this.lastName, this.villageIDsymbol);
+		
+		this.nav.setRoot(TabsPage, {
+		    currentUsername: this.name + ' ' + this.lastName,
+		    currentUserStatus: this.status,
+		    villageID: this.villageID,
+		    villageIDsymbol: this.villageIDsymbol
+		});
 	    } else{
 		if (this.villageID == "village") {
 		    this.user.set("villageID", this.villageID);
