@@ -10,6 +10,7 @@ import { UserData } from '../../providers/user-data';
 import { GiftsPage } from '../gifts/gifts';
 import { LoginPage } from '../login/login';
 import { ModalPage } from '../modal/modal';
+import { LandingPage } from '../landing/landing';
 import { AuthService } from '../../providers/auth-service';
 import { Auth, User, UserDetails, IDetailedError } from '@ionic/cloud-angular';
 /*
@@ -23,7 +24,7 @@ export var isMother: boolean = false;
 export var isVillager: boolean = false;
 export var villageID: any;
 export var villageIDsymbol: string;
-
+export var usersName: string;
 @Component({
   selector: 'page-tabs',
   templateUrl: 'tabs.html'
@@ -40,8 +41,8 @@ export class TabsPage {
     constructor(public alertCtrl: AlertController, public nav: NavController, public navParams: NavParams, angFire: AngularFire, public userData: UserData, private ionicAuth: Auth)  {
       this.UserStatus = navParams.get("currentUserStatus");
       console.log(this.UserStatus);
-      this.Username = navParams.get("currentUsername");
-      console.log(this.Username);
+      usersName = navParams.get("currentUsername");
+      console.log(usersName);
       villageIDsymbol = navParams.get("villageIDsymbol");
       console.log(villageIDsymbol);
       isMother = (this.UserStatus == 'M');
@@ -109,10 +110,10 @@ export class TabsPage {
         break;
 
       case "Logout":
-        //this.nav.setRoot(LoginPage);
+        //this.nav.setRoot(LoginPage)k
         this.userData.logout();
         this.ionicAuth.logout();
-        window.location.reload();
+	window.location.reload();
         break;
 
       default:

@@ -18,7 +18,7 @@ import { UserData } from '../../providers/user-data';
 
 import { LoginPage } from '../login/login';
 import { ModalPage } from '../modal/modal';
-import { villageID } from '../tabs/tabs';
+import { villageID, usersName } from '../tabs/tabs';
 
 @Component({
   selector: 'page-home',
@@ -33,6 +33,7 @@ export class HomePage {
   showStyle: false;
   IsMother: any;
   IsVillager: any;
+  currentUserName: any = usersName;  
 
   constructor(public modalCtrl: ModalController,
     private nav: NavController,
@@ -79,7 +80,7 @@ export class HomePage {
       inputs: [
         {
           name: 't_takenby',
-          placeholder: 'Name'
+          value: this.currentUserName
         },
         {
           name: 't_notes',
