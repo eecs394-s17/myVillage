@@ -98,6 +98,19 @@ export class RegisterPage {
 		    this.user.set("villageID", this.villageID);
 		    this.user.set("villageIDsymbol", this.villageID);
 		    this.villageIDsymbol = this.villageID;
+		    console.log("This is the current villageID");
+		    console.log(this.villageID);
+		    console.log("Thisis the villageID symbol");
+		    console.log(this.villageIDsymbol);
+		    this.user.save();
+		    this.userData.login(this.details.email, this.name, this.status, this.villageID, this.lastName, this.villageIDsymbol);
+			
+		    this.nav.setRoot(TabsPage, {
+			currentUsername: this.name + ' ' + this.lastName,
+			currentUserStatus: this.status,
+			villageID: this.villageID,
+			villageIDsymbol: this.villageIDsymbol
+		    });
 		} else {
 		    console.log("Checking symbol table...from symbol table...");
 		    this.user.set("villageIDsymbol", this.villageID);
@@ -115,23 +128,22 @@ export class RegisterPage {
 			    this.user.set("villageID", '/villages/' + vals[i].$value);
 			    this.villageID = '/villages/' + vals[i].$value;
 			}
+			console.log("This is the current villageID");
+			console.log(this.villageID);
+			console.log("Thisis the villageID symbol");
+			console.log(this.villageIDsymbol);
+			this.user.save();
+			this.userData.login(this.details.email, this.name, this.status, this.villageID, this.lastName, this.villageIDsymbol);
+			
+			this.nav.setRoot(TabsPage, {
+			    currentUsername: this.name + ' ' + this.lastName,
+			    currentUserStatus: this.status,
+			    villageID: this.villageID,
+			    villageIDsymbol: this.villageIDsymbol
+			});
 		    });
 		}
 	    }
-
-	    console.log("This is the current villageID");
-	    console.log(this.villageID);
-	    console.log("Thisis the villageID symbol");
-	    console.log(this.villageIDsymbol);
-	    this.user.save();
-	    this.userData.login(this.details.email, this.name, this.status, this.villageID, this.lastName, this.villageIDsymbol);
-
-	    this.nav.setRoot(TabsPage, {
-		currentUsername: this.name + ' ' + this.lastName,
-		currentUserStatus: this.status,
-		villageID: this.villageID,
-		villageIDsymbol: this.villageIDsymbol
-	    });
 	}, error =>{
 	   console.log("Login failed on registration page. This should not happen");
        });
