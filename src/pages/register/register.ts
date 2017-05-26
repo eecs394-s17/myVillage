@@ -99,13 +99,14 @@ export class RegisterPage {
 		console.log("Thisis the villageID symbol");
 		console.log(this.villageIDsymbol);
 		this.user.save();
-		this.userData.login(this.details.email, this.name, this.status, this.villageID, this.lastName, this.villageIDsymbol);
+		this.userData.login(this.details.email, this.name, this.status, this.villageID, this.lastName, this.villageIDsymbol,this.details);
 		
 		this.nav.setRoot(TabsPage, {
 		    currentUsername: this.name + ' ' + this.lastName,
 		    currentUserStatus: this.status,
 		    villageID: this.villageID,
-		    villageIDsymbol: this.villageIDsymbol
+		    villageIDsymbol: this.villageIDsymbol,
+		    ionicAuthUser: this.details
 		});
 	    } else{
 		if (this.villageID == "village") {
@@ -117,13 +118,14 @@ export class RegisterPage {
 		    console.log("Thisis the villageID symbol");
 		    console.log(this.villageIDsymbol);
 		    this.user.save();
-		    this.userData.login(this.details.email, this.name, this.status, this.villageID, this.lastName, this.villageIDsymbol);
+		    this.userData.login(this.details.email, this.name, this.status, this.villageID, this.lastName, this.villageIDsymbol, this.details);
 			
 		    this.nav.setRoot(TabsPage, {
 			currentUsername: this.name + ' ' + this.lastName,
 			currentUserStatus: this.status,
 			villageID: this.villageID,
-			villageIDsymbol: this.villageIDsymbol
+			villageIDsymbol: this.villageIDsymbol,
+			ionicAuthUser: this.details
 		    });
 		} else {
 		    console.log("Checking symbol table...from symbol table...");
@@ -147,13 +149,14 @@ export class RegisterPage {
 			console.log("Thisis the villageID symbol");
 			console.log(this.villageIDsymbol);
 			this.user.save();
-			this.userData.login(this.details.email, this.name, this.status, this.villageID, this.lastName, this.villageIDsymbol);
+			this.userData.login(this.details.email, this.name, this.status, this.villageID, this.lastName, this.villageIDsymbol, this.details);
 			
 			this.nav.setRoot(TabsPage, {
 			    currentUsername: this.name + ' ' + this.lastName,
 			    currentUserStatus: this.status,
 			    villageID: this.villageID,
-			    villageIDsymbol: this.villageIDsymbol
+			    villageIDsymbol: this.villageIDsymbol,
+			    ionicAuthUser: this.details
 			});
 		    });
 		}

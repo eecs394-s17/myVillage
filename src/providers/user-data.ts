@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 
 import { Events } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { UserDetails} from '@ionic/cloud-angular';
 
 /*
   Generated class for the UserData provider.
@@ -22,13 +23,14 @@ export class UserData {
     console.log('Hello UserData Provider');
   }
 
-    login(username: string, usersName: string, usersStat: string, villageID: string, usersLastName: string, villageIDsymbol: string): void {
+    login(username: string, usersName: string, usersStat: string, villageID: string, usersLastName: string, villageIDsymbol: string, ionicAuthuser: UserDetails): void {
 	this.storage.set(this.HAS_LOGGED_IN, true);
 	this.setUsername(username);
 	this.storage.set(this.NAME_OF_USER, usersName);
 	this.storage.set(this.STATUS_OF_USER, usersStat);
 	this.storage.set('USERS_LAST_NAME', usersLastName);
 	this.storage.set('VILLAGE_ID_SYMBOL', villageIDsymbol);
+	this.storage.set('IONIC_AUTH_USER', ionicAuthuser);
 	this.events.publish('user:login');
 	this.storage.set('villageID', villageID);
 	console.log('saved in user-data' + username + ', ' + usersName + ', ' + usersStat);
@@ -48,6 +50,7 @@ export class UserData {
       this.storage.remove('villageID');
       this.storage.remove('USERS_LAST_NAME');
       this.storage.remove('VILLAGE_ID_SYMBOL');
+      this.storage.remove('IONIC_AUTH_USER');
       this.events.publish('user:logout');
   };
 
@@ -97,6 +100,13 @@ export class UserData {
 	});
     };
     
+
+  getIonicAuthUser(): Promise<UserDetails> {
+    return this.storage.get('IONIC_AUTH_USER').then((value) => {
+    	console.log('user-data' + value);
+      return value;
+    });
+  };
     
     hasLoggedIn(): Promise<boolean> {
     return this.storage.get(this.HAS_LOGGED_IN).then((value) => {

@@ -31,11 +31,14 @@ export class LandingPage {
 			this.userData.getVillageID().then((curVillageID) => {
 			    this.userData.getLastName().then((curLastName) => {
 				this.userData.getVillageIDsymbol().then((villageIDsymbol) => {
-				    this.nav.setRoot(TabsPage, {
-					currentUsername: curUserName + ' ' + curLastName,
-					currentUserStatus: curUserStatus,
-					villageID: curVillageID,
-					villageIDsymbol: villageIDsymbol
+				    this.userData.getIonicAuthUser().then((ionicAuthUser) => {
+					this.nav.setRoot(TabsPage, {
+					    currentUsername: curUserName + ' ' + curLastName,
+					    currentUserStatus: curUserStatus,
+					    villageID: curVillageID,
+					    villageIDsymbol: villageIDsymbol,
+					    ionicAuthUser: ionicAuthUser // TODO: rename this so it makes sense
+					});
 				    });
 				});
 			    });

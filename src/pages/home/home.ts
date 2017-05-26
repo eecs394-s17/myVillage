@@ -18,7 +18,7 @@ import { UserData } from '../../providers/user-data';
 
 import { LoginPage } from '../login/login';
 import { ModalPage } from '../modal/modal';
-import { villageID, usersName } from '../tabs/tabs';
+import { villageID, usersName, ionicAuthUser } from '../tabs/tabs';
 
 @Component({
   selector: 'page-home',
@@ -97,13 +97,21 @@ export class HomePage {
         {
           text: "Submit",
           handler: data => {
-            this.tasks.update(task.$key,{
+            var newRef = this.tasks.update(task.$key,{
             t_taken: "true",
             t_takenby: data.t_takenby,
             t_notes: data.t_notes
             })
-          }
-        }]
+
+	      // add this value to ionic auth
+	      // TODO: make it a list so that you can have more than one task
+	      console.log("About to set ionicAuthUser with taken tasks...");
+	      console.log(ionicAuthUser);
+	      console.log("ionicAuthUser should be printed...");
+	      ionicAuthUser.set("takenTasks", newRef); //newRef isn't right.
+	      ionicAuthUser.save();
+	  }
+	}]
     });
 
     prompt.present();

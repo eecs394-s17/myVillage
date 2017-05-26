@@ -25,6 +25,7 @@ export var isVillager: boolean = false;
 export var villageID: any;
 export var villageIDsymbol: string;
 export var usersName: string;
+export var ionicAuthUser: any;
 @Component({
   selector: 'page-tabs',
   templateUrl: 'tabs.html'
@@ -37,8 +38,9 @@ export class TabsPage {
     angFireDB: any;
     Username: any;
     UserStatus: any;
+    ionicAuthStuff: any;
     
-    constructor(public alertCtrl: AlertController, public nav: NavController, public navParams: NavParams, angFire: AngularFire, public userData: UserData, private ionicAuth: Auth)  {
+    constructor(public alertCtrl: AlertController, public nav: NavController, public navParams: NavParams, angFire: AngularFire, public userData: UserData, private ionicAuth: Auth, public user: User)  {
       this.UserStatus = navParams.get("currentUserStatus");
       console.log(this.UserStatus);
       usersName = navParams.get("currentUsername");
@@ -52,12 +54,23 @@ export class TabsPage {
 	  this.tab1Root = HomePage;
       }
       console.log(isMother);
-	isVillager = (this.UserStatus == 'V');
-	console.log("VillageID for tabs page...");	
+      isVillager = (this.UserStatus == 'V');
+      console.log("VillageID for tabs page...");	
       villageID = (navParams.get("villageID"));
       console.log(villageID);
+	this.ionicAuthStuff = (navParams.get("ionicAuthUser"));
+	let details: UserDetails = this.ionicAuthStuff;
+      // login here and then we can pass the variable around
+	this.ionicAuth.login('basic', details).then(() => {
+	  console.log("Login succesful");
+	  ionicAuthUser = this.user;
+	  console.log("Ionic auth user: ");
+	  console.log(ionicAuthUser);
+      }, error => {
+	  console.log("Something went horribly wrong");
+      });
       this.tasks = angFire.database.list('/tasks');
-	this.angFireDB = angFire;
+      this.angFireDB = angFire;
   }
 
   addTask():void{
