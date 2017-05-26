@@ -151,6 +151,9 @@ export class RegisterPage {
 			console.log(this.villageIDsymbol);
 			this.user.save();
 			this.userData.login(this.details.email, this.name, this.status, this.villageID, this.lastName, this.villageIDsymbol, this.user.id);
+
+			let newUserSpot = this.angFireDB.database.list('/users/' + this.user.id);
+			newUserSpot.push("hi");
 			
 			this.nav.setRoot(TabsPage, {
 			    currentUsername: this.name + ' ' + this.lastName,

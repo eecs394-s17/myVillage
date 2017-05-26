@@ -18,7 +18,7 @@ import { UserData } from '../../providers/user-data';
 
 import { LoginPage } from '../login/login';
 import { ModalPage } from '../modal/modal';
-import { villageID, usersName } from '../tabs/tabs';
+import { villageID, usersName, userID } from '../tabs/tabs';
 
 @Component({
   selector: 'page-home',
@@ -34,7 +34,8 @@ export class HomePage {
   IsMother: any;
   IsVillager: any;
   currentUserName: any = usersName;  
-
+  currentUserID: string;
+    
   constructor(public modalCtrl: ModalController,
     private nav: NavController,
     public navParams: NavParams,
@@ -47,6 +48,7 @@ export class HomePage {
     this.angFireDB = angFire;
     this.IsMother = isMother;
     this.IsVillager = isVillager;
+    this.currentUserID = userID;
   }
 
   ionViewDidLoad() {
@@ -100,8 +102,19 @@ export class HomePage {
             this.tasks.update(task.$key,{
             t_taken: "true",
             t_takenby: data.t_takenby,
-            t_notes: data.t_notes
+	    t_notes: data.t_notes,
+	    t_taken_id: this.currentUserID
             })
+
+	      let usersTask = this.angFireDB.database.list('/users/'+this.currentUserID);
+	      console.log('/users/'+this.currentUserID);
+	      usersTask.push({
+		t_taken: "true",
+		t_takenby: data.t_takenby,
+		t_notes: data.t_notes,
+		t_taken_id: this.currentUserID
+	    });
+
           }
         }]
     });
