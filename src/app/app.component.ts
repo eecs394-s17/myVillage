@@ -52,7 +52,7 @@ export class MyApp {
     ];
 
     this.menuPages = [
-      { title: 'New Mom Care Plan', component: HomePage },
+      { title: 'New Mom Care Plan', component: TabsPage },
       { title: 'Schedule', component: SchedulePage },
       { title: 'Service Providers', component: ServiceProvidersPage },
       { title: 'Gifts', component: GiftsPage },
@@ -73,15 +73,18 @@ export class MyApp {
   }
 
   openPage(page) {
-    // close the menu when clicking a link from the menu
+      // close the menu when clicking a link from the menu
+      console.log(page.component);
     this.menu.close();
     // navigate to the new page if it is not the current page
-    if (page == "Logout") {
+    if (page == "Logout") { // THIS IF STATEMENT IS POINTLESS BECAUSE IT DOESN'T WORK
       this.userData.logout();
       this.ionicAuth.logout();
       window.location.reload();
+      this.nav.setRoot(LandingPage);
+    } else{
+      console.log(page.component);
+      this.nav.setRoot(page.component);
     }
-    this.nav.setRoot(page.component);
   }
-
 }

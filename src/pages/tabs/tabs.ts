@@ -25,6 +25,7 @@ export var isVillager: boolean = false;
 export var villageID: any;
 export var villageIDsymbol: string;
 export var usersName: string;
+export var userID: string;
 @Component({
   selector: 'page-tabs',
   templateUrl: 'tabs.html'
@@ -58,7 +59,9 @@ export class TabsPage {
       console.log(villageID);
       this.tasks = angFire.database.list('/tasks');
 	this.angFireDB = angFire;
-  }
+	userID = (navParams.get("id"));
+	console.log(userID);
+    }
 
   addTask():void{
   	let prompt = this.alertCtrl.create({

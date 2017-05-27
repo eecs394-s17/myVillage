@@ -60,12 +60,13 @@ export class RegisterPage {
   }
 
   public register() {
+    this.userData.logout() // if we're going to log in, make sure there isn't old data here
     this.ionicAuth.signup(this.details).then(() => {
       console.log(this.details.email + this.details.password);
 
 	this.ionicAuth.login('basic', this.details).then(() => {
-	    this.userData.logout() // if we're going to log in, make sure there isn't old data here
 	    console.log("Login succesful (on registration page!)");
+	    console.log(this.user.id); // we are going to use this in firebase to store user-related information
 	    this.user.set("status", this.status);
             this.user.set("name", this.name);
 	    this.user.set("lastName", this.lastName);
@@ -99,13 +100,14 @@ export class RegisterPage {
 		console.log("Thisis the villageID symbol");
 		console.log(this.villageIDsymbol);
 		this.user.save();
-		this.userData.login(this.details.email, this.name, this.status, this.villageID, this.lastName, this.villageIDsymbol);
+		this.userData.login(this.details.email, this.name, this.status, this.villageID, this.lastName, this.villageIDsymbol, this.user.id);
 		
 		this.nav.setRoot(TabsPage, {
 		    currentUsername: this.name + ' ' + this.lastName,
 		    currentUserStatus: this.status,
 		    villageID: this.villageID,
-		    villageIDsymbol: this.villageIDsymbol
+		    villageIDsymbol: this.villageIDsymbol,
+		    id: this.user.id
 		});
 	    } else{
 		if (this.villageID == "village") {
@@ -117,13 +119,14 @@ export class RegisterPage {
 		    console.log("Thisis the villageID symbol");
 		    console.log(this.villageIDsymbol);
 		    this.user.save();
-		    this.userData.login(this.details.email, this.name, this.status, this.villageID, this.lastName, this.villageIDsymbol);
+		    this.userData.login(this.details.email, this.name, this.status, this.villageID, this.lastName, this.villageIDsymbol, this.user.id);
 			
 		    this.nav.setRoot(TabsPage, {
 			currentUsername: this.name + ' ' + this.lastName,
 			currentUserStatus: this.status,
 			villageID: this.villageID,
-			villageIDsymbol: this.villageIDsymbol
+			villageIDsymbol: this.villageIDsymbol,
+			id: this.user.id
 		    });
 		} else {
 		    console.log("Checking symbol table...from symbol table...");
@@ -147,13 +150,17 @@ export class RegisterPage {
 			console.log("Thisis the villageID symbol");
 			console.log(this.villageIDsymbol);
 			this.user.save();
-			this.userData.login(this.details.email, this.name, this.status, this.villageID, this.lastName, this.villageIDsymbol);
+			this.userData.login(this.details.email, this.name, this.status, this.villageID, this.lastName, this.villageIDsymbol, this.user.id);
+
+			let newUserSpot = this.angFireDB.database.list('/users/' + this.user.id);
+			newUserSpot.push("hi");
 			
 			this.nav.setRoot(TabsPage, {
 			    currentUsername: this.name + ' ' + this.lastName,
 			    currentUserStatus: this.status,
 			    villageID: this.villageID,
-			    villageIDsymbol: this.villageIDsymbol
+			    villageIDsymbol: this.villageIDsymbol,
+			    id: this.user.id
 			});
 		    });
 		}
@@ -170,6 +177,6 @@ export class RegisterPage {
         }
       }
     });
-  }
+   }
 
 }
