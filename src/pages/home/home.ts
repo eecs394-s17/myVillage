@@ -103,9 +103,11 @@ export class HomePage {
             t_taken: "true",
             t_takenby: data.t_takenby,
 	    t_notes: data.t_notes,
-	    t_taken_id: this.currentUserID
+	    t_taken_id: this.currentUserID,
+	    taken: 1
             })
 
+	      /* I think instead I am going to query the normal task list
 	      let usersTask = this.angFireDB.database.list('/users/'+this.currentUserID);
 	      console.log('/users/'+this.currentUserID);
 	      usersTask.push({
@@ -114,7 +116,7 @@ export class HomePage {
 		t_notes: data.t_notes,
 		t_taken_id: this.currentUserID
 	    });
-
+	    */
           }
         }]
     });

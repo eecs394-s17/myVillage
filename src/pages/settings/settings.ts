@@ -24,8 +24,14 @@ export class SettingsPage {
   constructor(private nav: NavController, public navParams: NavParams, public alertCtrl: AlertController, angFire: AngularFire, public userData: UserData) {
     this.angFireDB = angFire;
     this.wishList = angFire.database.list('/wishlist');
-      this.villageSymbol = villageIDsymbol; 
-      this.takenTasks = this.angFireDB.database.list('/users/' + userID);
+    this.villageSymbol = villageIDsymbol; 
+      //this.takenTasks = this.angFireDB.database.list('/users/' + userID);
+      this.takenTasks = this.angFireDB.database.list('/tasks/', {
+	  query: {
+	      orderByChild: 't_taken_id',
+	      equalTo: userID
+	  }
+      });
   }
 
   ionViewDidLoad() {

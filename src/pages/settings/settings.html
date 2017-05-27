@@ -26,6 +26,7 @@
   <h6>VillageID: {{villageSymbol}}</h6>
   <ion-list>
     <ion-card *ngFor="let task of takenTasks | async">
+      This is a task!
       {{task.t_taken_id}}
     </ion-card>
   </ion-list>
