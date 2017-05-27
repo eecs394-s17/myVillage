@@ -52,7 +52,7 @@ export class MyApp {
     ];
 
     this.menuPages = [
-      { title: 'New Mom Care Plan', component: HomePage },
+      { title: 'New Mom Care Plan', component: TabsPage },
       { title: 'Schedule', component: SchedulePage },
       { title: 'Service Providers', component: ServiceProvidersPage },
       { title: 'Gifts', component: GiftsPage },
