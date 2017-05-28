@@ -49,15 +49,10 @@ export class SchedulePage {
 
   ionViewDidLoad() {
     this.app.setTitle('Schedule');
-
-    this.tasks = this.angFireDB.database.list(villageID + '/tasks/', {
-      query: {
-        orderByChild: 'datetime',
-        startAt: this.startDate.valueOf(),
-        endAt: this.endDate.valueOf()
-      }
-    });
-
+    this.startDate.subtract(1, 'days');
+    this.endDate = this.startDate.clone().add(1, 'days');
+    console.log("start: " + this.startDate.valueOf() + "end: " + this.endDate.valueOf());
+    this.updateTasks();
   }
 
   updateTasks() {
@@ -80,6 +75,7 @@ export class SchedulePage {
   }
 
   nextDay() {
+    console.log("start: " + this.startDate.valueOf() + "end: " + this.endDate.valueOf());
     this.startDate = this.endDate;
     this.currDate = this.startDate.format();
     this.endDate = this.startDate.clone().add(1, 'days');
@@ -90,6 +86,7 @@ export class SchedulePage {
   }
 
   prevDay() {
+    console.log("start: " + this.startDate.valueOf() + "end: " + this.endDate.valueOf());
     console.log(this.startDate);
     this.startDate.subtract(1, 'days');
     this.endDate = this.startDate.clone().add(1, 'days');

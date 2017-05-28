@@ -1,7 +1,7 @@
 page-home {
 
   .header-logo {
-    height:39px;
+    height:35px;
     width: auto;
   }
 
@@ -10,6 +10,19 @@ page-home {
     font-style: "SayWeb";
     color: color($colors, light);
     text-align: center;
+  }
+
+  .title {
+    font-size: 1.5em;
+    font-style: "SayWeb";
+    color: #2c3e50;
+    text-align: center;
+  }
+
+  .task_title {
+    font-size: 1.05em;
+    font-style: "SayWeb";
+    color: #2c3e50;
   }
 
 
