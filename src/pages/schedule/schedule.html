@@ -52,10 +52,9 @@
       </ion-item-divider>
       <ion-item-sliding #slidingItem *ngFor="let task of tasks | async" (click)="updateSchedule()">
         <button ion-item (click)="taskTapped(task)">
-          <h3>Description</h3>
+          <h3>{{task.name}}</h3>
           <p>
-            {{task.name}} &mdash;
-            John Doe has taken this task!
+            Description &mdash;
           </p>
         </button>
       </ion-item-sliding>
@@ -80,9 +79,9 @@
   <ion-list>
     <ion-item-sliding #slidingItem *ngFor="let task of tasks | async">
         <button ion-item *ngIf="task.taken == taken || taken == 2" (click)="taskTapped(task)">
-          <h3>Description</h3>
+          <h3>{{task.name}}</h3>
           <p>
-            {{task.name}} &mdash;
+            Description &mdash;
             {{task.date}}
           </p>
         </button>
