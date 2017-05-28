@@ -53,7 +53,6 @@ export class MyApp {
       console.log("Is this person a mother?");
       console.log(isMother);
       this.menuPages = [
-	  { title: 'Home', component: TabsPage },
 	  { title: 'Service Providers', component: ServiceProvidersPage },
 	  { title: 'Gifts', component: GiftsPage },
 	  { title: 'Moments', component: MomentsPage },
@@ -82,7 +81,7 @@ export class MyApp {
       // window.location.reload();
       this.nav.setRoot(LandingPage);
     } else{
-      console.log(page.component);
+     console.log(page.component);
       this.nav.push(page.component);
     }
   }
