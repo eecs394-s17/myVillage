@@ -12,11 +12,19 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'gifts.html'
 })
 export class GiftsPage {
+	segment: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public nav: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
+  	this.segment = "money";
     console.log('ionViewDidLoad GiftsPage');
+  }
+
+  timemoney(tm) {
+  	if (tm == "time") {
+  		this.nav.pop();
+  	}
   }
 
 }

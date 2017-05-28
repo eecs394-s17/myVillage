@@ -35,6 +35,7 @@ export class HomePage {
   IsVillager: any;
   currentUserName: any = usersName;
   currentUserID: string;
+  segment: any;
 
   constructor(public modalCtrl: ModalController,
     private nav: NavController,
@@ -50,7 +51,14 @@ export class HomePage {
     this.currentUserID = userID;
   }
 
+  ionViewWillEnter() {
+    console.log("loaded");
+    this.segment = "time";
+  }
+
   ionViewDidLoad() {
+    console.log("loaded");
+    this.segment = "time";
     this.tasks = this.angFireDB.database.list(villageID + '/tasks/', {
       query: {
         orderByChild: 'datetime',
@@ -179,6 +187,12 @@ export class HomePage {
   openModal() {
     let myModal = this.modalCtrl.create(ModalPage);
     myModal.present();
+  }
+
+  timemoney(tm) {
+    if (tm == "money") {
+      this.nav.push(GiftsPage);
+    }
   }
 
   // navToSchedule(event) {

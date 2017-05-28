@@ -5,6 +5,14 @@
         <ion-icon name='menu'></ion-icon>
       </button>
     </ion-buttons>
+    <ion-segment [(ngModel)]="segment">
+      <ion-segment-button value="time" (click)="timemoney('time')">
+        Spend Time
+      </ion-segment-button>
+      <ion-segment-button value="money" (click)="timemoney('money')">
+        Spend Money
+      </ion-segment-button>
+    </ion-segment>
     <ion-title class="open-task" (click)="scrollToTop()">Gifts</ion-title>
     <ion-buttons right>
       <img class="header-logo" src="assets/img/myVillageLogo.jpg">

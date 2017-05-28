@@ -55,6 +55,10 @@ export class SchedulePage {
     this.updateTasks();
   }
 
+  ionVieDidEnter() {
+    console.log("entered");
+  }
+
   updateTasks() {
     this.tasks = this.angFireDB.database.list(villageID + '/tasks/', {
       query: {
@@ -103,6 +107,13 @@ export class SchedulePage {
     this.currDay = this.startDate.day();
     this.daySched = this.angFireDB.database.list(villageID + '/days/' + this.currDay + '/');
     this.updateTasks();
+  }
+
+  chooseDate() {
+    this.startDate = moment(this.currDate);
+    this.endDate = this.startDate.clone().add(1, 'days');
+    this.updateTasks();
+    console.log("choice: " + this.startDate);
   }
 
   taskTapped(task):void {
