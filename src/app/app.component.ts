@@ -72,15 +72,14 @@ export class MyApp {
     });
   }
 
-  openPage(page) {
-      // close the menu when clicking a link from the menu
-      console.log(page.component);
+  openPage(page) { 
     this.menu.close();
     // navigate to the new page if it is not the current page
-    if (page == "Logout") { // THIS IF STATEMENT IS POINTLESS BECAUSE IT DOESN'T WORK
+    if (page.title == "Logout") {
+      console.log("Menu if-statement is actually doing something");
       this.userData.logout();
       this.ionicAuth.logout();
-      window.location.reload();
+   //   window.location.reload();
       this.nav.setRoot(LandingPage);
     } else{
       console.log(page.component);
