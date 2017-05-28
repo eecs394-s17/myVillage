@@ -23,7 +23,14 @@
 		<ion-card *ngFor="let task of tasks | async" (click)="taskTapped(task)">
       <div class ="{{task.category}}">
 			 <ion-item *ngIf="task.taken == 0">
-			   <ion-label>{{task.name}}</ion-label>
+			   <ion-label>{{task.name}}
+           <p>
+             Time / Date: {{task.datetime}}
+           </p>
+           <p>
+             Description: {{task.category}}
+           </p>
+         </ion-label>
 			 </ion-item>
       </div>
 		</ion-card>
