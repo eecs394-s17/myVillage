@@ -7,7 +7,7 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import "rxjs/add/operator/map";
 
 import { MenuController } from 'ionic-angular';
-import { TabsPage, isMother, isVillager } from '../tabs/tabs';
+import { TabsPage, isMother} from '../tabs/tabs';
 import { LandingPage } from '../landing/landing';
 import { SchedulePage } from '../schedule/schedule';
 
@@ -47,7 +47,6 @@ export class HomePage {
     public menuCtrl: MenuController) {
     this.angFireDB = angFire;
     this.IsMother = isMother;
-    this.IsVillager = isVillager;
     this.currentUserID = userID;
   }
 

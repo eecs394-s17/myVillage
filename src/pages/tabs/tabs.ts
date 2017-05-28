@@ -21,7 +21,6 @@ import { Auth, User, UserDetails, IDetailedError } from '@ionic/cloud-angular';
 */
 
 export var isMother: boolean = false;
-export var isVillager: boolean = false;
 export var villageID: any;
 export var villageIDsymbol: string;
 export var usersName: string;
@@ -48,12 +47,11 @@ export class TabsPage {
       console.log(villageIDsymbol);
       isMother = (this.UserStatus == 'M');
       if (isMother){
-	  this.tab1Root = HomePage//SchedulePage;
+	  this.tab1Root = SchedulePage;
       }else{
 	  this.tab1Root = HomePage;
       }
       console.log(isMother);
-	isVillager = (this.UserStatus == 'V');
 	console.log("VillageID for tabs page...");	
       villageID = (navParams.get("villageID"));
       console.log(villageID);
