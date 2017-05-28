@@ -19,10 +19,10 @@
     <ion-fab top right edge *ngIf ="IsVillager">
       <button ion-fab (click)="addTask()"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
     </ion-fab> -->
-	<ion-list>
-		<ion-card *ngFor="let task of tasks | async" (click)="taskTapped(task)">
+	<ion-list *ngFor="let task of tasks | async">
+		<ion-card *ngIf="task.taken == 0" (click)="taskTapped(task)">
       <div class ="{{task.category}}">
-			 <ion-item *ngIf="task.taken == 0">
+			 <ion-item >
 			   <ion-label>{{task.name}}
            <p>
              Time / Date: {{task.datetime}}
