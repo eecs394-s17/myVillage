@@ -40,23 +40,27 @@ export class ModalPage {
   }
 
   closeModal() {
+    console.log("time is: " + this.taskTime);
     this.taskDateTime = moment(this.taskDate + " " + this.taskTime);
     console.log("Content 0 = " + this.content[0]);
     console.log("Content 1 = " + this.content[1]);
+    console.log(this.content.length);
     for (var i=0; i<this.content.length; i++) {
       console.log("i=" + i);
       console.log("Content " + i + "= " + this.content[i]);
       console.log("Task Name: " + this.taskName); // for some reason taskName isn't getting saved
       console.log("Category: " + this.taskCategory);
       console.log("DateTime: " + this.taskDateTime);
-      if (this.content[i]) {
+      console.log(this.taskChecks);
+      if (this.taskChecks[i]) {
+        console.log("hi this is taskchecks" + i);
         console.log("Content " + i + "= " + this.content[i]);
-        this.taskName = this.content[i];
         this.tasks.push({
           name: this.taskName,
           category: this.taskCategory,
           datetime: this.taskDateTime.valueOf(),
-          taken: 0
+          taken: 0,
+          clockTime: this.taskTime
         });
         console.log("This is being pushed");
       }
@@ -74,7 +78,7 @@ export class ModalPage {
   }
 
   chooseTask(t) {
-    console.log(t);
+    console.log("task = " + t);
     this.taskName = this.content[t];
     this.taskChecks[t] = !this.taskChecks[t];
     console.log(this.taskChecks);

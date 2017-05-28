@@ -153,4 +153,8 @@ export class SchedulePage {
     myModal.present();
   }
 
+  updateSchedule() {
+    console.log("sorry");
+  }
+
 }

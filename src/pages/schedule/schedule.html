@@ -54,7 +54,9 @@
         <button ion-item (click)="taskTapped(task)">
           <h3>{{task.name}}</h3>
           <p>
-            Description: {{task.category}}
+            {{task.name}} &mdash;
+            {{task.datetime}} &mdash;
+            {{task.taken}}
           </p>
         </button>
       </ion-item-sliding>
@@ -76,16 +78,5 @@
 			</ion-item-sliding>
 		</ion-card>
 	</ion-list>
-  <ion-list>
-    <ion-item-sliding #slidingItem *ngFor="let task of tasks | async">
-        <button ion-item *ngIf="task.taken == taken || taken == 2" (click)="taskTapped(task)">
-          <h3>{{task.name}}</h3>
-          <p>
-            Description &mdash;
-            {{task.date}}
-          </p>
-        </button>
-      </ion-item-sliding>
-  </ion-list>
 
 </ion-content>
