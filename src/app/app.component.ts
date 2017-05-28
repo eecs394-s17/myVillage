@@ -7,7 +7,7 @@ import { Auth, User, UserDetails, IDetailedError } from '@ionic/cloud-angular';
 import { UserData } from '../providers/user-data';
 
 import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
+import { TabsPage, isMother } from '../pages/tabs/tabs';
 import { SettingsPage } from '../pages/settings/settings';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { LandingPage } from '../pages/landing/landing';
@@ -50,18 +50,18 @@ export class MyApp {
       { title: 'FAQs Page', component: FAQsPage},
       { title: 'Moments Page', component: MomentsPage }
     ];
-
-    this.menuPages = [
-      { title: 'New Mom Care Plan', component: TabsPage },
-      { title: 'Schedule', component: SchedulePage },
-      { title: 'Service Providers', component: ServiceProvidersPage },
-      { title: 'Gifts', component: GiftsPage },
-      { title: 'Moments', component: MomentsPage },
-      { title: 'FAQs', component: FAQsPage},
-      { title: 'About', component: AboutPage},
-      { title: 'Logout', component: LoginPage },
-
-    ];  }
+      console.log("Is this person a mother?");
+      console.log(isMother);
+      this.menuPages = [
+	  { title: 'Home', component: TabsPage },
+	  { title: 'Service Providers', component: ServiceProvidersPage },
+	  { title: 'Gifts', component: GiftsPage },
+	  { title: 'Moments', component: MomentsPage },
+	  { title: 'FAQs', component: FAQsPage},
+	  { title: 'About', component: AboutPage},
+	  { title: 'Logout', component: LoginPage },
+      ];
+  }
 
   initializeApp() {
     this.platform.ready().then(() => {
@@ -79,7 +79,7 @@ export class MyApp {
       console.log("Menu if-statement is actually doing something");
       this.userData.logout();
       this.ionicAuth.logout();
-   //   window.location.reload();
+      // window.location.reload();
       this.nav.setRoot(LandingPage);
     } else{
       console.log(page.component);
