@@ -48,7 +48,7 @@ export class TabsPage {
       console.log(villageIDsymbol);
       isMother = (this.UserStatus == 'M');
       if (isMother){
-	  this.tab1Root = HomePage//SchedulePage;
+	  this.tab1Root = SchedulePage;
       }else{
 	  this.tab1Root = HomePage;
       }
