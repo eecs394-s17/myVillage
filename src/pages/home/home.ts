@@ -33,9 +33,9 @@ export class HomePage {
   showStyle: false;
   IsMother: any;
   IsVillager: any;
-  currentUserName: any = usersName;  
+  currentUserName: any = usersName;
   currentUserID: string;
-    
+
   constructor(public modalCtrl: ModalController,
     private nav: NavController,
     public navParams: NavParams,
@@ -97,14 +97,22 @@ export class HomePage {
         },
         {
           text: "Submit",
-          handler: data => {
+          handler: data =>
+          /*{
+            console.log('submit clicked')
+            }*/
+            {
             this.tasks.update(task.$key,{
-            t_taken: "true",
-            t_takenby: data.t_takenby,
-	    t_notes: data.t_notes,
-	    t_taken_id: this.currentUserID,
-	    taken: 1
-            })
+            taken: 1
+                  })
+                  }
+            /*taken: "true",*/
+            /*t_takenby: data.t_takenby,*/
+	    /*t_notes: data.t_notes,*/
+	    /*t_taken_id: this.currentUserID,*/
+
+
+
 
 	      /* I think instead I am going to query the normal task list
 	      let usersTask = this.angFireDB.database.list('/users/'+this.currentUserID);
@@ -116,9 +124,10 @@ export class HomePage {
 		t_taken_id: this.currentUserID
 	    });
 	    */
-          }
+
         }]
     });
+
 
     prompt.present();
   }
