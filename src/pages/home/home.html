@@ -22,17 +22,17 @@
     <ion-fab top right edge *ngIf ="IsVillager">
       <button ion-fab (click)="addTask()"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
     </ion-fab> -->
-	<ion-list *ngFor="let task of tasks | async">
-		<ion-card *ngIf="task.taken == 0" (click)="taskTapped(task)">
-      <div class ="{{task.category}}">
-			 <ion-item >
-			   <ion-label>
-           <h3 class="task_title">{{task.name}}</h3>
-           <p>Time: {{task.clockTime}}</p>
-           <p>Description: {{task.category}}</p>
-         </ion-label>
-			 </ion-item>
-      </div>
-		</ion-card>
+	  <ion-list *ngFor="let task of tasks | async">
+	    <ion-card *ngIf="task.taken == 0" (click)="taskTapped(task)">
+	      <div class ="{{task.category}}">
+		<ion-item >
+		  <ion-label>
+		    <h3 class="task_title">{{task.name}}</h3>
+		    <p>Time: {{task.clockTime}}</p>
+		    <p>Description: {{task.category}}</p>
+		  </ion-label>
+		</ion-item>
+	      </div>
+	    </ion-card>
 	</ion-list>
 </ion-content>

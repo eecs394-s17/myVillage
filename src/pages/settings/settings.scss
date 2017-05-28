@@ -13,4 +13,31 @@ page-settings {
     color: color($colors, light);
     text-align: center;
   }
+
+  .title {
+    font-size: 1.5em;
+    font-style: "SayWeb";
+    color: #2c3e50;
+    text-align: center;
+  }
+
+  .task_title {
+    font-size: 1.05em;
+    font-style: "SayWeb";
+    color: #2c3e50;
+  }
+
+  .mental {
+    border-left: 30px solid #9b59b6;
+  }
+  .physical {
+    border-left: 30px solid #2ecc71;
+  }
+  .nutritional {
+    border-left: 30px solid #e74c3c;
+  }
+  .other {
+    border-left: 30px solid #f1c40f;
+  }
+
 }
