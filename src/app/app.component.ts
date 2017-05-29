@@ -54,7 +54,7 @@ export class MyApp {
       console.log("Is this person a mother?");
       console.log(isMother);
       this.menuPages = [
-      { title: 'Give A Gift', component: GiftsPage },
+      { title: 'Give A Gift', component: HomePage },
       { title: 'Service Providers', component: ServiceProvidersPage },
   	  { title: 'Moments', component: MomentsPage },
   	  { title: 'FAQs', component: FAQsPage},

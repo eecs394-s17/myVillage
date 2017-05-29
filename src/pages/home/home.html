@@ -5,11 +5,12 @@
         <ion-icon name='menu'></ion-icon>
       </button>
     </ion-buttons>
-    <ion-segment [(ngModel)]="segment">
-      <ion-segment-button value="time" (click)="timemoney('time')">
+    <ion-segment [(ngModel)]="gift">
+      <ion-segment-button value="time" >
+        <!--  (click)="timemoney('time')"-->
         Spend Time
       </ion-segment-button>
-      <ion-segment-button value="money" (click)="timemoney('money')">
+      <ion-segment-button value="money">
         Spend Money
       </ion-segment-button>
     </ion-segment>
@@ -21,26 +22,49 @@
 </ion-header>
 
 <ion-content padding>
-  <p class="title">
-  Available Tasks:
-  </p>
-	  <!-- <ion-fab top right edge *ngIf ="IsMother">
-   		<button ion-fab (click)="addTask()"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
- 	  </ion-fab>
-    <ion-fab top right edge *ngIf ="IsVillager">
-      <button ion-fab (click)="addTask()"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
-    </ion-fab> -->
-	  <ion-list *ngFor="let task of tasks | async">
-	    <ion-card *ngIf="task.taken == 0" (click)="taskTapped(task)">
-	      <div class ="{{task.category}}">
-		<ion-item >
-		  <ion-label>
-		    <h3 class="task_title">{{task.name}}</h3>
-		    <p>Time: {{task.clockTime}}</p>
-		    <p>Description: {{task.category}}</p>
-		  </ion-label>
-		</ion-item>
-	      </div>
-	    </ion-card>
-	</ion-list>
+  <div [ngSwitch]="gift">
+    <ng-container *ngSwitchCase="'time'">
+      <ion-list  *ngFor="let task of tasks | async">
+        <ion-card *ngIf="task.taken == 0" (click)="taskTapped(task)">
+          <div class ="{{task.category}}">
+            <ion-item >
+              <ion-label>
+                <h3 class="task_title">{{task.name}}</h3>
+                <p>Time: {{task.clockTime}}</p>
+                <p>Description: {{task.category}}</p>
+              </ion-label>
+            </ion-item>
+          </div>
+        </ion-card>
+       </ion-list>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'money'">
+      <ion-list *ngFor="let task of tasks | async">
+        <ion-card *ngIf="task.taken == 0" (click)="taskTapped(task)">
+          <div class ="{{task.category}}">
+            <ion-item >
+              <ion-label>
+                <h3 class="task_title">{{task.name}}</h3>
+                <p>Time: {{task.clockTime}}</p>
+                <p>Description: {{task.category}}</p>
+              </ion-label>
+            </ion-item>
+          </div>
+        </ion-card>
+       </ion-list>
+    </ng-container>
+
+  </div>
 </ion-content>
+
+<!--  Discard this stuff -->
+<!-- <p class="title">
+Available Tasks
+</p> -->
+  <!-- <ion-fab top right edge *ngIf ="IsMother">
+    <button ion-fab (click)="addTask()"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
+  </ion-fab>
+  <ion-fab top right edge *ngIf ="IsVillager">
+    <button ion-fab (click)="addTask()"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
+  </ion-fab> -->
