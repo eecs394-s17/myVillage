@@ -26,11 +26,13 @@
 ======= -->
 <ion-content class="date">
   <ion-item class="date">
->>>>>>> Stashed changes
     <ion-icon name="calendar" item-start></ion-icon>
       <ion-datetime class="date" displayFormat="MMM DD, YYYY" pickerFormat="MMMM DD, YYYY" max="2050" [(ngModel)]="currDate">
       </ion-datetime>
   </ion-item>
+
+  <button ion-button block outline small (click)="chooseDate()">Choose Date</button>
+
 <br />
   <div id="btn-holder">
     <button ion-button small class="day-btn" [ngClass]="{'active': currDay==0}"  (click)="changeDay(0)">Su</button>
