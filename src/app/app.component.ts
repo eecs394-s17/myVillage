@@ -19,6 +19,17 @@ import { AboutPage } from '../pages/about/about';
 import { FAQsPage } from '../pages/faqs/faqs';
 import { MomentsPage } from '../pages/moments/moments';
 
+export interface PageInterface {
+  title: string;
+  name: string;
+  component: any;
+  icon: string;
+  logsOut?: boolean;
+  index?: number;
+  tabName?: string;
+  tabComponent?: any;
+}
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -73,7 +84,7 @@ export class MyApp {
     });
   }
 
-  openPage(page) {
+  openPage(page, index) {
     this.menu.close();
     // navigate to the new page if it is not the current page
     if (page.title == "Logout") {
@@ -82,9 +93,9 @@ export class MyApp {
       this.ionicAuth.logout();
       // window.location.reload();
       this.nav.setRoot(LandingPage);
-    } else{
+    } else {
      console.log(page.component);
-      this.nav.setRoot(page.component);
+      this.nav.setRoot(TabsPage, {tab1Root: page.component, tabIndex: index});
     }
     this.activePage = page;
   }

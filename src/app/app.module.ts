@@ -63,8 +63,10 @@ export const firebaseConfig = {
     MomentsPage
   ],
   imports: [
-      IonicModule.forRoot(MyApp),
-      CloudModule.forRoot(cloudSettings),
+    IonicModule.forRoot(MyApp, {
+      tabsHideOnSubPages: false
+    }),
+    CloudModule.forRoot(cloudSettings),
     AngularFireModule.initializeApp(firebaseConfig),
     IonicStorageModule.forRoot()
   ],
