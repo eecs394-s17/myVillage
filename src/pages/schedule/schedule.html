@@ -19,15 +19,10 @@
   </ion-toolbar>
 </ion-header>
 
-<!-- <<<<<<< Updated upstream
-<ion-content>
-  <button ion-button block (click)="chooseDate()">Choose Date</button>
-  <ion-item>
-======= -->
 <ion-content class="date">
   <ion-item class="date">
     <ion-icon name="calendar" item-start></ion-icon>
-      <ion-datetime class="date" displayFormat="MMM DD, YYYY" pickerFormat="MMMM DD, YYYY" max="2050" [(ngModel)]="currDate">
+      <ion-datetime class="date" displayFormat="MMM DD, YYYY" pickerFormat="MMMM DD, YYYY" max="2050" [(ngModel)]="currDate" (ionChange)="updateSchedule()">
       </ion-datetime>
   </ion-item>
 <br />
@@ -53,7 +48,7 @@
           Today's Tasks:
         </p>
       </ion-item-divider>
-      <ion-item-sliding #slidingItem *ngFor="let task of tasks | async" (click)="updateSchedule()">
+      <ion-item-sliding #slidingItem *ngFor="let task of tasks | async">
         <button ion-item (click)="taskTapped(task)">
           <h3>{{task.name}}</h3>
           <p>

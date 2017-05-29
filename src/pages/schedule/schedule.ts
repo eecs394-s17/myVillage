@@ -44,19 +44,25 @@ export class SchedulePage {
   	this.startDate = moment().startOf('day');
     this.currDate = this.startDate.format();
     this.currDay = this.startDate.day();
-    this.endDate = this.startDate.add(1, 'days');
+    this.endDate = this.startDate.clone().add(1, 'days');
   }
 
   ionViewDidLoad() {
     this.app.setTitle('Schedule');
-    this.startDate.subtract(1, 'days');
-    this.endDate = this.startDate.clone().add(1, 'days');
-    console.log("start: " + this.startDate.valueOf() + "end: " + this.endDate.valueOf());
     this.updateTasks();
   }
 
   ionVieDidEnter() {
     console.log("entered");
+  }
+
+  updateSchedule() {
+    console.log("sorry");
+    this.startDate = moment(this.currDate);
+    this.currDay = this.startDate.day();
+    this.endDate = this.startDate.clone().add(1, 'days');
+    console.log("start: " + this.startDate.valueOf() + "end: " + this.endDate.valueOf());
+    this.updateTasks();
   }
 
   updateTasks() {
@@ -161,8 +167,6 @@ export class SchedulePage {
     myModal.present();
   }
 
-  updateSchedule() {
-    console.log("sorry");
-  }
+
 
 }
