@@ -31,35 +31,35 @@ export var userID: string;
 })
 export class TabsPage {
   tab1Root: any;
-  tab2Root = SettingsPage
+  tab2Root = SettingsPage;
 
-    tasks: FirebaseListObservable<any>;
-    angFireDB: any;
-    Username: any;
-    UserStatus: any;
-    
-    constructor(public alertCtrl: AlertController, public nav: NavController, public navParams: NavParams, angFire: AngularFire, public userData: UserData, private ionicAuth: Auth)  {
-      this.UserStatus = navParams.get("currentUserStatus");
-      console.log(this.UserStatus);
-      usersName = navParams.get("currentUsername");
-      console.log(usersName);
-      villageIDsymbol = navParams.get("villageIDsymbol");
-      console.log(villageIDsymbol);
-      isMother = (this.UserStatus == 'M');
-      if (isMother){
-	  this.tab1Root = SchedulePage;
-      }else{
-	  this.tab1Root = HomePage;
-      }
-      console.log(isMother);
-	console.log("VillageID for tabs page...");	
-      villageID = (navParams.get("villageID"));
-      console.log(villageID);
-      this.tasks = angFire.database.list('/tasks');
-	this.angFireDB = angFire;
-	userID = (navParams.get("id"));
-	console.log(userID);
+  tasks: FirebaseListObservable<any>;
+  angFireDB: any;
+  Username: any;
+  UserStatus: any;
+
+  constructor(public alertCtrl: AlertController, public nav: NavController, public navParams: NavParams, angFire: AngularFire, public userData: UserData, private ionicAuth: Auth)  {
+    this.UserStatus = navParams.get("currentUserStatus");
+    console.log(this.UserStatus);
+    usersName = navParams.get("currentUsername");
+    console.log(usersName);
+    villageIDsymbol = navParams.get("villageIDsymbol");
+    console.log(villageIDsymbol);
+    isMother = (this.UserStatus == 'M');
+    if (isMother){
+	     this.tab1Root = SchedulePage;
+    } else {
+       this.tab1Root = HomePage;
     }
+    console.log(isMother);
+  	console.log("VillageID for tabs page...");
+    villageID = (navParams.get("villageID"));
+    console.log(villageID);
+    this.tasks = angFire.database.list('/tasks');
+  	this.angFireDB = angFire;
+  	userID = (navParams.get("id"));
+  	console.log(userID);
+  }
 
   addTask():void{
   	let prompt = this.alertCtrl.create({
@@ -97,34 +97,29 @@ export class TabsPage {
   	prompt.present();
   }
 
-  navToSchedule(event) {
-    console.log(event);
-    switch (event){
-      case "Schedule":
-        this.nav.push(SchedulePage);
-        break;
-      case "Gifts":
-        //this.nav.push(GiftsPage);
-        break;
-      case "Service":
-        this.nav.push(ServiceProvidersPage);
-        break;
-
-      case "Logout":
-        //this.nav.setRoot(LoginPage)k
-        this.userData.logout();
-        this.ionicAuth.logout();
-	window.location.reload();
-        break;
-
-      default:
-        break;
-    }
-  }
-  
+  // navToSchedule(event) {
+  //   console.log(event);
+  //   switch (event){
+  //     case "Schedule":
+  //       this.nav.push(SchedulePage);
+  //       break;
+  //     case "Gifts":
+  //       //this.nav.push(GiftsPage);
+  //       break;
+  //     case "Service":
+  //       this.nav.push(ServiceProvidersPage);
+  //       break;
+  //
+  //     case "Logout":
+  //       //this.nav.setRoot(LoginPage)k
+  //       this.userData.logout();
+  //       this.ionicAuth.logout();
+	//        window.location.reload();
+  //       break;
+  //
+  //     default:
+  //       break;
+  //   }
+  // }
+  //
 }
-
-
-
-
-
