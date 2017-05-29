@@ -2,7 +2,7 @@
   <ion-navbar align-title="center">
     <ion-buttons left>
       <button ion-button menuToggle icon-only>
-        <ion-icon name='menu'></ion-icon>
+        <!-- <ion-icon name='menu'></ion-icon> -->
       </button>
     </ion-buttons>
     <ion-segment [(ngModel)]="segment">
@@ -13,7 +13,6 @@
         Spend Money
       </ion-segment-button>
     </ion-segment>
-    <ion-title class="open-task" (click)="scrollToTop()">Gifts</ion-title>
     <ion-buttons right>
       <img class="header-logo" src="assets/img/myVillageLogo.jpg">
     </ion-buttons>
@@ -21,6 +20,8 @@
 </ion-header>
 
 <ion-content padding>
+  <p class="title" (click)="scrollToTop()">Gifts</p>
+
   <img src="assets/img/gourmet_meal.jpg">
  <p>Gift a meal to their favorite restaurant
    from 55.00 </p>
