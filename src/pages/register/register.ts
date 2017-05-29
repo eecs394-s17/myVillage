@@ -60,8 +60,9 @@ export class RegisterPage {
   }
 
   public register() {
-    this.userData.logout() // if we're going to log in, make sure there isn't old data here
-    this.ionicAuth.signup(this.details).then(() => {
+      this.userData.logout() // if we're going to log in, make sure there isn't old data here
+      this.details.password = this.details.password.toLowerCase();
+      this.ionicAuth.signup(this.details).then(() => {
       console.log(this.details.email + this.details.password);
 
 	this.ionicAuth.login('basic', this.details).then(() => {

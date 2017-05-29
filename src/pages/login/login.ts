@@ -37,8 +37,9 @@ export class LoginPage {
   }
 
    public login() {
-       this.showLoading()
-       this.ionicAuth.login('basic', this.details).then(() => {
+     this.showLoading()
+     this.details.password = this.details.password.toLowerCase();
+     this.ionicAuth.login('basic', this.details).then(() => {
 	   this.userData.logout() // if we're going to log in, make sure there isn't old data here 
 	   console.log("Login succesful");
 	   setTimeout(() => {
