@@ -111,28 +111,12 @@ export class HomePage {
             }*/
             {
             this.tasks.update(task.$key,{
-            taken: 1
-                  })
-                  }
-            /*taken: "true",*/
-            /*t_takenby: data.t_takenby,*/
-	    /*t_notes: data.t_notes,*/
-	    /*t_taken_id: this.currentUserID,*/
-
-
-
-
-	      /* I think instead I am going to query the normal task list
-	      let usersTask = this.angFireDB.database.list('/users/'+this.currentUserID);
-	      console.log('/users/'+this.currentUserID);
-	      usersTask.push({
-		t_taken: "true",
+		taken: 1,
 		t_takenby: data.t_takenby,
 		t_notes: data.t_notes,
-		t_taken_id: this.currentUserID
-	    });
-	    */
-
+		t_taken_id: this.currentUserID,
+            })
+	    }
         }]
     });
 
