@@ -1,9 +1,9 @@
 <ion-header>
   <ion-navbar no-border-bottom align-title="center">
     <ion-buttons left>
-      <button ion-button menuToggle icon-only>
+      <!-- <button ion-button menuToggle icon-only>
         <ion-icon name='menu'></ion-icon>
-      </button>
+      </button> -->
     </ion-buttons>
     <ion-segment [(ngModel)]="segment">
       <ion-segment-button value="alltasks" (click)="taskTaken(2)">
@@ -19,43 +19,46 @@
   </ion-navbar>
 </ion-header>
 
+<<<<<<< Updated upstream
 <ion-content>
   <button ion-button block (click)="chooseDate()">Choose Date</button>
   <ion-item>
+=======
+<ion-content class="date">
+  <ion-item class="date">
+>>>>>>> Stashed changes
     <ion-icon name="calendar" item-start></ion-icon>
-    <ion-label>Date</ion-label>
-    <ion-datetime displayFormat="MMM DD, YYYY" pickerFormat="MMMM DD, YYYY" max="2050" [(ngModel)]="currDate">
-    </ion-datetime>
+      <ion-datetime class="date" displayFormat="MMM DD, YYYY" pickerFormat="MMMM DD, YYYY" max="2050" [(ngModel)]="currDate">
+      </ion-datetime>
   </ion-item>
-
+<br />
   <div id="btn-holder">
-    <button ion-button class="day-btn" [ngClass]="{'active': currDay==0}"  (click)="changeDay(0)">Sun</button>
-    <button ion-button class="day-btn" [ngClass]="{'active': currDay==1}" (click)="changeDay(1)">Mon</button>
-    <button ion-button class="day-btn" [ngClass]="{'active': currDay==2}" (click)="changeDay(2)">Tue</button>
-    <button ion-button class="day-btn" [ngClass]="{'active': currDay==3}" (click)="changeDay(3)">Wed</button>
-    <button ion-button class="day-btn" [ngClass]="{'active': currDay==4}" (click)="changeDay(4)">Thur</button>
-    <button ion-button class="day-btn" [ngClass]="{'active': currDay==5}" (click)="changeDay(5)">Fri</button>
-    <button ion-button class="day-btn" [ngClass]="{'active': currDay==6}" (click)="changeDay(6)">Sat</button>
+    <button ion-button small class="day-btn" [ngClass]="{'active': currDay==0}"  (click)="changeDay(0)">Su</button>
+    <button ion-button small class="day-btn" [ngClass]="{'active': currDay==1}" (click)="changeDay(1)">M</button>
+    <button ion-button small class="day-btn" [ngClass]="{'active': currDay==2}" (click)="changeDay(2)">T</button>
+    <button ion-button small class="day-btn" [ngClass]="{'active': currDay==3}" (click)="changeDay(3)">W</button>
+    <button ion-button small class="day-btn" [ngClass]="{'active': currDay==4}" (click)="changeDay(4)">Th</button>
+    <button ion-button small class="day-btn" [ngClass]="{'active': currDay==5}" (click)="changeDay(5)">F</button>
+    <button ion-button small lass="day-btn" [ngClass]="{'active': currDay==6}" (click)="changeDay(6)">S</button>
   </div>
 
-  <p>
+  <p class = "date">
     <ion-icon class="curr-day-left" name="arrow-back"  (click)="prevDay()"></ion-icon>
-    Current Day: {{days[currDay]}}
+    {{days[currDay]}}
     <ion-icon class="curr-day-right" name="arrow-forward"  (click)="nextDay()"></ion-icon>
   </p>
-  <button ion-button block (click)="openModal()">Add Task</button>
   <ion-list>
     <ion-card>
       <ion-item-divider sticky>
-        <ion-label>
-          9:00 AM
-        </ion-label>
+        <p class= "date">
+          Today's Tasks:
+        </p>
       </ion-item-divider>
       <ion-item-sliding #slidingItem *ngFor="let task of tasks | async" (click)="updateSchedule()">
         <button ion-item (click)="taskTapped(task)">
           <h3>{{task.name}}</h3>
           <p>
-            Time: {{task.clockTime}} &mdash;
+            Time: {{task.clockTime}} 
           </p>
         </button>
       </ion-item-sliding>
@@ -70,12 +73,16 @@
         <button ion-item (click)="goToSessionDetail(session)">
           <h3>Description</h3>
           <p>
-            {{hour.task}} &mdash;
+            {{hour.task}}
             John Doe has taken this task!
           </p>
         </button>
 			</ion-item-sliding>
 		</ion-card>
 	</ion-list>
+
+  <p class = "bottom" text-center>
+  <button class = "bottom" ion-button round outline (click)="openModal()">Add Task</button>
+</p>
 
 </ion-content>
