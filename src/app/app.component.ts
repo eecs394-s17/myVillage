@@ -19,17 +19,6 @@ import { AboutPage } from '../pages/about/about';
 import { FAQsPage } from '../pages/faqs/faqs';
 import { MomentsPage } from '../pages/moments/moments';
 
-export interface PageInterface {
-  title: string;
-  name: string;
-  component: any;
-  icon: string;
-  logsOut?: boolean;
-  index?: number;
-  tabName?: string;
-  tabComponent?: any;
-}
-
 @Component({
   templateUrl: 'app.html'
 })
@@ -64,14 +53,26 @@ export class MyApp {
     ];
       console.log("Is this person a mother?");
       console.log(isMother);
-      this.menuPages = [
-      { title: 'Give A Gift', component: HomePage },
-      { title: 'Service Providers', component: ServiceProvidersPage },
-  	  { title: 'Moments', component: MomentsPage },
-  	  { title: 'FAQs', component: FAQsPage},
-  	  { title: 'About', component: AboutPage},
-  	  { title: 'Logout', component: LoginPage },
-        ];
+      if (isMother) {
+        this.menuPages = [
+        { title: 'Give a Gift', component: HomePage },
+        { title: 'Service Providers', component: ServiceProvidersPage },
+        { title: 'Moments', component: MomentsPage },
+        { title: 'FAQs', component: FAQsPage},
+        { title: 'About', component: AboutPage},
+        { title: 'Logout', component: LoginPage },
+          ];
+      } else {
+        this.menuPages = [
+        { title: 'Schedule', component: SchedulePage },
+        { title: 'Service Providers', component: ServiceProvidersPage },
+        { title: 'Moments', component: MomentsPage },
+        { title: 'FAQs', component: FAQsPage},
+        { title: 'About', component: AboutPage},
+        { title: 'Logout', component: LoginPage },
+          ];
+      }
+
     this.activePage = this.menuPages[0];
   }
 
@@ -84,7 +85,7 @@ export class MyApp {
     });
   }
 
-  openPage(page, index) {
+  openPage(page) {
     this.menu.close();
     // navigate to the new page if it is not the current page
     if (page.title == "Logout") {
@@ -93,11 +94,17 @@ export class MyApp {
       this.ionicAuth.logout();
       // window.location.reload();
       this.nav.setRoot(LandingPage);
-    } else {
-     console.log(page.component);
-      this.nav.setRoot(TabsPage, {tab1Root: page.component, tabIndex: index});
     }
-    this.activePage = page;
+    else if (!isMother && page == HomePage) {
+      this.nav.setRoot(TabsPage);
+    }
+    else if (isMother && page == SchedulePage) {
+      this.nav.setRoot(TabsPage);
+    }
+    else if (page != this.activePage) {
+      this.nav.push(page.component);
+      this.activePage = page;
+    }
   }
 
   checkActive(page) {
