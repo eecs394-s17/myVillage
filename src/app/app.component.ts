@@ -25,7 +25,8 @@ import { MomentsPage } from '../pages/moments/moments';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage:any = LandingPage;
+  rootPage: any = LandingPage;
+  activePage: any;
   pages: Array<{title: string, component: any}>;
   menuPages: Array<{title: string, component: any}>;
 
@@ -53,13 +54,14 @@ export class MyApp {
       console.log("Is this person a mother?");
       console.log(isMother);
       this.menuPages = [
-	  { title: 'Service Providers', component: ServiceProvidersPage },
-	  { title: 'Gifts', component: GiftsPage },
-	  { title: 'Moments', component: MomentsPage },
-	  { title: 'FAQs', component: FAQsPage},
-	  { title: 'About', component: AboutPage},
-	  { title: 'Logout', component: LoginPage },
-      ];
+      { title: 'Give A Gift', component: GiftsPage },
+      { title: 'Service Providers', component: ServiceProvidersPage },
+  	  { title: 'Moments', component: MomentsPage },
+  	  { title: 'FAQs', component: FAQsPage},
+  	  { title: 'About', component: AboutPage},
+  	  { title: 'Logout', component: LoginPage },
+        ];
+    this.activePage = this.menuPages[0];
   }
 
   initializeApp() {
@@ -71,7 +73,7 @@ export class MyApp {
     });
   }
 
-  openPage(page) { 
+  openPage(page) {
     this.menu.close();
     // navigate to the new page if it is not the current page
     if (page.title == "Logout") {
@@ -82,7 +84,12 @@ export class MyApp {
       this.nav.setRoot(LandingPage);
     } else{
      console.log(page.component);
-      this.nav.push(page.component);
+      this.nav.setRoot(page.component);
     }
+    this.activePage = page;
+  }
+
+  checkActive(page) {
+    return (page == this.activePage);
   }
 }

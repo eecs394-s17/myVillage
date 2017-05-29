@@ -1,4 +1,5 @@
-<ion-menu [content]="mycontent" type="overlay" persistent="true">
+<ion-menu [content]="mycontent" persistent="true">
+  <!--  type="overlay" removed from menu-->
   <ion-header>
     <ion-title>
       Menu
@@ -6,11 +7,11 @@
   </ion-header>
   <ion-content>
     <ion-list>
-      <button menuToggle ion-item *ngFor="let p of menuPages" (click)="openPage(p)">
+      <button menuToggle ion-item *ngFor="let p of menuPages" [class.activeHighlight]="checkActive(p)" (click)="openPage(p)">
         {{p.title}}
       </button>
     </ion-list>
   </ion-content>
 </ion-menu>
-
-<ion-nav #mycontent [root]="rootPage"></ion-nav>
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus. -->
+<ion-nav #mycontent [root]="rootPage" swipeBackEnabled="false"></ion-nav>
