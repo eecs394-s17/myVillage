@@ -93,7 +93,7 @@ export class MyApp {
       this.userData.logout();
       this.ionicAuth.logout();
       // window.location.reload();
-      this.nav.setRoot(LoginPage);
+      this.nav.setRoot(LandingPage); // Please refer to GitIssue #4 before changing this to LoginPage
     }
     else if (!isMother && page == HomePage) {
       console.log('should be resetting tabs')

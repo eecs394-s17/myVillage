@@ -97,30 +97,5 @@ export class TabsPage {
 
   	prompt.present();
   }
-
-  navToSchedule(event) {
-    console.log(event);
-    switch (event){
-      case "Schedule":
-        this.nav.push(SchedulePage);
-        break;
-      case "Gifts":
-        //this.nav.push(GiftsPage);
-        break;
-      case "Service":
-        this.nav.push(ServiceProvidersPage);
-        break;
-
-      case "Logout":
-        //this.nav.setRoot(LoginPage)k
-        this.userData.logout();
-        this.ionicAuth.logout();
-	       window.location.reload();
-        break;
-
-      default:
-        break;
-    }
-  }
-
+ 
 }
