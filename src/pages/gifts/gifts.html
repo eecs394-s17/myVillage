@@ -1,10 +1,10 @@
 <ion-header>
-  <ion-toolbar align-title="center">
-    <ion-buttons left>
+  <ion-navbar align-title="center">
+    <!-- <ion-buttons left>
       <button ion-button menuToggle icon-only>
         <ion-icon name='menu'></ion-icon>
       </button>
-    </ion-buttons>
+    </ion-buttons> -->
     <ion-segment [(ngModel)]="segment">
       <ion-segment-button value="time" (click)="timemoney('time')">
         Spend Time
@@ -16,7 +16,7 @@
     <ion-buttons right>
       <img class="header-logo" src="assets/img/myVillageLogo.jpg">
     </ion-buttons>
-  </ion-toolbar>
+  </ion-navbar>
 </ion-header>
 
 <ion-content padding>

@@ -93,12 +93,14 @@ export class MyApp {
       this.userData.logout();
       this.ionicAuth.logout();
       // window.location.reload();
-      this.nav.setRoot(LandingPage);
+      this.nav.setRoot(LoginPage);
     }
     else if (!isMother && page == HomePage) {
+      console.log('should be resetting tabs')
       this.nav.setRoot(TabsPage);
     }
     else if (isMother && page == SchedulePage) {
+      console.log('should be resetting tabs')
       this.nav.setRoot(TabsPage);
     }
     else if (page != this.activePage) {
