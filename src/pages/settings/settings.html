@@ -25,9 +25,11 @@
   <h6>Outstanding Village Sign Ups</h6>
   <h6>VillageID: {{villageSymbol}}</h6>
 
-  <p class="title">
-  Taken Tasks:
-  </p>
+  <div *ngIf = "!isMom">
+    <p class="title">
+      Taken Tasks:
+    </p>
+  </div>
   <ion-list *ngFor="let task of takenTasks | async">
     <ion-card>
       <div class ="{{task.category}}">

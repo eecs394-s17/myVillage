@@ -3,7 +3,7 @@ import { NavController, NavParams, AlertController, Content } from 'ionic-angula
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 import { UserData } from '../../providers/user-data';
-import { villageIDsymbol, userID, villageID } from '../tabs/tabs';
+import { villageIDsymbol, userID, villageID, isMother } from '../tabs/tabs';
 /*
   Generated class for the WishList page.
 
@@ -20,11 +20,13 @@ export class SettingsPage {
     username: string;
     villageSymbol: string;
     takenTasks: any;
+    isMom: boolean;
     
   constructor(private nav: NavController, public navParams: NavParams, public alertCtrl: AlertController, angFire: AngularFire, public userData: UserData) {
     this.angFireDB = angFire;
     this.wishList = angFire.database.list('/wishlist');
       this.villageSymbol = villageIDsymbol;
+      this.isMom = isMother;
       //console.log("Relevant settings page values...");
       //console.log(villageID);
       //console.log(userID);
