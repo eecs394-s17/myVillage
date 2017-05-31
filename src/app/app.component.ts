@@ -64,6 +64,7 @@ export class MyApp {
           ];
       } else {
         this.menuPages = [
+        { title: 'Home', component: HomePage},
         { title: 'Schedule', component: SchedulePage },
         { title: 'Service Providers', component: ServiceProvidersPage },
         { title: 'Moments', component: MomentsPage },
