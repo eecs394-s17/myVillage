@@ -7,7 +7,7 @@
   </ion-header>
   <ion-content>
     <ion-list>
-      <button menuToggle ion-item *ngFor="let p of menuPages" [class.activeHighlight]="checkActive(p)" (click)="openPage(p)">
+      <button menuToggle ion-item *ngFor="let p of menuPages" (click)="openPage(p)">
         {{p.title}}
       </button>
     </ion-list>
