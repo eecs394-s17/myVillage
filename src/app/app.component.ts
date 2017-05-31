@@ -51,18 +51,19 @@ export class MyApp {
       { title: 'FAQs Page', component: FAQsPage},
       { title: 'Moments Page', component: MomentsPage }
     ];
-      console.log("Is this person a mother?");
-      console.log(isMother);
-      if (isMother) {
+     // isMother is undefined when imported
+     // console.log("Is this person a mother?");
+     // console.log(isMother);
+      //if (isMother) {
         this.menuPages = [
-        { title: 'Give a Gift', component: HomePage },
+        { title: 'Home', component: TabsPage },
         { title: 'Service Providers', component: ServiceProvidersPage },
         { title: 'Moments', component: MomentsPage },
         { title: 'FAQs', component: FAQsPage},
         { title: 'About', component: AboutPage},
         { title: 'Logout', component: LoginPage },
           ];
-      } else {
+      /*} else {
         this.menuPages = [
         { title: 'Home', component: HomePage},
         { title: 'Schedule', component: SchedulePage },
@@ -72,7 +73,7 @@ export class MyApp {
         { title: 'About', component: AboutPage},
         { title: 'Logout', component: LoginPage },
           ];
-      }
+      }*/
 
     this.activePage = this.menuPages[0];
   }
