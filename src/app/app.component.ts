@@ -51,7 +51,8 @@ export class MyApp {
       { title: 'FAQs Page', component: FAQsPage},
       { title: 'Moments Page', component: MomentsPage }
     ];
-     // isMother is undefined when imported
+      // isMother is undefined when imported. The if statement IS USELESS
+      // (if you don't believe me, look at the console.log's!)
      // console.log("Is this person a mother?");
      // console.log(isMother);
       //if (isMother) {
@@ -96,17 +97,19 @@ export class MyApp {
       // window.location.reload();
       this.nav.setRoot(LandingPage); // Please refer to GitIssue #4 before changing this to LoginPage
     }
-    else if (!isMother && page == HomePage) {
-      console.log('should be resetting tabs')
-      this.nav.setRoot(TabsPage);
+    else if (!isMother && page == HomePage) { 
+      console.log('should be resetting tabs') 
+      this.nav.push(TabsPage);
     }
     else if (isMother && page == SchedulePage) {
       console.log('should be resetting tabs')
-      this.nav.setRoot(TabsPage);
+      this.nav.push(TabsPage);
     }
     else if (page != this.activePage) {
       this.nav.push(page.component);
       this.activePage = page;
+    } else {
+	this.nav.push(page.component);
     }
   }
 
