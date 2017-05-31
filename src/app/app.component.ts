@@ -56,7 +56,6 @@ export class MyApp {
      // console.log(isMother);
       //if (isMother) {
         this.menuPages = [
-        { title: 'Home', component: TabsPage },
         { title: 'Service Providers', component: ServiceProvidersPage },
         { title: 'Moments', component: MomentsPage },
         { title: 'FAQs', component: FAQsPage},
