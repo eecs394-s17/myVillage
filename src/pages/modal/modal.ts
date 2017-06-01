@@ -18,9 +18,9 @@ import * as moment from 'moment';
 })
 export class ModalPage {
   content: Array<string>; // = ['Task1', 'Task2'];
-  catHash = { 'physical': ['Volunteer to Babysit', 'Pickup item from store'],
-              'mental': ['Schedule a friend date'],
-              'nutritional': ['Cook a meal', 'Get groceries']};
+  catHash = { 'Physical': ['Volunteer to babysit', 'Pick up item from store'],
+              'Mental': ['Schedule a friend date'],
+              'Nutritional': ['Cook a meal', 'Get groceries']};
   tasks: FirebaseListObservable<any>;
   angFireDB: any;
   taskChecks: Array<boolean> = [false, false];
@@ -59,8 +59,10 @@ export class ModalPage {
           name: this.taskName,
           category: this.taskCategory,
           datetime: this.taskDateTime.valueOf(),
-          taken: 0,
-          clockTime: this.taskTime
+          date: moment(this.taskDateTime).format('MMMM Do, YYYY'),
+          time: moment(this.taskDateTime).format('h:mm a'),
+          taken: 0
+
         });
         console.log("This is being pushed");
       }

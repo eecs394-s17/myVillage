@@ -20,6 +20,9 @@ import { LoginPage } from '../login/login';
 import { ModalPage } from '../modal/modal';
 import { villageID, usersName, userID } from '../tabs/tabs';
 
+import * as moment from 'moment';
+
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -175,6 +178,14 @@ export class HomePage {
   openModal() {
     let myModal = this.modalCtrl.create(ModalPage);
     myModal.present();
+  }
+
+  returnDate(datetime) {
+
+  }
+
+  returnDateTime(datetime) {
+    return moment(datetime).format('MMMM Do YYYY, h:mm a')
   }
 
   // timemoney(tm) {
