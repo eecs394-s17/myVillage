@@ -22,6 +22,20 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-row>
+    <div class="legend">
+      <span id="mental-square"></span>
+      Mental
+    </div>
+    <div class="legend">
+      <span id="physical-square"></span>
+      Physical
+    </div>
+    <div class="legend">
+      <span id="nutritional-square"></span>
+      Nutritional
+    </div>
+  </ion-row>
   <div [ngSwitch]="gift">
     <ng-container *ngSwitchCase="'time'">
       <ion-list  *ngFor="let task of tasks | async">
@@ -32,7 +46,6 @@
                 <h3 class="task_title">{{task.name}}</h3>
                 <p> Date: {{task.date}} </p>
                 <p> Time: {{task.time}} </p>
-                <p>Category: {{task.category}}</p>
               </ion-label>
             </ion-item>
           </div>

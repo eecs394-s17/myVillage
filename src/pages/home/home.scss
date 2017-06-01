@@ -47,4 +47,29 @@ page-home {
     border-left: 22px solid #f1c40f;
   }
 
+  .legend {
+    float: left;
+    margin-right: 15px;
+  }
+
+  .legend span {
+    border: 1px solid #ccc;
+    float: left;
+    width: 15px;
+    height: 15px;
+    margin-right: 3px;
+  }
+
+  #mental-square {
+    background-color: #9b59b6;
+  }
+
+  #physical-square {
+    background-color: #2ecc71;
+  }
+
+  #nutritional-square {
+    background-color: #e74c3c;
+  }
+
 }
