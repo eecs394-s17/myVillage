@@ -51,9 +51,7 @@
       <ion-item-sliding #slidingItem *ngFor="let task of tasks | async">
         <button ion-item (click)="taskTapped(task)" *ngIf="task.taken == taken || taken == 2"> <!-- do not remove *ngIf without first consulting GitIssue #18-->
           <h3>{{task.name}}</h3>
-          <p>
-            {{task.time}}
-          </p>
+          <p>{{task.time}}</p>
         </button>
       </ion-item-sliding>
     </ion-card>
