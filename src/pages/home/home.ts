@@ -85,7 +85,7 @@ export class HomePage {
   taskTapped(task):void {
     let prompt = this.alertCtrl.create({
       title: "Take Task",
-      message: "Please enter your name and any notes that would be helpful",
+      message: "Please enter any notes that would be helpful",
       inputs: [
         {
           name: 't_takenby',
@@ -122,6 +122,10 @@ export class HomePage {
 
 
     prompt.present();
+  }
+
+  openPayments():void {
+    window.open('http://myvillagegifts.com/#/dash', '_system', 'location=yes');
   }
 
   addTask():void{

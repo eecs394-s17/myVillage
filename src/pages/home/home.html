@@ -10,7 +10,7 @@
         <!--  (click)="timemoney('time')"-->
         Spend Time
       </ion-segment-button>
-      <ion-segment-button value="money" href="#" onclick="window.open('http://myvillagegifts.com/#/dash', '_system', 'location=yes'); return false;">
+      <ion-segment-button value="money">
         Spend Money
       </ion-segment-button>
     </ion-segment>
@@ -40,92 +40,139 @@
     </ng-container>
 
     <ng-container *ngSwitchCase="'money'">
-      <img src="assets/img/gourmet_meal.jpg">
-     <p>Gift a meal to their favorite restaurant
-       from $55.00 </p>
-     <img src="assets/img/raw+ingredients+groceries+cooking.jpg">
-     <p>Gift a week of Blue Apron
-       $65.00 </p>
-      <img src="assets/img/lactation_consult.jpg">
-     <p>Sign up to join a Virtual New Moms Group (0-6 mo post pregnancy)
-       $160.00</p>
-      <img src="assets/img/StockSnap_VF51PE5SCF.jpg">
-     <p>Contribute toward a cleaning service
-       from $55.00</p>
-      <img src="assets/img/Babysitter.jpg">
-     <p>Contribute toward a babysitter
-       from $55.00</p>
-      <img src="assets/img/Night+nurse.jpg">
-     <p>Contribute toward a night nurse
-       from $55.00</p>
-      <img src="assets/img/love-romantic-bath-candlelight.jpg">
-     <p>Contribute toward a spa day
-       from $55.00</p>
-      <img src="assets/img/lactation.jpg">
-     <p>Contribute toward a lactation consultant
-       from $105.00</p>
-      <img src="assets/img/babysitting+edited.jpg">
-     <p>Volunteer to babysit
-       $0.00 </p>
-      <img src="assets/img/friend+play+date.jpg">
-     <p>Schedule a friend date
-       $0.00</p>
-      <img src="assets/img/fresh+aroma+therapy.jpg">
-     <p>Mommy Care Package: Pain Relief and Pick-Me-Up Kit
-       $50.00</p>
-      <img src="assets/img/Idea.jpg">
-     <p>Don't see what you want listed?
-       $0.00</p>
+
+    <ion-list>
+        <ion-card (click)="openPayments()">
+          <div>
+            <ion-item >
+              <ion-label>
+                <h3 class="task_title">Gourmet Meal</h3>
+                <!<img src="assets/img/gourmet_meal.jpg">
+                <p>Gift a meal to their favorite restaurant</p>
+                <p>Price: from $55.00</p>
+              </ion-label>
+            </ion-item>
+          </div>
+        </ion-card>
+
+        <ion-card (click)="openPayments()">
+          <div>
+            <ion-item >
+              <ion-label>
+                <h3 class="task_title">A Week of Blue Apron</h3>
+                <!<img src="assets/img/gourmet_meal.jpg">
+                <p>Gift a week of Blue Apron</p>
+                <!<img src="assets/img/raw+ingredients+groceries+cooking.jpg">
+                <p>Price: $65.00</p>
+              </ion-label>
+            </ion-item>
+          </div>
+        </ion-card>
+
+        <ion-card (click)="openPayments()">
+          <div>
+            <ion-item >
+              <ion-label>
+                <h3 class="task_title">Virtual New Moms Group</h3>
+                <!<img src="assets/img/gourmet_meal.jpg">
+                <p>Sign up to join a Virtual New Moms Group (0-6 mo post pregnancy)</p>
+                <!<img src="assets/img/raw+ingredients+groceries+cooking.jpg">
+                <p>Price: $160.00</p>
+              </ion-label>
+            </ion-item>
+          </div>
+        </ion-card>
+
+        <ion-card (click)="openPayments()">
+          <div>
+            <ion-item >
+              <ion-label>
+                <h3 class="task_title">Cleaning Service</h3>
+                <!<img src="assets/img/gourmet_meal.jpg">
+                <p>Contribute toward a cleaning service</p>
+                <!<img src="assets/img/StockSnap_VF51PE5SCF.jpg">
+                <p>Price: from $55.00</p>
+              </ion-label>
+            </ion-item>
+          </div>
+        </ion-card>
+
+        <ion-card (click)="openPayments()">
+          <div>
+            <ion-item >
+              <ion-label>
+                <h3 class="task_title">Babysitter</h3>
+                <!<img src="assets/img/gourmet_meal.jpg">
+                <p>Contribute toward a babysitter</p>
+                <!<img src="assets/img/Babysitter.jpg">
+                <p>Price: from $55.00</p>
+              </ion-label>
+            </ion-item>
+          </div>
+        </ion-card>
+
+        <ion-card (click)="openPayments()">
+          <div>
+            <ion-item >
+              <ion-label>
+                <h3 class="task_title">Night Nurse</h3>
+                <!<img src="assets/img/gourmet_meal.jpg">
+                <p>Contribute toward a night nurse</p>
+                <!<img src="assets/img/Night+nurse.jpg">
+                <p>Price: from $55.00</p>
+              </ion-label>
+            </ion-item>
+          </div>
+        </ion-card>
+
+        <ion-card (click)="openPayments()">
+          <div>
+            <ion-item >
+              <ion-label>
+                <h3 class="task_title">Spa Day</h3>
+                <!<img src="assets/img/gourmet_meal.jpg">
+                <p>Contribute toward a spa day</p>
+                <!<img src="assets/img/love-romantic-bath-candlelight.jpg">
+                <p>Price: from $55.00</p>
+              </ion-label>
+            </ion-item>
+          </div>
+        </ion-card>
+
+        <ion-card (click)="openPayments()">
+          <div>
+            <ion-item >
+              <ion-label>
+                <h3 class="task_title">Lactation Consultant</h3>
+                <!<img src="assets/img/gourmet_meal.jpg">
+                <p>Contribute toward a lactation consultant</p>
+                <!<img src="assets/img/lactation.jpg">
+                <p>Price: from $105.00</p>
+              </ion-label>
+            </ion-item>
+          </div>
+        </ion-card>
+
+        <ion-card (click)="openPayments()">
+          <div>
+            <ion-item >
+              <ion-label>
+                <h3 class="task_title">Mommy Care Package</h3>
+                <!<img src="assets/img/gourmet_meal.jpg">
+                <p>Mommy Care Package: Pain Relief and Pick-Me-Up Kit</p>
+                <!<img src="assets/img/fresh+aroma+therapy.jpg">
+                <p>Price: $50.00</p>
+              </ion-label>
+            </ion-item>
+          </div>
+        </ion-card>
+       </ion-list>
     </ng-container>
 
   </div>
 </ion-content>
 
 <!--  Discard this stuff -->
-<!-- <p class="title">
-Available Tasks
-</p> -->
-  <!-- <ion-fab top right edge *ngIf ="IsMother">
-    <button ion-fab (click)="addTask()"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
-  </ion-fab>
-  <ion-fab top right edge *ngIf ="IsVillager">
-    <button ion-fab (click)="addTask()"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
-  </ion-fab> -->
-
-  <!--  Discard this stuff -->
-<!-- <p class="title">
-Available Tasks
-</p> -->
-  <!-- <ion-fab top right edge *ngIf ="IsMother">
-    <button ion-fab (click)="addTask()"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
-  </ion-fab>
-  <ion-fab top right edge *ngIf ="IsVillager">
-    <button ion-fab (click)="addTask()"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
-  </ion-fab> -->
-
-  <!--  Discard this stuff -->
-<!-- <p class="title">
-Available Tasks
-</p> -->
-  <!-- <ion-fab top right edge *ngIf ="IsMother">
-    <button ion-fab (click)="addTask()"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
-  </ion-fab>
-  <ion-fab top right edge *ngIf ="IsVillager">
-    <button ion-fab (click)="addTask()"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
-  </ion-fab> -->
-
-  <!--  Discard this stuff -->
-<!-- <p class="title">
-Available Tasks
-</p> -->
-  <!-- <ion-fab top right edge *ngIf ="IsMother">
-    <button ion-fab (click)="addTask()"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
-  </ion-fab>
-  <ion-fab top right edge *ngIf ="IsVillager">
-    <button ion-fab (click)="addTask()"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
-  </ion-fab> -->
-
-  <!--  Discard this stuff -->
 <!-- <p class="title">
 Available Tasks
 </p> -->
