@@ -124,6 +124,10 @@ export class HomePage {
     prompt.present();
   }
 
+  openPayments():void {
+    window.open('http://myvillagegifts.com/#/dash', '_system', 'location=yes');
+  }
+
   addTask():void{
     let prompt = this.alertCtrl.create({
       title: 'New Task',
