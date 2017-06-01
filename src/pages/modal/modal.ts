@@ -18,9 +18,9 @@ import * as moment from 'moment';
 })
 export class ModalPage {
   content: Array<string>; // = ['Task1', 'Task2'];
-  catHash = { 'physical': ['physical task 1', 'physical task 2'],
-              'mental': ['mental task 1', 'mental task 2'],
-              'nutritional': ['nutritional task 1', 'nutritional task 2']};
+  catHash = { 'physical': ['Volunteer to Babysit', 'Pickup item from store'],
+              'mental': ['Schedule a friend date'],
+              'nutritional': ['Cook a meal', 'Get groceries']};
   tasks: FirebaseListObservable<any>;
   angFireDB: any;
   taskChecks: Array<boolean> = [false, false];
