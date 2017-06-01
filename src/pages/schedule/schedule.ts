@@ -29,6 +29,7 @@ export class SchedulePage {
   test: FirebaseListObservable<any>;
   days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
   taken = 2;  // 2 == all, 0 == untaken, 1 == taken
+  segment: any;
 
   constructor(
     public alertCtrl: AlertController,
@@ -52,8 +53,9 @@ export class SchedulePage {
     this.updateTasks();
   }
 
-  ionVieDidEnter() {
+  ionViewDidEnter() {
     console.log("entered");
+    this.segment = "alltasks";
   }
 
   updateSchedule() {
@@ -122,41 +124,41 @@ export class SchedulePage {
     console.log("choice: " + this.startDate);
   }
 
-  taskTapped(task):void {
-    let prompt = this.alertCtrl.create({
-      title: "Take Task",
-      message: "Please enter your name and any notes that would be helpful",
-      inputs: [
-        {
-          name: 't_takenby',
-          placeholder: 'Name'
-        },
-        {
-          name: 't_notes',
-          placeholder: 'Notes'
-        },
-        ],
-        buttons: [
-        {
-          text: "Cancel",
-          handler: data => {
-            console.log('cancel clicked')
-          }
-        },
-        {
-          text: "Submit",
-          handler: data => {
-            this.tasks.update(task.$key,{
-            t_taken: "true",
-            t_takenby: data.t_takenby,
-            t_notes: data.t_notes
-            })
-          }
-        }]
-    });
-
-    prompt.present();
-  }
+  // taskTapped(task):void {
+  //   let prompt = this.alertCtrl.create({
+  //     title: "Take Task",
+  //     message: "Please enter your name and any notes that would be helpful",
+  //     inputs: [
+  //       {
+  //         name: 't_takenby',
+  //         placeholder: 'Name'
+  //       },
+  //       {
+  //         name: 't_notes',
+  //         placeholder: 'Notes'
+  //       },
+  //       ],
+  //       buttons: [
+  //       {
+  //         text: "Cancel",
+  //         handler: data => {
+  //           console.log('cancel clicked')
+  //         }
+  //       },
+  //       {
+  //         text: "Submit",
+  //         handler: data => {
+  //           this.tasks.update(task.$key,{
+  //           t_taken: "true",
+  //           t_takenby: data.t_takenby,
+  //           t_notes: data.t_notes
+  //           })
+  //         }
+  //       }]
+  //   });
+  //
+  //   prompt.present();
+  // }
 
   taskTaken(num) {
     this.taken = num

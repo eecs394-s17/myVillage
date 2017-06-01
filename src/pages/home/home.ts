@@ -61,7 +61,6 @@ export class HomePage {
 
   ionViewDidLoad() {
     console.log("loaded");
-    this.gift = "time";
     this.tasks = this.angFireDB.database.list(villageID + '/tasks/', {
       query: {
         orderByChild: 'datetime',
@@ -91,10 +90,6 @@ export class HomePage {
       message: "Please enter any notes that would be helpful",
       inputs: [
         {
-          name: 't_takenby',
-          value: this.currentUserName
-        },
-        {
           name: 't_notes',
           placeholder: 'Notes'
         },
@@ -109,15 +104,12 @@ export class HomePage {
         {
           text: "Submit",
           handler: data =>
-          /*{
-            console.log('submit clicked')
-            }*/
             {
             this.tasks.update(task.$key,{
-		taken: 1,
-		t_takenby: data.t_takenby,
-		t_notes: data.t_notes,
-		t_taken_id: this.currentUserID,
+          		taken: 1,
+          		t_takenby: this.currentUserName,
+          		t_notes: data.t_notes,
+          		t_taken_id: this.currentUserID,
             })
 	    }
         }]
@@ -178,14 +170,6 @@ export class HomePage {
   openModal() {
     let myModal = this.modalCtrl.create(ModalPage);
     myModal.present();
-  }
-
-  returnDate(datetime) {
-
-  }
-
-  returnDateTime(datetime) {
-    return moment(datetime).format('MMMM Do YYYY, h:mm a')
   }
 
   // timemoney(tm) {

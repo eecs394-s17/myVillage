@@ -36,7 +36,7 @@
     <button ion-button small lass="day-btn" [ngClass]="{'active': currDay==6}" (click)="changeDay(6)">S</button>
   </div>
 
-  <p class = "date">
+  <p class="date">
     <ion-icon class="curr-day-left" name="arrow-back"  (click)="prevDay()"></ion-icon>
     {{days[currDay]}}
     <ion-icon class="curr-day-right" name="arrow-forward"  (click)="nextDay()"></ion-icon>
@@ -45,17 +45,20 @@
     <ion-card>
       <ion-item-divider sticky>
         <p class= "date">
-          Today's Tasks:
+          Tasks:
         </p>
       </ion-item-divider>
       <ion-item-sliding #slidingItem *ngFor="let task of tasks | async">
-        <button ion-item (click)="taskTapped(task)" *ngIf="task.taken == taken || taken == 2"> <!-- do not remove *ngIf without first consulting GitIssue #18-->
+        <button ion-item *ngIf="task.taken == taken || taken == 2"> <!-- do not remove *ngIf without first consulting GitIssue #18-->
           <h3>{{task.name}}</h3>
           <p>{{task.time}}</p>
+          <p *ngIf="task.taken == 1">
+            {{task.t_takenby}} has taken this task!
+          </p>
         </button>
       </ion-item-sliding>
     </ion-card>
-    <ion-card *ngFor="let hour of daySched | async">
+    <!-- <ion-card *ngFor="let hour of daySched | async">
       <ion-item-divider sticky>
         <ion-label>
           {{hour.time}}
@@ -70,7 +73,7 @@
           </p>
         </button>
       </ion-item-sliding>
-    </ion-card>
+    </ion-card> -->
   </ion-list>
 
   <!-- <p class = "bottom" text-center> -->
