@@ -49,7 +49,9 @@
         </p>
       </ion-item-divider>
       <ion-item-sliding #slidingItem *ngFor="let task of tasks | async">
-        <button ion-item *ngIf="task.taken == taken || taken == 2"> <!-- do not remove *ngIf without first consulting GitIssue #18-->
+        <!-- do not remove *ngIf without first consulting GitIssue #18-->
+        <!-- <ion-label class="{{task.category}}"></ion-label> -->
+        <button ion-item *ngIf="task.taken == taken || taken == 2" (click)="takenTaskAlert(task)">
           <h3>{{task.name}}</h3>
           <p>{{task.time}}</p>
           <p *ngIf="task.taken == 1">

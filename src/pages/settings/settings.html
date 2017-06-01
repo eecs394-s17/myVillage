@@ -7,11 +7,10 @@
 <ion-header>
   <ion-toolbar center>
     <ion-buttons left>
-      <!-- <button ion-button menuToggle icon-only>
+      <button ion-button menuToggle icon-only>
         <ion-icon name='menu'></ion-icon>
-      </button> -->
+      </button>
     </ion-buttons>
-    <h6>Hi {{username}}!</h6>
     <ion-title class="open-item">Settings</ion-title>
     <ion-buttons right>
       <img class="header-logo" src="assets/img/myVillageLogo.jpg">
@@ -20,10 +19,9 @@
 </ion-header>
 
 <ion-content padding>
-  <h6>Add Request</h6>
-  <h6>Do Not Disturb Times</h6>
-  <h6>Outstanding Village Sign Ups</h6>
-  <h6>VillageID: {{villageSymbol}}</h6>
+
+  <h4>Hi {{username}}!</h4>
+  <h6>Your Village: {{villageSymbol}}</h6>
 
   <div *ngIf = "!isMom">
     <p class="title">
@@ -33,14 +31,15 @@
   <ion-list *ngFor="let task of takenTasks | async">
     <ion-card>
       <div class ="{{task.category}}">
-	<ion-item >
-	  <ion-label>
-	    <h3 class="task_title">{{task.name}}</h3>
-	    <p>Time: {{task.clockTime}}</p>
-	    <p>Description: {{task.category}}</p>
-	  </ion-label>
-	</ion-item>
+      	<ion-item>
+      	  <ion-label>
+      	    <h3 class="task_title">{{task.name}}</h3>
+            <p>Date: {{task.date}}</p>
+      	    <p>Time: {{task.time}}</p>
+            <p>Notes: {{task.t_notes}}</p>
+      	  </ion-label>
+      	</ion-item>
       </div>
     </ion-card>
-  </ion-list>  
+  </ion-list>
 </ion-content>

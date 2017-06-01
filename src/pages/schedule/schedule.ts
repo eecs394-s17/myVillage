@@ -77,13 +77,13 @@ export class SchedulePage {
     });
   }
 
-  goToSessionDetail(sessionData: any) {
-    // go to the session detail page
-    // and pass in the session data
-    // this.navCtrl.push(SessionDetailPage, {
-    //   name: sessionData.name,
-    //   session: sessionData
-    // });
+  takenTaskAlert(task) {
+    let alert = this.alertCtrl.create({
+      title: (task.t_takenby + " left a note:"),
+      subTitle: task.t_notes,
+    });
+    alert.present();
+    console.log("This should be alerting you")
   }
 
   nextDay() {
@@ -92,7 +92,7 @@ export class SchedulePage {
     this.currDate = this.startDate.format();
     this.endDate = this.startDate.clone().add(1, 'days');
   	this.currDay = this.startDate.day();
-  	this.daySched = this.angFireDB.database.list(villageID + '/days/' + this.currDay + '/');
+  	// this.daySched = this.angFireDB.database.list(villageID + '/days/' + this.currDay + '/');
   	console.log(villageID + '/days/' + this.currDay + '/');
     this.updateTasks();
   }
@@ -104,7 +104,7 @@ export class SchedulePage {
     this.endDate = this.startDate.clone().add(1, 'days');
     this.currDate = this.startDate.format();
     this.currDay = this.startDate.day();
-    this.daySched = this.angFireDB.database.list(villageID + '/days/' + this.currDay + '/');
+    // this.daySched = this.angFireDB.database.list(villageID + '/days/' + this.currDay + '/');
     this.updateTasks();
   }
 
@@ -113,7 +113,7 @@ export class SchedulePage {
     this.endDate = this.startDate.clone().add(1, 'days');
     this.currDate = this.startDate.format();
     this.currDay = this.startDate.day();
-    this.daySched = this.angFireDB.database.list(villageID + '/days/' + this.currDay + '/');
+    // this.daySched = this.angFireDB.database.list(villageID + '/days/' + this.currDay + '/');
     this.updateTasks();
   }
 
