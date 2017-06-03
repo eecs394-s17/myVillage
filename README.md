@@ -43,5 +43,7 @@ Basically, follow instructions at http://docs.ionic.io/setup.html (beef this sec
 
 # Known Bugs and TODO
 (what are our known bugs and what are the future steps for building this project out)
+
 BUG: Differentation of user privileges between Mothers and Villagers happens on the front-end, should be implemented on backend for better security 
+
 TODO: some further type of authentication before another mother can join an already-existing village (right now it is too easy to get admin status)
