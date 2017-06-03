@@ -11,7 +11,6 @@ import { LandingPage } from '../pages/landing/landing';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
-import { GiftsPage } from '../pages/gifts/gifts';
 import { ServiceProvidersPage } from '../pages/service-providers/service-providers';
 import { ModalPage } from '../pages/modal/modal';
 import { AboutPage } from '../pages/about/about';
@@ -55,7 +54,6 @@ export const firebaseConfig = {
     SchedulePage,
     LoginPage,
     RegisterPage,
-    GiftsPage,
     ServiceProvidersPage,
     ModalPage,
     AboutPage,
@@ -80,7 +78,6 @@ export const firebaseConfig = {
     SchedulePage,
     LoginPage,
     RegisterPage,
-    GiftsPage,
     ServiceProvidersPage,
     ModalPage,
     AboutPage,

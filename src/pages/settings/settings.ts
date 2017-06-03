@@ -25,19 +25,20 @@ export class SettingsPage {
   constructor(private nav: NavController, public navParams: NavParams, public alertCtrl: AlertController, angFire: AngularFire, public userData: UserData) {
     this.angFireDB = angFire;
     this.wishList = angFire.database.list('/wishlist');
-      this.villageSymbol = villageIDsymbol;
-      this.isMom = isMother;
-      this.takenTasks = this.angFireDB.database.list(villageID + '/tasks/', {
-	query: {
-	    orderByChild: 't_taken_id',
-	    equalTo: userID
-	}
-      });
+    this.villageSymbol = villageIDsymbol;
+    this.isMom = isMother;
+    this.takenTasks = this.angFireDB.database.list(villageID + '/tasks/', {
+    	query: {
+    	    orderByChild: 't_taken_id',
+    	    equalTo: userID
+    	}
+    });
   }
 
   ionViewDidLoad() {
-    this.getUsername();
     console.log('ionViewDidLoad settings');
+    this.getUsername();
+
   }
 
   wishTapped(wish):void {
@@ -117,7 +118,6 @@ export class SettingsPage {
 
   getUsername() {
     this.userData.getUsername().then((username) => {
-      console.log(this.username);
       this.username = username;
     });
   }

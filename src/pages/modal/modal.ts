@@ -18,6 +18,7 @@ import * as moment from 'moment';
 })
 export class ModalPage {
   content: Array<string>; // = ['Task1', 'Task2'];
+  // Add in prepoulated tasks here
   catHash = { 'physical': ['Volunteer to babysit', 'Pick up item from store'],
               'mental': ['Schedule a friend date'],
               'nutritional': ['Cook a meal', 'Get groceries']};
@@ -40,21 +41,9 @@ export class ModalPage {
   }
 
   closeModal() {
-    console.log("time is: " + this.taskTime);
     this.taskDateTime = moment(this.taskDate + " " + this.taskTime);
-    console.log("Content 0 = " + this.content[0]);
-    console.log("Content 1 = " + this.content[1]);
-    console.log(this.content.length);
     for (var i=0; i<this.content.length; i++) {
-      console.log("i=" + i);
-      console.log("Content " + i + "= " + this.content[i]);
-      console.log("Task Name: " + this.taskName); // for some reason taskName isn't getting saved
-      console.log("Category: " + this.taskCategory);
-      console.log("DateTime: " + this.taskDateTime);
-      console.log(this.taskChecks);
       if (this.taskChecks[i]) {
-        console.log("hi this is taskchecks" + i);
-        console.log("Content " + i + "= " + this.content[i]);
         this.tasks.push({
           name: this.taskName,
           category: this.taskCategory,
@@ -64,7 +53,6 @@ export class ModalPage {
           taken: 0
 
         });
-        console.log("This is being pushed");
       }
     }
 
@@ -75,15 +63,12 @@ export class ModalPage {
 
   getCategory(category) {
     this.taskCategory = category;
-  	console.log(category);
   	this.content = this.catHash[category];
   }
 
   chooseTask(t) {
-    console.log("task = " + t);
     this.taskName = this.content[t];
     this.taskChecks[t] = !this.taskChecks[t];
-    console.log(this.taskChecks);
   }
 
 }

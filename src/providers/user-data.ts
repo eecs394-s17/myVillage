@@ -17,9 +17,9 @@ export class UserData {
     HAS_LOGGED_IN = 'hasloggedin';
     NAME_OF_USER = 'usersName';
     STATUS_OF_USER = 'usersStatus';
-  
-  constructor(public http: Http, public storage: Storage, public events: Events,) {
-    console.log('Hello UserData Provider');
+
+  constructor(public http: Http, public storage: Storage, public events: Events) {
+
   }
 
     login(username: string, usersName: string, usersStat: string, villageID: string, usersLastName: string, villageIDsymbol: string, userID: string): void {
@@ -32,7 +32,6 @@ export class UserData {
 	this.storage.set('USER_ID', userID);
 	this.events.publish('user:login');
 	this.storage.set('villageID', villageID);
-	console.log('saved in user-data' + username + ', ' + usersName + ', ' + usersStat);
   };
 
   signup(username: string): void {
@@ -59,72 +58,51 @@ export class UserData {
 
   getUsername(): Promise<string> {
     return this.storage.get('username').then((value) => {
-    	console.log('user-data' + value);
       return value;
     });
   };
 
   getName(): Promise<string> {
     return this.storage.get(this.NAME_OF_USER).then((value) => {
-    	console.log('user-data' + value);
       return value;
     });
   };
-		
+
   getLastName(): Promise<string> {
 			return this.storage.get('USERS_LAST_NAME').then((value) => {
-    	    console.log('user-data' + value);
 					return value;
 			});
   };
 
   getStatus(): Promise<string> {
     return this.storage.get(this.STATUS_OF_USER).then((value) => {
-    	console.log('user-data' + value);
       return value;
     });
   };
 
   getVillageID(): Promise<string> {
     return this.storage.get('villageID').then((value) => {
-    	console.log('user-data' + value);
       return value;
     });
   };
 
     getVillageIDsymbol(): Promise<string> {
     return this.storage.get('VILLAGE_ID_SYMBOL').then((value) => {
-    	console.log('user-data' + value);
       return value;
     });
   };
 
     getUserID(): Promise<string> {
 	return this.storage.get('USER_ID').then((value) => {
-    	    console.log('user-data' + value);
 	    return value;
 	});
     };
-    
-    
+
+
     hasLoggedIn(): Promise<boolean> {
     return this.storage.get(this.HAS_LOGGED_IN).then((value) => {
-	console.log("LOGGED IN STATUS IS" + value);
-	console.log("RETURN VALUE IS" + (value === true));
-	return value === true; 
-	/*let x: [boolean, string, string];
-	let y: string;
-	let z: string;
-	this.storage.get(this.NAME_OF_USER).then((val) => {
-	    y = value });
-	this.storage.get(this.STATUS_OF_USER).then((val) => {
-	    z = value});
-	x = [value === true, y, z];
-	return x;*/
+	     return value === true;
     });
   };
 
 }
-
-
-

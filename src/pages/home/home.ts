@@ -12,7 +12,6 @@ import { LandingPage } from '../landing/landing';
 import { SchedulePage } from '../schedule/schedule';
 
 import { AuthService } from '../../providers/auth-service';
-import { GiftsPage } from '../gifts/gifts';
 import { ServiceProvidersPage } from '../service-providers/service-providers';
 import { UserData } from '../../providers/user-data';
 
@@ -55,12 +54,10 @@ export class HomePage {
   }
 
   ionViewWillEnter() {
-    console.log("loaded");
     this.gift = "time";
   }
 
   ionViewDidLoad() {
-    console.log("loaded");
     this.tasks = this.angFireDB.database.list(villageID + '/tasks/', {
       query: {
         orderByChild: 'datetime',
@@ -171,35 +168,4 @@ export class HomePage {
     let myModal = this.modalCtrl.create(ModalPage);
     myModal.present();
   }
-
-  // timemoney(tm) {
-  //   if (tm == "money") {
-  //     this.nav.push(GiftsPage);
-  //   }
-  // }
-
-  // navToSchedule(event) {
-  //   console.log(event);
-  //   switch (event){
-  //     case "Schedule":
-  //       this.nav.push(SchedulePage);
-  //       break;
-  //     case "Gifts":
-  //       //this.nav.push(GiftsPage);
-  //       break;
-  //     case "Service":
-  //       this.nav.push(ServiceProvidersPage);
-  //       break;
-  //
-  //     case "Logout":
-  //       //this.nav.setRoot(LoginPage);
-  //       this.userData.logout();
-  //       this.ionicAuth.logout();
-  //       window.location.reload();
-  //       break;
-  //
-  //     default:
-  //       break;
-  //   }
-  // }
 }
