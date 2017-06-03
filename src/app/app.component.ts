@@ -51,29 +51,12 @@ export class MyApp {
       { title: 'FAQs Page', component: FAQsPage},
       { title: 'Moments Page', component: MomentsPage }
     ];
-      // isMother is undefined when imported. The if statement IS USELESS
-      // (if you don't believe me, look at the console.log's!)
-     // console.log("Is this person a mother?");
-     // console.log(isMother);
-      //if (isMother) {
-        this.menuPages = [
-        { title: 'Service Providers', component: ServiceProvidersPage },
-        { title: 'Moments', component: MomentsPage },
-        { title: 'FAQs', component: FAQsPage},
-        { title: 'About', component: AboutPage},
-        { title: 'Logout', component: LoginPage },
-          ];
-      /*} else {
-        this.menuPages = [
-        { title: 'Home', component: HomePage},
-        { title: 'Schedule', component: SchedulePage },
-        { title: 'Service Providers', component: ServiceProvidersPage },
-        { title: 'Moments', component: MomentsPage },
-        { title: 'FAQs', component: FAQsPage},
-        { title: 'About', component: AboutPage},
-        { title: 'Logout', component: LoginPage },
-          ];
-      }*/
+    this.menuPages = [
+      { title: 'Moments', component: MomentsPage },
+      { title: 'FAQs', component: FAQsPage},
+      { title: 'About', component: AboutPage},
+      { title: 'Logout', component: LoginPage },
+        ];
 
     this.activePage = this.menuPages[0];
   }
@@ -94,11 +77,10 @@ export class MyApp {
       console.log("Menu if-statement is actually doing something");
       this.userData.logout();
       this.ionicAuth.logout();
-      // window.location.reload();
-      this.nav.setRoot(LandingPage); // Please refer to GitIssue #4 before changing this to LoginPage
+      this.nav.setRoot(LandingPage);
     }
-    else if (!isMother && page == HomePage) { 
-      console.log('should be resetting tabs') 
+    else if (!isMother && page == HomePage) {
+      console.log('should be resetting tabs')
       this.nav.push(TabsPage);
     }
     else if (isMother && page == SchedulePage) {

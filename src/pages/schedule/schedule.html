@@ -49,8 +49,6 @@
         </p>
       </ion-item-divider>
       <ion-item-sliding #slidingItem *ngFor="let task of tasks | async">
-        <!-- do not remove *ngIf without first consulting GitIssue #18-->
-        <!-- <ion-label class="{{task.category}}"></ion-label> -->
         <button ion-item *ngIf="task.taken == taken || taken == 2" (click)="takenTaskAlert(task)">
           <h3>{{task.name}}</h3>
           <p>{{task.time}}</p>
@@ -60,26 +58,7 @@
         </button>
       </ion-item-sliding>
     </ion-card>
-    <!-- <ion-card *ngFor="let hour of daySched | async">
-      <ion-item-divider sticky>
-        <ion-label>
-          {{hour.time}}
-        </ion-label>
-      </ion-item-divider>
-      <ion-item-sliding #slidingItem>
-        <button ion-item (click)="goToSessionDetail(session)">
-          <h3>Description</h3>
-          <p>
-            {{hour.task}}
-            John Doe has taken this task!
-          </p>
-        </button>
-      </ion-item-sliding>
-    </ion-card> -->
   </ion-list>
 
-  <!-- <p class = "bottom" text-center> -->
   <button ion-button round outline (click)="openModal()">Add Task</button>
-  <!-- </p> -->
-
 </ion-content>

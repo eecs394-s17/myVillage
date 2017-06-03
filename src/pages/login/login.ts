@@ -25,13 +25,13 @@ export class LoginPage {
     {
 	this.userStatus = navParams.get("status");
 	console.log(this.userStatus);
-	this.userData.logout() // if we're going to log in, make sure there isn't old data here 
+	this.userData.logout() // if we're going to log in, make sure there isn't old data here
     }
-    
+
   loading: Loading;
   details: UserDetails = {email: '', password: ''};
   userStatus: any;
-    
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
@@ -40,7 +40,7 @@ export class LoginPage {
      this.showLoading()
      this.details.password = this.details.password.toLowerCase();
      this.ionicAuth.login('basic', this.details).then(() => {
-	   this.userData.logout() // if we're going to log in, make sure there isn't old data here 
+	   this.userData.logout() // if we're going to log in, make sure there isn't old data here
 	   console.log("Login succesful");
 	   setTimeout(() => {
                this.loading.dismiss();
@@ -82,10 +82,6 @@ export class LoginPage {
   }
 
   showError(text) {
-    //setTimeout(() => {
-    //  this.loading.dismiss();
-    //});
-
     let alert = this.alertCtrl.create({
       title: 'Fail',
       subTitle: text,
@@ -95,17 +91,14 @@ export class LoginPage {
   }
 
   public createAccount() {
-      //this.nav.push(RegisterPage);
-      //this.nav.setRoot(RegisterPage);
       this.nav.setRoot(RegisterPage, {
-	  status: this.userStatus
+	       status: this.userStatus
       });
   }
 
    public logout() {
-    //this.nav.setRoot(LoginPage);
-     this.userData.logout() 
-    this.ionicAuth.logout();
-    window.location.reload();
+     this.userData.logout()
+     this.ionicAuth.logout();
+     window.location.reload();
   }
 }

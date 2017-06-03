@@ -19,7 +19,6 @@ import { ModalPage } from '../modal/modal';
 })
 
 export class SchedulePage {
-  daySched: FirebaseListObservable<any>;
   currDate: any;
   angFireDB: any;
   startDate: any;
@@ -92,7 +91,6 @@ export class SchedulePage {
     this.currDate = this.startDate.format();
     this.endDate = this.startDate.clone().add(1, 'days');
   	this.currDay = this.startDate.day();
-  	// this.daySched = this.angFireDB.database.list(villageID + '/days/' + this.currDay + '/');
   	console.log(villageID + '/days/' + this.currDay + '/');
     this.updateTasks();
   }
@@ -104,7 +102,6 @@ export class SchedulePage {
     this.endDate = this.startDate.clone().add(1, 'days');
     this.currDate = this.startDate.format();
     this.currDay = this.startDate.day();
-    // this.daySched = this.angFireDB.database.list(villageID + '/days/' + this.currDay + '/');
     this.updateTasks();
   }
 
@@ -113,7 +110,6 @@ export class SchedulePage {
     this.endDate = this.startDate.clone().add(1, 'days');
     this.currDate = this.startDate.format();
     this.currDay = this.startDate.day();
-    // this.daySched = this.angFireDB.database.list(villageID + '/days/' + this.currDay + '/');
     this.updateTasks();
   }
 
@@ -123,42 +119,6 @@ export class SchedulePage {
     this.updateTasks();
     console.log("choice: " + this.startDate);
   }
-
-  // taskTapped(task):void {
-  //   let prompt = this.alertCtrl.create({
-  //     title: "Take Task",
-  //     message: "Please enter your name and any notes that would be helpful",
-  //     inputs: [
-  //       {
-  //         name: 't_takenby',
-  //         placeholder: 'Name'
-  //       },
-  //       {
-  //         name: 't_notes',
-  //         placeholder: 'Notes'
-  //       },
-  //       ],
-  //       buttons: [
-  //       {
-  //         text: "Cancel",
-  //         handler: data => {
-  //           console.log('cancel clicked')
-  //         }
-  //       },
-  //       {
-  //         text: "Submit",
-  //         handler: data => {
-  //           this.tasks.update(task.$key,{
-  //           t_taken: "true",
-  //           t_takenby: data.t_takenby,
-  //           t_notes: data.t_notes
-  //           })
-  //         }
-  //       }]
-  //   });
-  //
-  //   prompt.present();
-  // }
 
   taskTaken(num) {
     this.taken = num
