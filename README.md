@@ -5,12 +5,25 @@ This project was created for EECS 394, Spring 2017.
 Developers:  Dylan McCann, Joseph Sevirini, Junwon Jang, Rohan Mehta, Shin Lee, Vijeta Gupta,
 
 ## Project Status
-[Describe what we implemented/what it does here]
-[pictures are cool]
+myVillage allows new/expecting Mothers (or someone acting on her behalf) to create a village, where they can post tasks that they want help with. Villagers can be added to this village, where they sign up to help with these tasks, or contribute money to help pay a service provider to do the task.
 
-The myVillage application allows a the creation of a village, a social structure where a mother (or another admin acting for her) can post tasks (better word needed) that she needs (wants?) help with. Villagers can signup for these tasks, or instead give money to help the mother have a 'serve provider' (babysitter, nanny, etc.) accomplish that task instead.
+### Mother/Admin Workflow
+To create a new village, click on "New/Expecting Mother' on the landing page. On the login page, click 'Create Account'. On the registration page, fill out the relevant information and click the "New Village?" checkbox. Note that any information you put into the 'Village ID' line will be discarded. [Get pictures corresponding to each of these steps]
 
-Actions that users take are only visible to other people in their village. You can create a new village on the registration page. The villageID can be found on the settings page. The villageID is used during the registration process so that other people can join an already existing village. Note that all admins should select the 'Mother' option on the landing page. Note that currently each user can only be associated with a single village.
+You will be redirected to the schedule page. This is where you can create tasks that the mother could use help with. Click on the "Add Task" button and input the relevant information. [Pics]
+
+Note that you can use the buttons the top of the page to filter by taken/untaken tasks. [Pics]
+
+To add more people to the village, you need to give them the villageID. To see this, click on the settings page button, located on the bottom of the schedule page. You will see the villageID displayed [Pics]
+
+### Villager Workflow
+To create a villager account, click on the "Villager" button on the landing page. On the login pae, click 'Create Account'. On the registration page, fill out the relevant information, including the myVillage ID (which the user must be given ahead of time). Do NOT click the "New Village?" checkbox! [Pics]
+
+You will be redirected to the home page. This is where the villager can volunteer to help the mother with certain tasks. Open tasks are displayed this page. To take a task, simply click on the task and enter any relevant information. [Pics]
+
+To see the tasks that you have signed up for, click on the "Settings" button on the button of the page. The tasks that you have signed up for will be shown under the "Taken Tasks:" header. Note that the villageID is also displayed here. [Pics]
+
+If you are too busy to help with any of the tasks then you can assist the mother in another way! Click on the "Spend Money" button that is shown on the top of the home page. Click on one of the items to be redirected to the payements page, where you can help pay a service provider to help the mother. [Pics]
 
 ## Setup
 ### Needed tools
@@ -89,10 +102,14 @@ TODO: Answers to the questions on the FAQs page
 
 TODO: Moments page can display significant events/moments that the Mother has had recently 
 
+TODO: Users can be associated with multiple villagers
+
+TODO: Clear tasks which will have already happened from the Villager's home page / settings page
+
 ## Viewing and editing code
 If you are new to coding, we'd recommend installing a text editor on your computer. Atom, Sublime Text 2, or TextWrangler all seem to work pretty well. This basically color codes different tags and lines of code based on the type of file you are editing, which makes it way easier to write new code.
 
-## security
+## Security
 
 ## Using Ionic View
 
