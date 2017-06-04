@@ -14,7 +14,17 @@ Actions that users take are only visible to other people in their village. You c
 
 ## Setup
 ### Needed tools
-(say to install git/ionic/whatever-else) (probably simplified version of https://www.cs.northwestern.edu/academics/courses/394/ionic-setup-tips.php)
+Install the appropriate version of Node.js `https://nodejs.org/en/download/`
+
+Install Bower `https://bower.io/`
+
+Install the appropriate version of Git `https://git-scm.com/downloads`
+
+Install Ionic 2 by starting up your favorite command line interface (CLI) and typing `npm install -g cordova ionic` (and then pressing enter)
+
+Install AngularFire2, which is used to interface with Firebase, `npm install firebase angularfire2 --save` (and then pressing enter)
+
+[Riesbeck's instructions are good: https://www.cs.northwestern.edu/academics/courses/394/ionic-setup-tips.php]
 
 ### Running the app locally
 Go to directory where you want the myVillage project directory to be located.
@@ -30,31 +40,54 @@ Now we need to make some changes to the program configuration so that it uses th
 ### System Requirements
 - Ionic 2.0+
 
-### Required API Keys
+### Required Services
 
 ### Setting up Firebase
-(How to insert API keys into program)
-(looks like it's just firebaseConfig in app.module.ts)
-Basically, follow instructions at https://firebase.google.com/docs/web/setup up to the code snippet (beef this section way up).
+* Create a firebase account and then create a new project
+* Replace the dummy crediantials located in app.module.ts
+You can find each of the component pieces of the credentials in the following places:
+*apiKey: [where you can find this on the website],
+*authDomain: [where you can find this on the website],
+*databaseURL:  [where you can find this on the website],
+*storageBucket:  [where you can find this on the website],
+*messagingSenderId:  [where you can find this on the website],
 
 ### Setting up Ionic Authentication
-(How to insert API keys into program)
-(looks like it's just 'app_id' in app.module.ts)
-Basically, follow instructions at http://docs.ionic.io/setup.html (beef this section up)
+* Create an Ionic account (https://apps.ionic.io/) and click "create a new app"
+* Install the cloud client using `npm install @ionic/cloud-angular --save`
+* Run `ionic io init` to get everything ready to communicate with the cloud
+* Go to your newly-created Ionic project page (on the website you just made an account on). Copy the ID located under the name of the app.
+* Insert this ID into the application in two places. First, go to app.module.ts (in the 'app' directory and replace the dummy value for 'app_id' located on line 35. Then, go to 'ionic.config.json' and replace the dummy value for "app_id" located on line 3. 
 
 ## Setting up payments integration
 (Dylan needs to write this)
 
 ## Deploy app
-(ionic serve / whatever else, again probably simplified version of https://www.cs.northwestern.edu/academics/courses/394/ionic-setup-tips.php)
+### Deploying to local web server
+Move to the local project directory and run 'ionic serve'
+
+THe project should start up and a new browser tab should appear on which the application is running. If this is Chrome, copy the url into Firefox/another-browser and proceed from there. Chrome does not like they we are caching user data locally, so it will crash when you try to log-into/create an account. However, this is a crucial feature for using this app on mobile devices (because nobody wants to have to log into the app every single time they use it)!
+
+### Deploying to Android/iOS devices
+[alternatively, we could just tell them how to use Ionic View because this is pretty complicataed]
+#### Android
+(How to deploy to Andriod)
+
+### iOS
+(How to deploy to iOS)
 
 ## Known Bugs and TODO
-(what are our known bugs and what are the future steps for building this project out)
+[what are our known bugs and what are the future steps for building this project out]
 
 BUG: Differentiation of user privileges between Mothers and Villagers happens on the front-end, should be implemented on backend for better security
 
 TODO: some further type of authentication before another mother can join an already-existing village (right now it is too easy to get admin status)
 
+TODO: Push notifications for new/taken tasks
+
+TODO: Answers to the questions on the FAQs page
+
+TODO: Moments page can display significant events/moments that the Mother has had recently 
 
 ## Viewing and editing code
 If you are new to coding, we'd recommend installing a text editor on your computer. Atom, Sublime Text 2, or TextWrangler all seem to work pretty well. This basically color codes different tags and lines of code based on the type of file you are editing, which makes it way easier to write new code.
