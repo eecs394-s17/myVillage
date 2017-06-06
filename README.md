@@ -88,6 +88,10 @@ The project should start up and a new browser tab should appear on which the app
 ### BUGS
 * Some Security Issues (see 'Security' section below)
 * Tasks that have already happened still show up on the Villager's home page / settings page (albeit with the proper date)
+* Logo size is too large on "Spend Time" and "Spend Money" page
+* Mother has the option to "Take task" but this should only be an option for villagers
+* Overlap of menu bar and tabs bar for iOS for Mother's side
+* Tasks appear in both "taken tasks" and "untaken tasks" when it should be one or another
 
 
 ### TO DOS
