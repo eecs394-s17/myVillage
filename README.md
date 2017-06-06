@@ -123,7 +123,11 @@ https://github.com/ionic-team/ionic-conference-app.
 
 ## Other useful tutorials
 HTML/CSS: https://www.codecademy.com/learn/learn-html-css
+
 JS: https://www.codecademy.com/learn/javascript
+
 Angular: https://angular.io/docs/ts/latest/tutorial/s
+
 Ionic 2: https://www.joshmorony.com/beginners-guide-to-getting-started-with-ionic-2/
+
 Deploying to Android and iOS devices: https://ionicframework.com/docs/intro/deploying/
