@@ -37,7 +37,7 @@ Navigate (using the CLI) to the directory in which you want the myVillage projec
 
 Clone this Github repo by typing the following commmand into the CLI and pressing enter `git clone git@github.com:eecs394-s17/MyVillage.git`
 
-Navigate to inside the project directory (necessary commands vary between different CLI's)
+Navigate to inside the project directory.
 
 Install Ionic 2 with the command `npm install -g cordova ionic` (and then pressing enter)
 
