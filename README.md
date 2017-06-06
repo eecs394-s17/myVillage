@@ -47,14 +47,14 @@ Now we need to make some changes to the program configuration so that it uses th
 
 ### Required Services
 
-### Setting up Firebase
+#### Setting up Firebase
 * Create a [firebase account](https://firebase.google.com/) and then create a new project
 * Replace the dummy credentials located in app.module.ts (inside of the firebaseConfig object)
 You can find each of the component pieces of the credentials on the Firebase console. In the event that you are having trouble finding stuff, Google is an excellent aid!
 
 Once done, navigate to the 'Database' section of the Firebase console. Add a new data value under the top-level attribute by clicking the '+' button. In the 'name' field, type 'villageSymbolMap'. Click on the plus button again and in the new 'name' field type 'newKey' and in the corresponding 'value' field type 1. Click the 'ADD' button.
 
-### Setting up Ionic Authentication
+#### Setting up Ionic Authentication
 * Create an [Ionic account](https://apps.ionic.io/) and click "create a new app"
 * Go to your newly-created Ionic project page (on the website you just made an account on). Copy the ID located under the name of the app.
 * Insert this ID into the application in two places. First, go to app.module.ts (in the 'app' directory and replace the dummy value for 'app_id' located on line 35. Then, go to 'ionic.config.json' and replace the dummy value for "app_id" located on line 3.
@@ -62,7 +62,7 @@ Once done, navigate to the 'Database' section of the Firebase console. Add a new
 Note: The user is advised to consult the [official documentation](https://docs.ionic.io/setup.html) in the event of a problem.
 
 
-## Setting up payments integration
+### Setting up payments integration
 The payments application will run separatetly from the myVillage app on a DigitalOcean droplet. To set up this droplet (server), head over to https://www.digitalocean.com/ and sign up for an account. Once that is done, you will want to create a 512mb droplet.
 - Seting up firewall and permissions
 - Installing nodejs
@@ -75,7 +75,7 @@ The payments application will run separatetly from the myVillage app on a Digita
 ### Deploying to local web server
 Move to the local project directory and run 'ionic serve'
 
-The project should start up and a new browser tab should appear on which the application is running. If this is Chrome, copy the url into Firefox/another-browser and proceed from there. Chrome does not like they we are caching user data locally, so it will crash when you try to log-into/create an account. However, this is a crucial feature for using this app on mobile devices (because nobody wants to have to log into the app every single time they use it)!
+The project should start up and a new browser tab should appear on which the application is running. If this is Chrome, copy the url into Firefox/another-browser and proceed from there. Chrome does not like that we are caching user data locally, so it will crash when you try to log-into/create an account. However, this is a crucial feature for using this app on mobile devices (because nobody wants to have to log into the app every single time they use it)!
 
 ### Deploying to devices
 
@@ -97,6 +97,7 @@ Ionic View is a handy service that comes free with Ionic and allows you to share
 * Mother has the option to "Take task" but this should only be an option for villagers
 * Overlap of menu bar and tabs bar for iOS for Mother's side
 * Tasks appear in both "Taken tasks" and "Untaken tasks" when it should be one or another
+* Application automatically caches data locally (great for mobile), but this can cause problems on browsers such as Chrome (but not Firefox)
 
 ### TO DOS
 * Some further type of authentication before another mother can join an already-existing village (right now it is too easy to get admin status)
