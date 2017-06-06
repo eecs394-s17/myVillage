@@ -29,7 +29,7 @@ If you are too busy to help with any of the tasks then you can assist the mother
 ### Preparing the Local System
 Install the appropriate version of [Git](https://git-scm.com/downloads)
 
-Install the appropriate version of [Node.js] (https://nodejs.org/en/download/)
+Install the appropriate version of [Node.js](https://nodejs.org/en/download/)
 
 Open your favorite command line interface (CLI) (terminal on mac, command prompt on windows, probably bash on Linux). A full description of the capabilities of these interfaces is outside the scope of this tutorial, but Google has excellent tutorials for each.
 
