@@ -49,13 +49,13 @@ Now we need to make some changes to the program configuration so that it uses th
 
 ### Setting up Firebase
 * Create a [firebase account](https://firebase.google.com/) and then create a new project
-* Replace the dummy credentials located in app.module.ts
+* Replace the dummy credentials located in app.module.ts (inside of the firebaseConfig object)
 You can find each of the component pieces of the credentials on the Firebase console. In the event that you are having trouble finding stuff, Google is an excellent aid!
 
 Once done, navigate to the 'Database' section of the Firebase console. Add a new data value under the top-level attribute by clicking the '+' button. In the 'name' field, type 'villageSymbolMap'. Click on the plus button again and in the new 'name' field type 'newKey' and in the corresponding 'value' field type 1. Click the 'ADD' button.
 
 ### Setting up Ionic Authentication
-* Create an Ionic account (https://apps.ionic.io/) and click "create a new app"
+* Create an [Ionic account](https://apps.ionic.io/) and click "create a new app"
 * Go to your newly-created Ionic project page (on the website you just made an account on). Copy the ID located under the name of the app.
 * Insert this ID into the application in two places. First, go to app.module.ts (in the 'app' directory and replace the dummy value for 'app_id' located on line 35. Then, go to 'ionic.config.json' and replace the dummy value for "app_id" located on line 3.
 
