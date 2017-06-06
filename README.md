@@ -81,13 +81,9 @@ Move to the local project directory and run 'ionic serve'
 
 The project should start up and a new browser tab should appear on which the application is running. If this is Chrome, copy the url into Firefox/another-browser and proceed from there. Chrome does not like they we are caching user data locally, so it will crash when you try to log-into/create an account. However, this is a crucial feature for using this app on mobile devices (because nobody wants to have to log into the app every single time they use it)!
 
-### Deploying to Android/iOS devices
+### Deploying to devices
 [alternatively, we could just tell them how to use Ionic View because this is pretty complicataed]
-#### Android
-(How to deploy to Andriod)
 
-### iOS
-(How to deploy to iOS)
 
 ## Known Bugs and TODO
 [what are our known bugs and what are the future steps for building this project out]
