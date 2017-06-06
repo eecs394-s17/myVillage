@@ -59,10 +59,15 @@ Now we need to make some changes to the program configuration so that it uses th
 * Create a firebase account and then create a new project
 * Replace the dummy crediantials located in app.module.ts
 You can find each of the component pieces of the credentials in the following places:
+
 *apiKey: [where you can find this on the website],
+
 *authDomain: [where you can find this on the website],
+
 *databaseURL:  [where you can find this on the website],
+
 *storageBucket:  [where you can find this on the website],
+
 *messagingSenderId:  [where you can find this on the website],
 
 ### Setting up Ionic Authentication
@@ -88,7 +93,9 @@ The project should start up and a new browser tab should appear on which the app
 ## Known Bugs and TODO
 [what are our known bugs and what are the future steps for building this project out]
 
-BUG: Differentiation of user privileges between Mothers and Villagers happens on the front-end, should be implemented on backend for better security
+BUG: Some Security Issues (see 'Security' section below)
+
+BUG: Tasks that have already happened still show up on the Villager's home page / settings page
 
 TODO: some further type of authentication before another mother can join an already-existing village (right now it is too easy to get admin status)
 
@@ -100,12 +107,17 @@ TODO: Moments page can display significant events/moments that the Mother has ha
 
 TODO: Users can be associated with multiple villagers
 
-TODO: Clear tasks which will have already happened from the Villager's home page / settings page
-
 ## Viewing and editing code
 If you are new to coding, we'd recommend installing a text editor on your computer. Atom, Sublime Text 2, or TextWrangler all seem to work pretty well. This basically color codes different tags and lines of code based on the type of file you are editing, which makes it way easier to write new code.
 
 ## Security
+There are a few security-related issues that must be addressed before this app is ready for production.
+
+Some decisions for which data to display are handled in the front end, via the use of ngIf's. This is potentially a bad practice because a malicious user could modify the variables in the ngIf's boolean expression to change whether or not the ngIf will display certain information. In particular, in home.html, we are using an ngIf to check if any user has signed up for a given task in order to determine whether or not to display information about that task to the current user (if not taken -> display to current user). A malicious user could manipulate this so that they can see all the tasks (including the already-taken ones), which is a security concern because it would allow to the attacker to see the Mother's entire schedule. This *should* be the only case where this practice is a security concern. 
+
+We are storing many of the  relevant user attributes in the javascript front-end, which we then use to construct our database queries. This is a problem because an attacker could change these values (using the browser console, etc.). This would allow the attacker to change their isMother status (from villager to mother), change their villageID (from one village to another), or to change their usersName (to impersonate another user). 
+
+The decision for which data to display on the page must be moved from the ngIf's to the database queries. The Javascript variables that are used to construct these queries must be protected from possible malicious-user interference. However, Javascript variables are *never* secure. The verification/construction of the database queries must therefore be moved to the backend, either through server-side checks (so even if the local values are changed, the server won't be fooled), or by encapsulating all relevant user data inside a session (or a similar construct).
 
 ## Using Ionic View
 
