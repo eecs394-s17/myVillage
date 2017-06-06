@@ -57,7 +57,7 @@ Now we need to make some changes to the program configuration so that it uses th
 
 ### Setting up Firebase
 * Create a firebase account and then create a new project
-* Replace the dummy crediantials located in app.module.ts
+* Replace the dummy credentials located in app.module.ts
 You can find each of the component pieces of the credentials in the following places:
 
 *apiKey: [where you can find this on the website],
@@ -75,7 +75,7 @@ You can find each of the component pieces of the credentials in the following pl
 * Install the cloud client using `npm install @ionic/cloud-angular --save`
 * Run `ionic io init` to get everything ready to communicate with the cloud
 * Go to your newly-created Ionic project page (on the website you just made an account on). Copy the ID located under the name of the app.
-* Insert this ID into the application in two places. First, go to app.module.ts (in the 'app' directory and replace the dummy value for 'app_id' located on line 35. Then, go to 'ionic.config.json' and replace the dummy value for "app_id" located on line 3. 
+* Insert this ID into the application in two places. First, go to app.module.ts (in the 'app' directory and replace the dummy value for 'app_id' located on line 35. Then, go to 'ionic.config.json' and replace the dummy value for "app_id" located on line 3.
 
 ## Setting up payments integration
 (Dylan needs to write this)
@@ -109,7 +109,7 @@ TODO: Push notifications for new/taken tasks
 
 TODO: Answers to the questions on the FAQs page
 
-TODO: Moments page can display significant events/moments that the Mother has had recently 
+TODO: Moments page can display significant events/moments that the Mother has had recently
 
 TODO: Users can be associated with multiple villagers
 
@@ -121,11 +121,12 @@ There are a few security-related issues that must be addressed before this app i
 
 Some decisions for which data to display are handled in the front end, via the use of ngIf's. This is potentially a bad practice because a malicious user could modify the variables in the ngIf's boolean expression to change whether or not the ngIf will display certain information. In particular, in home.html, we are using an ngIf to check if any user has signed up for a given task in order to determine whether or not to display information about that task to the current user (if not taken -> display to current user). A malicious user could manipulate this so that they can see all the tasks (including the already-taken ones), which is a security concern because it would allow to the attacker to see the Mother's entire schedule. This *should* be the only case where this practice is a security concern. 
 
-We are storing many of the  relevant user attributes in the javascript front-end, which we then use to construct our database queries. This is a problem because an attacker could change these values (using the browser console, etc.). This would allow the attacker to change their isMother status (from villager to mother), change their villageID (from one village to another), or to change their usersName (to impersonate another user). 
+We are storing many of the  relevant user attributes in the javascript front-end, which we then use to construct our database queries. This is a problem because an attacker could change these values (using the browser console, etc.). This would allow the attacker to change their isMother status (from villager to mother), change their villageID (from one village to another), or to change their usersName (to impersonate another user).
 
 The decision for which data to display on the page must be moved from the ngIf's to the database queries. The Javascript variables that are used to construct these queries must be protected from possible malicious-user interference. However, Javascript variables are *never* secure. The verification/construction of the database queries must therefore be moved to the backend, either through server-side checks (so even if the local values are changed, the server won't be fooled), or by encapsulating all relevant user data inside a session (or a similar construct).
 
 ## Using Ionic View
+Ionic View is a handy service that comes free with Ionic and allows you to share your app with clients and testers without going through the process of deploying as a beta to the iOS or Android store. Users who test the app can even submit feedback through Ionic View. In the ionic.config.json file, you can change the app ID to whatever ID you'd like and then in terminal/command line type `ionic upload`. It may ask you to log in to your ionic account so make sure that is configured properly. Once it is deployed, others can view the most recent version using the "Preview Shared App" feature in Ionic View - they will be asked to enter the app ID. Note that any time you want to update to the most current version, the person who deployed to their Ionic account must again run `ionic upload`.
 
 ## Adding additional code
 This app was built using the Ionic 2 Framework combined with AngularJS and Firebase.
