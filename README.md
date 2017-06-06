@@ -83,7 +83,7 @@ The payments application will run separatetly from the myVillage app on a Digita
 
 ## Deploy app
 ### Deploying to local web server
-Move to the local project directory and run (in the CLI) `ionic serve`.
+Move to the local project directory and run (in the CLI) `ionic serve`
 
 The project should start up and a new browser tab should appear on which the application is running. If this is Chrome, copy the url into Firefox/another-browser and proceed from there. Chrome does not like that we are caching user data locally, so it will crash when you try to log-into/create an account. However, this is a crucial feature for using this app on mobile devices (because nobody wants to have to log into the app every single time they use it)!
 
