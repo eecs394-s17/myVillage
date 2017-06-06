@@ -84,7 +84,6 @@ The project should start up and a new browser tab should appear on which the app
 
 
 ## Known Bugs and TODO
-[what are our known bugs and what are the future steps for building this project out]
 
 ### BUGS
 * Some Security Issues (see 'Security' section below)
