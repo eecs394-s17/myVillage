@@ -59,7 +59,7 @@ Once done, navigate to the 'Database' section of the Firebase console. Add a new
 * Go to your newly-created Ionic project page (on the website you just made an account on). Copy the ID located under the name of the app.
 * Insert this ID into the application in two places. First, go to app.module.ts (in the 'app' directory and replace the dummy value for 'app_id' located on line 35. Then, go to 'ionic.config.json' and replace the dummy value for "app_id" located on line 3.
 
-Note: This information was correct when this README was written (6/6/17). However, it is possible that Ionic could make changes. We do NOT intend to update this README in that scenario. The user is advised to consult the [official documentation](https://docs.ionic.io/setup.html) in the event of a problem.
+Note: The user is advised to consult the [official documentation](https://docs.ionic.io/setup.html) in the event of a problem.
 
 ## Using Ionic View
 Ionic View is a handy service that comes free with Ionic and allows you to share your app with clients and testers without going through the process of deploying as a beta to the iOS or Android store. Users who test the app can even submit feedback through Ionic View. In the ionic.config.json file, you can change the app ID to whatever ID you'd like and then in terminal/command line type `ionic upload`. It may ask you to log in to your ionic account so make sure that is configured properly. Once it is deployed, others can view the most recent version using the "Preview Shared App" feature in Ionic View - they will be asked to enter the app ID. Note that any time you want to update to the most current version, the person who deployed to their Ionic account must again run `ionic upload`.
