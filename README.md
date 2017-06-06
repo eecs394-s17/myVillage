@@ -2,7 +2,7 @@
 A registry that gives moms full tummies, sleep, alone time, emotional support, mental health, and stress management.
 
 This project was created for EECS 394, Spring 2017.
-Developers:  Dylan McCann, Joseph Sevirini, Junwon Jang, Rohan Mehta, Shin Lee, Vijeta Gupta,
+Developers:  Dylan McCann, Joseph Sevirini, Junwon Jang, Rohan Mehta, Shin Lee, Vijeta Gupta
 
 ## Project Status
 myVillage allows new/expecting Mothers (or someone acting on her behalf) to create a village, where they can post tasks that they want help with. Villagers can be added to this village, where they sign up to help with these tasks, or contribute money to help pay a service provider to do the task.
@@ -77,6 +77,9 @@ You can find each of the component pieces of the credentials in the following pl
 * Go to your newly-created Ionic project page (on the website you just made an account on). Copy the ID located under the name of the app.
 * Insert this ID into the application in two places. First, go to app.module.ts (in the 'app' directory and replace the dummy value for 'app_id' located on line 35. Then, go to 'ionic.config.json' and replace the dummy value for "app_id" located on line 3.
 
+## Using Ionic View
+Ionic View is a handy service that comes free with Ionic and allows you to share your app with clients and testers without going through the process of deploying as a beta to the iOS or Android store. Users who test the app can even submit feedback through Ionic View. In the ionic.config.json file, you can change the app ID to whatever ID you'd like and then in terminal/command line type `ionic upload`. It may ask you to log in to your ionic account so make sure that is configured properly. Once it is deployed, others can view the most recent version using the "Preview Shared App" feature in Ionic View - they will be asked to enter the app ID. Note that any time you want to update to the most current version, the person who deployed to their Ionic account must again run `ionic upload`.
+
 ## Setting up payments integration
 (Dylan needs to write this)
 
@@ -126,8 +129,6 @@ We are storing many of the  relevant user attributes in the javascript front-end
 
 The decision for which data to display on the page must be moved from the ngIf's to the database queries. The Javascript variables that are used to construct these queries must be protected from possible malicious-user interference. However, Javascript variables are *never* secure. The verification/construction of the database queries must therefore be moved to the backend, either through server-side checks (so even if the local values are changed, the server won't be fooled), or by encapsulating all relevant user data inside a session (or a similar construct).
 
-## Using Ionic View
-Ionic View is a handy service that comes free with Ionic and allows you to share your app with clients and testers without going through the process of deploying as a beta to the iOS or Android store. Users who test the app can even submit feedback through Ionic View. In the ionic.config.json file, you can change the app ID to whatever ID you'd like and then in terminal/command line type `ionic upload`. It may ask you to log in to your ionic account so make sure that is configured properly. Once it is deployed, others can view the most recent version using the "Preview Shared App" feature in Ionic View - they will be asked to enter the app ID. Note that any time you want to update to the most current version, the person who deployed to their Ionic account must again run `ionic upload`.
 
 ## Adding additional code
 This app was built using the Ionic 2 Framework combined with AngularJS and Firebase.
