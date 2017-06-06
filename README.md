@@ -91,7 +91,7 @@ The project should start up and a new browser tab should appear on which the app
 * Logo size is too large on "Spend Time" and "Spend Money" page
 * Mother has the option to "Take task" but this should only be an option for villagers
 * Overlap of menu bar and tabs bar for iOS for Mother's side
-* Tasks appear in both "taken tasks" and "untaken tasks" when it should be one or another
+* Tasks appear in both "Taken tasks" and "Untaken tasks" when it should be one or another
 
 
 ### TO DOS
