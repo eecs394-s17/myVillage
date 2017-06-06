@@ -8,22 +8,22 @@ Developers:  Dylan McCann, Joseph Sevirini, Junwon Jang, Rohan Mehta, Shin Lee, 
 At this moment, we have implemeneted most of the features and user stories requested at the beginning of the term. We have not built out a lot of functionality with service providers, however. While the basic functionality works, there are much needed design improvements. 
 
 ### Mother/Admin Workflow
-To create a new village, click on "New/Expecting Mother' on the landing page. On the login page, click 'Create Account'. On the registration page, fill out the relevant information and click the "New Village?" checkbox. Note that any information you put into the 'Village ID' line will be discarded. [Get pictures corresponding to each of these steps]
+To create a new village, click on "New/Expecting Mother' on the landing page. On the login page, click 'Create Account'. On the registration page, fill out the relevant information and click the "New Village?" checkbox. Note that any information you put into the 'Village ID' line will be discarded.
 
-You will be redirected to the schedule page. This is where you can create tasks that the mother could use help with. Click on the "Add Task" button and input the relevant information. [Pics]
+You will be redirected to the schedule page. This is where you can create tasks that the mother could use help with. Click on the "Add Task" button and input the relevant information.
 
-Note that you can use the buttons the top of the page to filter by taken/untaken tasks. [Pics]
+Note that you can use the buttons the top of the page to filter by taken/untaken tasks.
 
-To add more people to the village, you need to give them the villageID. To see this, click on the settings page button, located on the bottom of the schedule page. You will see the villageID displayed [Pics]
+To add more people to the village, you need to give them the villageID. To see this, click on the settings page button, located on the bottom of the schedule page. You will see the villageID displayed.
 
 ### Villager Workflow
-To create a villager account, click on the "Villager" button on the landing page. On the login pae, click 'Create Account'. On the registration page, fill out the relevant information, including the myVillage ID (which the user must be given ahead of time). Do NOT click the "New Village?" checkbox! [Pics]
+To create a villager account, click on the "Villager" button on the landing page. On the login pae, click 'Create Account'. On the registration page, fill out the relevant information, including the myVillage ID (which the user must be given ahead of time). Do NOT click the "New Village?" checkbox!
 
-You will be redirected to the home page. This is where the villager can volunteer to help the mother with certain tasks. Open tasks are displayed this page. To take a task, simply click on the task and enter any relevant information. [Pics]
+You will be redirected to the home page. This is where the villager can volunteer to help the mother with certain tasks. Open tasks are displayed on this page. To take a task, simply click on the task and enter any relevant information.
 
-To see the tasks that you have signed up for, click on the "Settings" button on the button of the page. The tasks that you have signed up for will be shown under the "Taken Tasks:" header. Note that the villageID is also displayed here. [Pics]
+To see the tasks that you have signed up for, click on the "Settings" button on the button of the page. The tasks that you have signed up for will be shown under the "Taken Tasks:" header. Note that the villageID is also displayed here. 
 
-If you are too busy to help with any of the tasks then you can assist the mother in another way! Click on the "Spend Money" button that is shown on the top of the home page. Click on one of the items to be redirected to the payements page, where you can help pay a service provider to help the mother. [Pics]
+If you are too busy to help with any of the tasks then you can assist the mother in another way! Click on the "Spend Money" button on the top of the home page. Click on one of the items to be redirected to the payements page, where you can help pay a service provider to assist the mother.
 
 ## Setup
 ### Preparing the Local System
@@ -61,8 +61,6 @@ Once done, navigate to the 'Database' section of the Firebase console. Add a new
 
 Note: The user is advised to consult the [official documentation](https://docs.ionic.io/setup.html) in the event of a problem.
 
-## Using Ionic View
-Ionic View is a handy service that comes free with Ionic and allows you to share your app with clients and testers without going through the process of deploying as a beta to the iOS or Android store. Users who test the app can even submit feedback through Ionic View. In the ionic.config.json file, you can change the app ID to whatever ID you'd like and then in terminal/command line type `ionic upload`. It may ask you to log in to your ionic account so make sure that is configured properly. Once it is deployed, others can view the most recent version using the "Preview Shared App" feature in Ionic View - they will be asked to enter the app ID. Note that any time you want to update to the most current version, the person who deployed to their Ionic account must again run `ionic upload`.
 
 ## Setting up payments integration
 The payments application will run separatetly from the myVillage app on a DigitalOcean droplet. To set up this droplet (server), head over to https://www.digitalocean.com/ and sign up for an account. Once that is done, you will want to create a 512mb droplet.
@@ -87,7 +85,8 @@ The project should start up and a new browser tab should appear on which the app
   - In order to deploy to iOS, make sure you have xCode7 or higher installed as well as an Apple developer account
   - In order to deploy to Android, make sure you have Java SDK, Android Studio, and updated Android SDK tools, platform and component dependencies installed, which are available through SDK Manager.
 
-
+### Using Ionic View
+Ionic View is a handy service that comes free with Ionic and allows you to share your app with clients and testers without going through the process of deploying as a beta to the iOS or Android store. Users who test the app can even submit feedback through Ionic View. In the ionic.config.json file, you can change the app ID to whatever ID you'd like and then in terminal/command line type `ionic upload`. It may ask you to log in to your ionic account so make sure that is configured properly. Once it is deployed, others can view the most recent version using the "Preview Shared App" feature in Ionic View - they will be asked to enter the app ID. Note that any time you want to update to the most current version, the person who deployed to their Ionic account must again run `ionic upload`.
 
 ## Known Bugs and TODO
 
@@ -98,7 +97,6 @@ The project should start up and a new browser tab should appear on which the app
 * Mother has the option to "Take task" but this should only be an option for villagers
 * Overlap of menu bar and tabs bar for iOS for Mother's side
 * Tasks appear in both "Taken tasks" and "Untaken tasks" when it should be one or another
-
 
 ### TO DOS
 * Some further type of authentication before another mother can join an already-existing village (right now it is too easy to get admin status)
