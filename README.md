@@ -5,7 +5,7 @@ This project was created for EECS 394, Spring 2017.
 Developers:  Dylan McCann, Joseph Sevirini, Junwon Jang, Rohan Mehta, Shin Lee, Vijeta Gupta
 
 ## Project Status
-myVillage allows new/expecting Mothers (or someone acting on her behalf) to create a village, where they can post tasks that they want help with. Villagers can be added to this village, where they sign up to help with these tasks, or contribute money to help pay a service provider to do the task.
+At this moment, we have implemeneted most of the features and user stories requested at the beginning of the term. We have not built out a lot of functionality with service providers, however. While the basic functionality works, there are much needed design improvements. 
 
 ### Mother/Admin Workflow
 To create a new village, click on "New/Expecting Mother' on the landing page. On the login page, click 'Create Account'. On the registration page, fill out the relevant information and click the "New Village?" checkbox. Note that any information you put into the 'Village ID' line will be discarded. [Get pictures corresponding to each of these steps]
@@ -65,7 +65,13 @@ Note: The user is advised to consult the [official documentation](https://docs.i
 Ionic View is a handy service that comes free with Ionic and allows you to share your app with clients and testers without going through the process of deploying as a beta to the iOS or Android store. Users who test the app can even submit feedback through Ionic View. In the ionic.config.json file, you can change the app ID to whatever ID you'd like and then in terminal/command line type `ionic upload`. It may ask you to log in to your ionic account so make sure that is configured properly. Once it is deployed, others can view the most recent version using the "Preview Shared App" feature in Ionic View - they will be asked to enter the app ID. Note that any time you want to update to the most current version, the person who deployed to their Ionic account must again run `ionic upload`.
 
 ## Setting up payments integration
-(Dylan needs to write this)
+The payments application will run separatetly from the myVillage app on a DigitalOcean droplet. To set up this droplet (server), head over to https://www.digitalocean.com/ and sign up for an account. Once that is done, you will want to create a 512mb droplet.
+- Seting up firewall and permissions
+- Installing nodejs
+- Setting up NGINX
+- Moving project folder to path where NGINX catches it
+- Domain Name ?
+
 
 ## Deploy app
 ### Deploying to local web server
