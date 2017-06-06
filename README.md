@@ -26,56 +26,40 @@ To see the tasks that you have signed up for, click on the "Settings" button on 
 If you are too busy to help with any of the tasks then you can assist the mother in another way! Click on the "Spend Money" button that is shown on the top of the home page. Click on one of the items to be redirected to the payements page, where you can help pay a service provider to help the mother. [Pics]
 
 ## Setup
-### Needed tools
-Install the appropriate version of Node.js `https://nodejs.org/en/download/`
+### Preparing the Local System
+Install the appropriate version of [Git](https://git-scm.com/downloads)
 
-Install Bower `https://bower.io/`
+Install the appropriate version of [Node.js] (https://nodejs.org/en/download/)
 
-Install the appropriate version of Git `https://git-scm.com/downloads`
+Open your favorite command line interface (CLI) (terminal on mac, command prompt on windows, probably bash on Linux). A full description of the capabilities of these interfaces is outside the scope of this tutorial, but Google has excellent tutorials for each.
 
-Install Ionic 2 by starting up your favorite command line interface (CLI) and typing `npm install -g cordova ionic` (and then pressing enter)
+Navigate (using the CLI) to the directory in which you want the myVillage project directory to be located.
 
-Install AngularFire2, which is used to interface with Firebase, `npm install firebase angularfire2 --save` (and then pressing enter)
+Clone this Github repo by typing the following commmand into the CLI and pressing enter `git clone git@github.com:eecs394-s17/MyVillage.git`
 
-[Riesbeck's instructions are good: https://www.cs.northwestern.edu/academics/courses/394/ionic-setup-tips.php]
+Navigate to inside the project directory (necessary commands vary between different CLI's)
 
-### Running the app locally
-Go to directory where you want the myVillage project directory to be located.
+Install Ionic 2 with the command `npm install -g cordova ionic` (and then pressing enter)
 
-Run to clone the project `git clone git@github.com:eecs394-s17/MyVillage.git`
-
-Move into project directory `cd ./MyVillage`
-
-Install needed components `npm install`
+Install the rest of the components needed for this application `npm install`
 
 Now we need to make some changes to the program configuration so that it uses the correct APIs/services.
-
-### System Requirements
-- Ionic 2.0+
 
 ### Required Services
 
 ### Setting up Firebase
-* Create a firebase account and then create a new project
+* Create a [firebase account](https://firebase.google.com/) and then create a new project
 * Replace the dummy credentials located in app.module.ts
-You can find each of the component pieces of the credentials in the following places:
+You can find each of the component pieces of the credentials on the Firebase console. In the event that you are having trouble finding stuff, Google is an excellent aid!
 
-* apiKey: [where you can find this on the website],
-
-* authDomain: [where you can find this on the website],
-
-* databaseURL:  [where you can find this on the website],
-
-* storageBucket:  [where you can find this on the website],
-
-* messagingSenderId:  [where you can find this on the website],
+Once done, navigate to the 'Database' section of the Firebase console. Add a new data value under the top-level attribute by clicking the '+' button. In the 'name' field, type 'villageSymbolMap'. Click on the plus button again and in the new 'name' field type 'newKey' and in the corresponding 'value' field type 1. Click the 'ADD' button.
 
 ### Setting up Ionic Authentication
 * Create an Ionic account (https://apps.ionic.io/) and click "create a new app"
-* Install the cloud client using `npm install @ionic/cloud-angular --save`
-* Run `ionic io init` to get everything ready to communicate with the cloud
 * Go to your newly-created Ionic project page (on the website you just made an account on). Copy the ID located under the name of the app.
 * Insert this ID into the application in two places. First, go to app.module.ts (in the 'app' directory and replace the dummy value for 'app_id' located on line 35. Then, go to 'ionic.config.json' and replace the dummy value for "app_id" located on line 3.
+
+Note: This information was correct when this README was written (6/6/17). However, it is possible that Ionic could make changes. We do NOT intend to update this README in that scenario. The user is advised to consult the [official documentation](https://docs.ionic.io/setup.html) in the event of a problem.
 
 ## Using Ionic View
 Ionic View is a handy service that comes free with Ionic and allows you to share your app with clients and testers without going through the process of deploying as a beta to the iOS or Android store. Users who test the app can even submit feedback through Ionic View. In the ionic.config.json file, you can change the app ID to whatever ID you'd like and then in terminal/command line type `ionic upload`. It may ask you to log in to your ionic account so make sure that is configured properly. Once it is deployed, others can view the most recent version using the "Preview Shared App" feature in Ionic View - they will be asked to enter the app ID. Note that any time you want to update to the most current version, the person who deployed to their Ionic account must again run `ionic upload`.
