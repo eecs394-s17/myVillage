@@ -50,9 +50,19 @@ Now we need to make some changes to the program configuration so that it uses th
 #### Setting up Firebase
 * Create a [firebase account](https://firebase.google.com/) and then create a new project
 * Replace the dummy credentials located in app.module.ts (inside of the firebaseConfig object)
-You can find each of the component pieces of the credentials on the Firebase console. In the event that you are having trouble finding stuff, Google is an excellent aid!
-
-Once done, navigate to the 'Database' section of the Firebase console. Add a new data value under the top-level attribute by clicking the '+' button. In the 'name' field, type 'villageSymbolMap'. Click on the plus button again and in the new 'name' field type 'newKey' and in the corresponding 'value' field type 1. Click the 'ADD' button.
+You can find each of the component pieces of the credentials on the Firebase console. Be sure to consult the [official docs](https://firebase.google.com/docs/web/setup) so you know which parts of the dummy credentials to replace (specifically, see the node.js code snippet)! In the event that you are having trouble finding stuff, Google is an excellent aid!
+* Once done, navigate to the 'Database' section of the Firebase console. Add a new data value under the top-level attribute by clicking the '+' button. In the 'name' field, type 'villageSymbolMap'. Click on the plus button again and in the new 'name' field type 'newKey' and in the corresponding 'value' field type 1. Click the 'ADD' button.
+* Navigate to the 'Rules' header of the 'Databae' section. Replace the rules found there with:
+`{
+  "rules": {
+    ".read": "true",
+    ".write": "true",
+    "$tasks": {
+      ".indexOn": "datetime"
+    }
+  }
+}`
+Note that before this application is ready for production, these rules must be replaced by rules that verify that the user has the permissions to do the actions which they are attempting to do (for more information about this, please see the 'Security' section below)
 
 #### Setting up Ionic Authentication
 * Create an [Ionic account](https://apps.ionic.io/) and click "create a new app"
