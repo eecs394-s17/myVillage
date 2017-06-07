@@ -23,7 +23,7 @@ You will be redirected to the home page. This is where the villager can voluntee
 
 To see the tasks that you have signed up for, click on the "Settings" button on the button of the page. The tasks that you have signed up for will be shown under the "Taken Tasks:" header. Note that the villageID is also displayed here.
 
-If you are too busy to help with any of the tasks then you can assist the mother in another way! Click on the "Spend Money" button on the top of the home page. Click on one of the items to be redirected to the payements page, where you can help pay a service provider to assist the mother.
+If you are too busy to help with any of the tasks then you can assist the mother in another way! Click on the "Spend Money" button on the top of the home page. Click on one of the items to be redirected to the payments page, where you can help pay a service provider to assist the mother.
 
 ## Setup
 ### Preparing the Local System
@@ -35,7 +35,7 @@ Open your favorite command line interface (CLI) (terminal on mac, command prompt
 
 Navigate (using the CLI) to the directory in which you want the myVillage project directory to be located.
 
-Clone this Github repo by typing the following commmand into the CLI and pressing enter `git clone git@github.com:eecs394-s17/MyVillage.git`
+Clone this Github repo by typing the following command into the CLI and pressing enter `git clone git@github.com:eecs394-s17/MyVillage.git`
 
 Navigate to inside the project directory.
 
@@ -73,14 +73,14 @@ Note: The user is advised to consult the [official documentation](https://docs.i
 
 
 ### Setting up payments integration
-The payments application will run separatetly from the myVillage app on a DigitalOcean droplet. To set up this droplet (server), head over to https://www.digitalocean.com/ and sign up for an account. Once that is done, you will want to create a 512mb droplet.
+The payments application will run separately from the myVillage app on a DigitalOcean droplet. To set up this droplet (server), head over to https://www.digitalocean.com/ and sign up for an account. Once that is done, you will want to create a 512mb droplet.
 - Follow the instructions for this tutorial: https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04
 - Follow the instructions for hooking a domain name to your droplet here : https://www.digitalocean.com/community/tutorials/how-to-set-up-a-host-name-with-digitalocean
 - Install nginx on the droplet by following the instructions here: https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-16-04
-- Install nodejs on the droplet by follwing instructions here: https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04
-- Download the www diectory from https://github.com/eecs394-s17/myVillagepayments
+- Install NodeJS on the droplet by following instructions here: https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04
+- Download the www directory from https://github.com/eecs394-s17/myVillagepayments
 - Follow instructions in the "How it works" section of this link https://github.com/noodlio/noodlio-pay-ionic-example for adding the correct API keys in the app.js file in the www folder
-- Add the www diretory to var/www path in the digital ocean droplet
+- Add the www directory to var/www path in the digital ocean droplet
 - Add the payments domain name as a link in all the spend money cards in on the home page of the myVillage app
 
 
