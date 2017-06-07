@@ -66,11 +66,12 @@ Ionic View is a handy service that comes free with Ionic and allows you to share
 
 ## Setting up payments integration
 The payments application will run separatetly from the myVillage app on a DigitalOcean droplet. To set up this droplet (server), head over to https://www.digitalocean.com/ and sign up for an account. Once that is done, you will want to create a 512mb droplet.
-- Seting up firewall and permissions
-- Installing nodejs
-- Setting up NGINX
-- Moving project folder to path where NGINX catches it
-- Domain Name ?
+- Follow the instructions for this tutorial: https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04
+- Follow the instructions for hooking a domain name to your droplet here : https://www.digitalocean.com/community/tutorials/how-to-set-up-a-host-name-with-digitalocean
+- Install nginx on the droplet by following the instructions here: https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-16-04
+- Install nodejs on the droplet by follwing instructions here: https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04
+- Download the www diectory from https://github.com/eecs394-s17/myVillagepayments
+- Follow instructions in the "How it works" section of this link https://github.com/noodlio/noodlio-pay-ionic-example for adding the correct API keys
 
 
 ## Deploy app
