@@ -5,7 +5,7 @@ This project was created for EECS 394, Spring 2017.
 Developers:  Dylan McCann, Joseph Sevirini, Junwon Jang, Rohan Mehta, Shin Lee, Vijeta Gupta
 
 ## Project Status
-At this moment, we have implemeneted most of the features and user stories requested at the beginning of the term. We have not built out a lot of functionality with service providers, however. While the basic functionality works, there are much needed design improvements. 
+At this moment, we have implemented most of the features and user stories requested at the beginning of the term. Mothers/admins can add tasks and view their schedule, and villagers can take tasks, leave notes for the mother, and view those tasks later on. Villagers can also give money to the mother for specific items listed out within the app. Our payment system was created with an MVP in mind and could use further integration. In addition, we have not built out a lot of functionality with service providers, as the process for that is not fully fleshed out. Furthermore, there is still room for improvement in a handful of key areas, both from a design and functionality perspective.
 
 ### Mother/Admin Workflow
 To create a new village, click on "New/Expecting Mother' on the landing page. On the login page, click 'Create Account'. On the registration page, fill out the relevant information and click the "New Village?" checkbox. Note that any information you put into the 'Village ID' line will be discarded.
@@ -21,7 +21,7 @@ To create a villager account, click on the "Villager" button on the landing page
 
 You will be redirected to the home page. This is where the villager can volunteer to help the mother with certain tasks. Open tasks are displayed on this page. To take a task, simply click on the task and enter any relevant information.
 
-To see the tasks that you have signed up for, click on the "Settings" button on the button of the page. The tasks that you have signed up for will be shown under the "Taken Tasks:" header. Note that the villageID is also displayed here. 
+To see the tasks that you have signed up for, click on the "Settings" button on the button of the page. The tasks that you have signed up for will be shown under the "Taken Tasks:" header. Note that the villageID is also displayed here.
 
 If you are too busy to help with any of the tasks then you can assist the mother in another way! Click on the "Spend Money" button on the top of the home page. Click on one of the items to be redirected to the payements page, where you can help pay a service provider to assist the mother.
 
