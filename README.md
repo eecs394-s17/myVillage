@@ -79,7 +79,9 @@ The payments application will run separatetly from the myVillage app on a Digita
 - Install nginx on the droplet by following the instructions here: https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-16-04
 - Install nodejs on the droplet by follwing instructions here: https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04
 - Download the www diectory from https://github.com/eecs394-s17/myVillagepayments
-- Follow instructions in the "How it works" section of this link https://github.com/noodlio/noodlio-pay-ionic-example for adding the correct API keys
+- Follow instructions in the "How it works" section of this link https://github.com/noodlio/noodlio-pay-ionic-example for adding the correct API keys in the app.js file in the www folder
+- Add the www diretory to var/www path in the digital ocean droplet
+- Add the payments domain name as a link in all the spend money cards in on the home page of the myVillage app
 
 
 ## Deploy app
